@@ -2,6 +2,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AngularFireModule } from 'angularfire2';
 import { HttpClientModule } from '@angular/common/http';
 import {MatInputModule} from '@angular/material/input';
 import {MatTableModule} from '@angular/material/table';
@@ -26,9 +27,20 @@ import { EmployerComponent } from './employer/employer.component';
 import { AdminComponent } from './admin/admin.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
-import { NavComponent } from './nav/nav.component';
 import { HomeComponent } from './home/home.component';
-import { SidenavComponent } from './sidenav/sidenav.component';
+import { MainNavComponent } from './main-nav/main-nav.component';
+import { LayoutModule } from '@angular/cdk/layout';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatListModule } from '@angular/material/list';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+
+export const firebaseConfig ={
+  apiKey : '',
+  authDomain: '',
+  databaseURL: '',
+  storageBucket: '',
+  messagingSnderId:''
+};
 
 @NgModule({
   declarations: [
@@ -37,9 +49,8 @@ import { SidenavComponent } from './sidenav/sidenav.component';
     AdminComponent,
     LoginComponent,
     RegisterComponent,
-    NavComponent,
     HomeComponent,
-    SidenavComponent
+    MainNavComponent,
   ],
   imports: [
     BrowserModule,
@@ -59,6 +70,11 @@ import { SidenavComponent } from './sidenav/sidenav.component';
     MatFormFieldModule,
     MatMenuModule,
     MatSidenavModule,
+    LayoutModule,
+    MatToolbarModule,
+    MatListModule,
+    FontAwesomeModule,
+    AngularFireModule.initializeApp(firebaseConfig)
   ],
   providers: [],
   bootstrap: [AppComponent]
