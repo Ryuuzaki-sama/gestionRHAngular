@@ -22,31 +22,33 @@ export class LoginComponent implements OnInit {
     // });
   }
 
-  // loginFb(){
-  //   this.af.auth.login({
-  //     provider: AuthProviders.Facebook,
-  //     method: AuthMethods.popup,
-  //   }).then(
-  //     success =>{
-  //       this.router.navigate(['/home']);
-  //     }).catch(
-  //       err =>{
-  //         this.error = err;
-  //       })
-  // }
+  loginFb(){
+    // this.af.auth.login({
+    //   provider: AuthProviders.Facebook,
+    //   method: AuthMethods.popup,
+    // }).then(
+    //   success =>{
+    //     this.router.navigate(['/home']);
+    //   }).catch(
+    //     err =>{
+    //       this.error = err;
+    //     })
+    alert('fb login');
+  }
 
-  // loginGoogle(){
-  //   this.af.auth.login({
-  //     provider: AuthProviders.Google,
-  //     method: AuthMethods.popup,
-  //   }).then(
-  //     success =>{
-  //       this.router.navigate(['/home']);
-  //     }).catch(
-  //       err =>{
-  //         this.error = err;
-  //       })
-  // }
+  loginGoogle(){
+    // this.af.auth.login({
+    //   provider: AuthProviders.Google,
+    //   method: AuthMethods.popup,
+    // }).then(
+    //   success =>{
+    //     this.router.navigate(['/home']);
+    //   }).catch(
+    //     err =>{
+    //       this.error = err;
+    //     })
+    alert('google login')
+  }
 
   ngOnInit(): void {
   }
