@@ -23,7 +23,6 @@ import { AppRoutingModule } from './app-routing.module';
 
 // Components
 import { AppComponent } from './app.component';
-import { EmployerComponent } from './employer/employer.component';
 import { AdminComponent } from './admin/admin.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
@@ -33,6 +32,10 @@ import { LayoutModule } from '@angular/cdk/layout';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatListModule } from '@angular/material/list';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { SalarieComponent } from './salarie/salarie.component';
+import { AddSalarieComponent } from './salarie/add-salarie/add-salarie.component';
+import { EditSalarieComponent } from './salarie/edit-salarie/edit-salarie.component';
+import { SalarieDetailsComponent } from './salarie/salarie-details/salarie-details.component';
 
 export const firebaseConfig ={
   apiKey : '',
@@ -45,12 +48,15 @@ export const firebaseConfig ={
 @NgModule({
   declarations: [
     AppComponent,
-    EmployerComponent,
     AdminComponent,
     LoginComponent,
     RegisterComponent,
     HomeComponent,
     MainNavComponent,
+    SalarieComponent,
+    AddSalarieComponent,
+    EditSalarieComponent,
+    SalarieDetailsComponent,
   ],
   imports: [
     BrowserModule,
