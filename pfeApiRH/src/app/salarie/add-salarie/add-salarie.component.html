@@ -1,1 +1,97 @@
-<p>add-salarie works!</p>
+<div class="container mt-4 ">
+    <div class="example-loading-shade"
+         *ngIf="isLoadingResults">
+      <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
+    </div>
+    <div class="button-row">
+      <a mat-flat-button color="primary" [routerLink]="['/salarie']"><mat-icon>list</mat-icon></a>
+    </div>
+      <form [formGroup]="salarieForm" (ngSubmit)="onFormSubmit(salarieForm.value)">
+
+        <mat-form-field class="tp-full-width">
+          <input matInput type="text" placeholder="First name" [formControl]="prenom_salarie"
+                  >
+          <mat-error>
+            <span *ngIf="!salarieForm.get('prenom_salarie').valid && salarieForm.get('prenom_salarie').touched">Please enter Product Name</span>
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="exemple-full-width">
+          <input matInput type="text" placeholder="Last name" [formControl]="nom_salarie" >
+          <mat-error>
+            <span *ngIf="!salarieForm.get('nom_salarie').valid && salarieForm.get('nom_salarie').touched">Please enter Product Name</span>
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Gender :</mat-label>
+          <select matNativeControl required [formControl]="gender" *ngFor="let g of gender">
+            <option label="--select your gender --"></option>
+            <option value="g">{{g}}</option>
+          </select>
+          <mat-error *ngIf="!salarieForm.get('gender').valid && salarieForm.get('gender').touched">
+            This field is required
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="tp-full-width">
+          <input matInput placeholder="Nationalité" [formControl]="nationalite"
+                  >
+          <mat-error>
+            <span *ngIf="!salarieForm.get('nationalite').valid && salarieForm.get('nationalite').touched">Please enter your nationalite Name</span>
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="tp-full-width">
+          <mat-label>Your birthday</mat-label>
+          <input matInput [matDatepicker]="picker" [formControl]="date_naissance" placeholder="Date de naissance">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker touchUi #picker></mat-datepicker>
+        </mat-form-field>
+        
+
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="adresse" [formControl]="adresse">
+          <mat-error>
+            <span *ngIf="!salarieForm.get('adresse').valid && salarieForm.get('adresse').touched">Please enter your nationalite Name</span>
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Pays :</mat-label>
+          <select matNativeControl required [formControl]="pays" *ngFor="let p of pays">
+            <option label="--select your gender --"></option>
+            <option value="p.id">{{p.pays}}</option>
+          </select>
+          <mat-error *ngIf="!salarieForm.get('pays').valid && salarieForm.get('pays').touched">
+            This field is required
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Region :</mat-label>
+          <select matNativeControl required [formControl]="region" *ngFor="let r of region">
+            <option label="--select your gender --"></option>
+            <option value="r.id">{{r.region}}</option>
+          </select>
+          <mat-error *ngIf="!salarieForm.get('gender').valid && salarieForm.get('gender').touched">
+            This field is required
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Ville :</mat-label>
+          <select matNativeControl required [formControl]="ville" *ngFor="let v of ville">
+            <option label="--select your ville --"></option>
+            <option value="v.id">{{v.ville}}</option>
+          </select>
+          <mat-error *ngIf="!salarieForm.get('ville').valid && salarieForm.get('ville').touched">
+            This field is required
+          </mat-error>
+        </mat-form-field>
+       
+        <div class="button-row">
+          <button type="submit" mat-flat-button color="primary"><mat-icon>save</mat-icon></button>
+        </div>
+      </form>
+  </div>

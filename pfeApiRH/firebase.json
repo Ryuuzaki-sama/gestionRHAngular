@@ -1,0 +1,19 @@
+{
+  "hosting": [
+    {
+      "target": "pfeApiRH",
+      "public": "dist/pfeApiRH",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
+      "rewrites": [
+        {
+          "source": "**",
+          "destination": "/index.html"
+        }
+      ]
+    }
+  ]
+}

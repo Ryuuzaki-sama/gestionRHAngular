@@ -1,13 +1,17 @@
 <mat-sidenav-container class="sidenav-container">
-  <mat-sidenav #drawer class="sidenav" fixedInViewport
-      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
-      [mode]="(isHandset$ | async) ? 'over' : 'side'"
-      [opened]="(isHandset$ | async) === false">
-    <mat-toolbar>Menu</mat-toolbar>
+  <mat-sidenav 
+    #drawer 
+    class="sidenav"
+    [ngClass]="{hidden: (isHandset$ | async) === false}"
+    fixedInViewport="false"
+    [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isHandset$ | async) ? 'over' : 'side'"
+    [opened]="(isHandset$ | async) === false">
+    <mat-toolbar>  Menu </mat-toolbar>
     <mat-nav-list>
-      <a mat-list-item [routerLink]="['/salarie']">Salarie</a>
+      <a mat-list-item [routerLink]="['/salarie']"> <mat-icon color="warm">home</mat-icon>  Salarie</a>
       <a mat-list-item [routerLink]="['/salarie/add-salarie']">testing</a>
-      <a mat-list-item [routerLink]="['/salarie/edit-salarie']">testing2</a>
+      
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
@@ -21,9 +25,13 @@
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
       <span [routerLink]="['/home']"> Gestion Rh</span>
-
+      <span class="example-spacer"></span>
+      <input type="search" class="form-control" name="filter" id="filter"><mat-icon class="example-icon" >search</mat-icon>
+      <mat-icon class="example-icon" >person</mat-icon>
+      <mat-icon class="example-icon" >settings</mat-icon>
     </mat-toolbar>
 
-    <router-outlet></router-outlet>
+    <ng-content ></ng-content>
+    
   </mat-sidenav-content>
 </mat-sidenav-container>

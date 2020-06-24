@@ -1,1 +1,37 @@
-<p>edit-salarie works!</p>
+<!-- <div class="example-container mat-elevation-z8">
+    <div class="example-loading-shade"
+         *ngIf="isLoadingResults">
+      <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
+    </div>
+    <div class="button-row">
+      <a mat-flat-button color="primary" (click)="productDetails()"><mat-icon>info</mat-icon></a>
+    </div>
+    <mat-card class="example-card">
+      <form [formGroup]="salarieForm" (ngSubmit)="onFormSubmit(salarieForm.value)">
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Product Name" formControlName="prod_name"
+                 [errorStateMatcher]="matcher">
+          <mat-error>
+            <span *ngIf="!salarieForm.get('prod_name').valid && salarieForm.get('prod_name').touched">Please enter Product Name</span>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Product Desc" formControlName="prod_desc"
+                 [errorStateMatcher]="matcher">
+          <mat-error>
+            <span *ngIf="!salarieForm.get('prod_desc').valid && salarieForm.get('prod_desc').touched">Please enter Product Description</span>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Product Price" formControlName="prod_price"
+                 [errorStateMatcher]="matcher">
+          <mat-error>
+            <span *ngIf="!salarieForm.get('prod_price').valid && salarieForm.get('prod_price').touched">Please enter Product Price</span>
+          </mat-error>
+        </mat-form-field>
+        <div class="button-row">
+          <button type="submit" [disabled]="!salarieForm.valid" mat-flat-button color="primary"><mat-icon>save</mat-icon></button>
+        </div>
+      </form>
+    </mat-card>
+  </div> -->

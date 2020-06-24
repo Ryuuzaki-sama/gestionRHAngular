@@ -7,6 +7,7 @@ import { RegisterComponent } from './register/register.component';
 import { SalarieComponent } from './salarie/salarie.component';
 import { AddSalarieComponent } from './salarie/add-salarie/add-salarie.component';
 import { EditSalarieComponent } from './salarie/edit-salarie/edit-salarie.component';
+import { SalarieDetailsComponent } from './salarie/salarie-details/salarie-details.component';
 
 
 const routes: Routes = [
@@ -36,7 +37,7 @@ const routes: Routes = [
   },
   {
     path:'salarie/salarie-details/:id',
-    component: AddSalarieComponent
+    component: SalarieDetailsComponent
   },
   
   {
@@ -48,6 +49,7 @@ const routes: Routes = [
     path: 'login',
     component: LoginComponent
   },
+
   {
     path: 'register',
     component: RegisterComponent

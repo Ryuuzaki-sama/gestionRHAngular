@@ -1,1 +1,35 @@
-<p>salarie-details works!</p>
+<div class="example-container mat-elevation-z8">
+    <div class="example-loading-shade"
+         *ngIf="isLoadingResults">
+      <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
+    </div>
+    <div class="button-row">
+      <a mat-flat-button color="primary" [routerLink]="['/salarie']"><mat-icon>list</mat-icon></a>
+    </div>
+    <mat-card class="example-card">
+      <mat-card-header>
+        <mat-card-title><h2>{{salarie.title}}  {{salarie.nom_salarie}} {{salarie.prenom_salarie}}</h2></mat-card-title>
+        <mat-card-subtitle>{{salarie.nationalite}}</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <dl>
+          <dt>Date de naissance :</dt>
+          <dd>{{salarie.date_naissance | date}}</dd>
+          <dt>Adresse :</dt>
+          <dd>{{salarie.adresse}}</dd>
+          <dt>Telephone :</dt>
+          <dd>{{salarie.telephone}}</dd>
+          <dt>Date d'entree  :</dt>
+          <dd>{{salarie.date_entree }}</dd>
+          <dt>CIN :</dt>
+          <dd>{{salarie.cin_salarie}}</dd>
+          <dt>Created At:</dt>
+          <dd>{{salarie.created_at | date}}</dd>
+        </dl>
+      </mat-card-content>
+      <mat-card-actions>
+        <a mat-flat-button color="primary" [routerLink]="['/salarie/edit-salarie', salarie.id]"><mat-icon>edit</mat-icon></a>
+        <a mat-flat-button color="warn" (click)="deletesalarie(salarie.id)"><mat-icon>delete</mat-icon></a>
+      </mat-card-actions>
+    </mat-card>
+  </div>

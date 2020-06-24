@@ -11,7 +11,7 @@ const httpOptions = {
   headers: new HttpHeaders({'Content-Type': 'application/json'})
 };
 
-const url = "localhost/api/";
+const url = "http://localhost:8000/api/";
 
 @Injectable({
   providedIn: 'root'
@@ -22,9 +22,14 @@ export class PfeApiService {
   constructor(private http:HttpClient) { }
 
   // Start Salarie
-  GetSalarie(){
+  GetSalaries(){
     const apiUrl = `${url}salarie`;
     return this.http.get<Salarie[]>(apiUrl);
+  }
+
+  GetSalarie(id:number){
+    const apiUrl = `${url}salarie/${id}`;
+    return this.http.get<Salarie>(apiUrl);
   }
 
   PostSalarie(salarie) {
@@ -71,75 +76,75 @@ export class PfeApiService {
    // Start Pays
 
    GetPays(){
-    const apiUrl = `${url}Pays`;
+    const apiUrl = `${url}pays`;
     return this.http.get<Pays[]>(apiUrl);
   }
 
   PostPays(pays) {
-    const apiUrl = `${url}Pays`;
+    const apiUrl = `${url}pays`;
     return this.http.post<Pays[]>(apiUrl, pays);
   }
 
   PutPays(id:number, pays){
-    const apiUrl = `${url}Pays/${id}`;
+    const apiUrl = `${url}pays/${id}`;
     return this.http.put<Pays[]>(apiUrl, pays);
   }
 
   DeletePays(id:number) {
-    const apiUrl = `${url}Pays/${id}`;
+    const apiUrl = `${url}pays/${id}`;
     return this.http.delete<Pays[]>(apiUrl);
   }
 
   // End Pays
 
-  // Start Salarie
+  // Start Region
   GetRegion(){
-    const apiUrl = `${url}Region`;
+    const apiUrl = `${url}region`;
     return this.http.get<Region[]>(apiUrl);
   }
 
   PostRegion(salarie) {
-    const apiUrl = `${url}Region`;
+    const apiUrl = `${url}region`;
     return this.http.post<Region[]>(apiUrl, salarie);
   }
 
   PutRegion(id:number, salarie){
-    const apiUrl = `${url}Region/${id}`;
+    const apiUrl = `${url}region/${id}`;
     return this.http.put<Region[]>(apiUrl, salarie);
   }
 
   DeleteRegion(id:number) {
-    const apiUrl = `${url}Region/${id}`;
+    const apiUrl = `${url}region/${id}`;
     return this.http.delete<Region[]>(apiUrl);
   }
 
-  // End Salarie
+  // End Region
 
-  // Start Condjoint
+  // Start Ville
 
   GetVille(){
-    const apiUrl = `${url}Ville`;
+    const apiUrl = `${url}ville`;
     return this.http.get<Ville[]>(apiUrl);
   }
 
   PostVille(salarie) {
-    const apiUrl = `${url}Ville`;
+    const apiUrl = `${url}ville`;
     return this.http.post<Ville[]>(apiUrl, salarie);
   }
 
   PutVille(id:number, salarie){
-    const apiUrl = `${url}Ville/${id}`;
+    const apiUrl = `${url}ville/${id}`;
     return this.http.put<Ville[]>(apiUrl, salarie);
   }
 
   DeleteVille(id:number) {
-    const apiUrl = `${url}Ville/${id}`;
+    const apiUrl = `${url}ville/${id}`;
     return this.http.delete<Ville[]>(apiUrl);
   }
 
-  // End Condjoint
+  // End Ville
 
-   // Start Pays
+   // Start situation familial
 
    GetSituation(){
     const apiUrl = `${url}situation_familial`;
@@ -161,7 +166,7 @@ export class PfeApiService {
     return this.http.delete<SituationFamilial[]>(apiUrl);
   }
 
-  // End Pays
+  // End situation familial
 
   
   

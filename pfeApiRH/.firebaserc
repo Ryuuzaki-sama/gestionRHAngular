@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "fir-pfe-cda70": {
+      "hosting": {
+        "pfeApiRH": [
+          "fir-pfe-cda70"
+        ]
+      }
+    }
+  }
+}
