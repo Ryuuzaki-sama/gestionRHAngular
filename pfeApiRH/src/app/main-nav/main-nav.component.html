@@ -21,17 +21,23 @@
         aria-label="Toggle sidenav"
         mat-icon-button
         (click)="drawer.toggle()"
-        *ngIf="isHandset$ | async">
+        *ngIf="isHandset$ | async"
+        >
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
       <span [routerLink]="['/home']"> Gestion Rh</span>
+      <!-- <div> -->
+        <input type="search" class="form-control " name="filter" id="filter"><mat-icon class="example-icon" >search</mat-icon>
+      <!-- </div> -->
       <span class="example-spacer"></span>
-      <input type="search" class="form-control" name="filter" id="filter"><mat-icon class="example-icon" >search</mat-icon>
-      <mat-icon class="example-icon" >person</mat-icon>
-      <mat-icon class="example-icon" >settings</mat-icon>
+      <mat-icon class="example-icon" [routerLink]="['/login']" >person</mat-icon>
+      <mat-icon class="example-icon">settings</mat-icon>
     </mat-toolbar>
 
-    <ng-content ></ng-content>
+    <section class="container-fluid">
+      <ng-content ></ng-content>
+    </section>
+    
     
   </mat-sidenav-content>
 </mat-sidenav-container>

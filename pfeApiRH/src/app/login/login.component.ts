@@ -1,56 +1,44 @@
-import { Component, OnInit, HostBinding } from '@angular/core';
-import { AngularFireAuth } from 'angularfire2/auth';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-// import { moveIn } from '../router.animations';
+import { PfeApiService } from '../pfe-api.service';
+import { FormControl, Validators } from '@angular/forms';
 
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
-  // animations: [moveIn()],
-  // host:{'[@moveIn]': ''}
 })
 export class LoginComponent implements OnInit {
 
+  username = new FormControl('', [Validators.required, Validators.email]);
+  password = new FormControl('', [Validators.required]);
+
+  usernameV :any;
+  passwordV : any;
+
+  isAuth : boolean = false;
+
   error:any;
-  constructor(public af: AngularFireAuth, private router: Router) { 
-    // this.af.auth.subscribe(auth=>{
-    //   if(auth) {
-    //     this.router.navigateByUrl('/home');
-    //   }
-    // });
+  constructor(private api: PfeApiService, private router: Router) { 
   }
 
-  loginFb(){
-    // this.af.auth.login({
-    //   provider: AuthProviders.Facebook,
-    //   method: AuthMethods.popup,
-    // }).then(
-    //   success =>{
-    //     this.router.navigate(['/home']);
-    //   }).catch(
-    //     err =>{
-    //       this.error = err;
-    //     })
-    alert('fb login');
-  }
-
-  loginGoogle(){
-    // this.af.auth.login({
-    //   provider: AuthProviders.Google,
-    //   method: AuthMethods.popup,
-    // }).then(
-    //   success =>{
-    //     this.router.navigate(['/home']);
-    //   }).catch(
-    //     err =>{
-    //       this.error = err;
-    //     })
-    alert('google login')
-  }
+  
 
   ngOnInit(): void {
+  
+  }
+
+  login(form){
+    if((this.username === this.usernameV) && (this.password === this.passwordV))
+    {
+      this.isAuth = false;
+    }
+    else
+    {
+      this.isAuth = true;
+      this.error = "Username or password incorrect";
+    }
   }
 
 }

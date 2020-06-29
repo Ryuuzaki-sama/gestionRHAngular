@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { AngularFireAuth } from 'angularfire2/auth';
 import { Router } from '@angular/router';
-// import { moveIn, fallIn } from '../router.animations';
+import { PfeApiService } from '../pfe-api.service';
+import { FormControl, Validators } from '@angular/forms';
 
 
 
@@ -9,17 +9,37 @@ import { Router } from '@angular/router';
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss'],
-  // animations: [moveIn(), fallIn()],
-  // host:{'[@moveIn]': ''}
 })
 export class RegisterComponent implements OnInit {
 
-  state: string='';
+  username = new FormControl('', [Validators.required, Validators.email]);
+  password = new FormControl('', [Validators.required]);
+
+  usernameV :any;
+  passwordV : any;
+
+  isAuth : boolean = false;
+
   error:any;
-  constructor(public af:AngularFireAuth, private router: Router) { }
+  state: string='';
+
+  constructor(private api: PfeApiService, private router: Router) { }
 
 
   ngOnInit(): void {
+  
+  }
+  
+  register(form){
+    if((this.username === this.usernameV) && (this.password === this.passwordV))
+    {
+      this.isAuth = false;
+    }
+    else
+    {
+      this.isAuth = true;
+      this.error = "Username or password incorrect";
+    }
   }
 
 }

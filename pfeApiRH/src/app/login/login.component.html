@@ -1,12 +1,25 @@
-<div class="form-container">
-    <img src="assets/images/lock.svg" id="lock">
-    <span class="error" *ngIf="error">{{error}}</span>
+<div class="container">
+    <h2>Login Form</h2>
+    <div *ngIf="isAuth" class="alert alert-danger" role="alert">
+        {{error}}
+      </div>
+    <div class="form-group col-md-6">
+        <mat-label for="username">Username</mat-label>
+        <input type="text" class="form-control" formControlName="username" id="username">
+        <!-- <span *ngIf="!salarieForm.get('nom_salarie').valid && salarieForm.get('nom_salarie').touched">Entrer un nom de salarie valide</span> -->
+    </div>
 
-    <button (click)="loginFb()" id="fb">Login with Facebook</button>
-    <button (click)="loginGoogle()" id="google">Login with Google</button>
-    <button routerLink="/login-email" id="email" >Email</button>
+    <div class="form-group col-md-6">
+        <mat-label for="password">mot de passe </mat-label>
+        <input type="password" class="form-control" formControlName="password" id="password">
+        <!-- <span *ngIf="!salarieForm.get('password').valid && salarieForm.get('password').touched">Entrer un nom de salarie valide</span> -->
+    </div>
 
-    <a routerLink="/signup" routerLinkActive="active" class="alc" >No account? <strong>Create one here</strong></a>
+    <div class="button-row">
+        <button type="submit" ><mat-icon color="warn">login</mat-icon></button>
+    </div>
+    <p> No account? <a [routerLink]="['/register']">Create one here</a></p>
+   
 
 
 </div>

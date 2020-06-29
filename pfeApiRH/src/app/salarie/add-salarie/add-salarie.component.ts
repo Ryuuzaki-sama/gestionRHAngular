@@ -12,7 +12,7 @@ import { Fonction } from 'src/app/classes/fonction.model';
 import { Service } from 'src/app/classes/service.model';
 import { Sanction } from 'src/app/classes/sanction.model';
 import { Accident } from 'src/app/classes/accident.model';
-import { ErrorStateMatcher } from '@angular/material/core';
+import { Salarie } from 'src/app/classes/salarie.model';
 
 @Component({
   selector: 'app-add-salarie',
@@ -21,21 +21,14 @@ import { ErrorStateMatcher } from '@angular/material/core';
 })
 export class AddSalarieComponent implements OnInit {
 
-  salarieForm: FormGroup;
-  title                       : FormControl;
-  nom_salarie                 : FormControl;
-  prenom_salarie              : FormControl;
-  gender                      = ['Male','Female'];
-  nationalite                 : FormControl;
-  date_naissance              : FormControl;
-  adresse                     : FormControl;
-  telephone                   : FormControl;
-  date_entree                : FormControl;
-  cin_salarie                 : FormControl;
-  cin_date_created_at         : FormControl;
-  cin_localisation_created_at : FormControl;
-  created_at                 :  FormControl; 
+  salarieForm = new FormControl('', [
+    Validators.required
+    // Validators.email,
+  ]);
 
+  salarie : Salarie;
+
+  title                       : ['Mr','Mrs','Ms']; 
   situation_familial : SituationFamilial[];
   fonction : Fonction[];
   service : Service[];
@@ -47,58 +40,47 @@ export class AddSalarieComponent implements OnInit {
   ville : Ville[];
   quartier : Quartier;
 
+  getErrorMessage() {
+    return this.salarieForm.hasError('required') ? 'Required field' :
+      this.salarieForm.hasError('email') ? 'Not a valid email' :
+        '';
+  }
+
   isLoadingResults: boolean;
-
-  errorMessage = 'Custom error message';
-
+  isIncomplete : boolean =false;
+  error : any;
 
   constructor(private router: Router, private api: PfeApiService, private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
-    this.api.GetPays().subscribe(pays=>{
-      
-    })
-    this.salarieForm = this.formBuilder.group({
-      'title' : [null, Validators.compose([Validators.minLength(1), Validators.maxLength(5), Validators.required])],
-      'nom_salarie' : [null,  Validators.compose([Validators.minLength(3), Validators.maxLength(15), Validators.required])],
-      'prenom_salarie' : [null, Validators.compose([Validators.minLength(3), Validators.maxLength(15), Validators.required])],
-      'gender' : [null, Validators.required],
-      'nationalite' : [null, Validators.required],
-      'date_naissance' : [null, Validators.required],
-      'adresse' : [null, Validators.required],
-      'telephone' : [null, Validators.required],
-      'cin_salarie' : [null, Validators.required],
-      'cin_date_created_at' : [null, Validators.required],
-      'cin_localisation_created_at' : [null, Validators.required],
-      'pays' : [null, Validators.required],
-      'region' : [null, Validators.required],
-      'ville' : [null, Validators.required],
-      'quartier' : [null, Validators.required],
+    this.api.GetSituation().subscribe(ressf=>{
+      this.situation_familial =ressf;
     });
-    this.title = new FormControl('', Validators.required);
-    this.nom_salarie = new FormControl('', Validators.required);
-    this.prenom_salarie = new FormControl('', Validators.required);
-    this.nationalite = new FormControl('', Validators.required);
-    this.date_naissance = new FormControl('', Validators.required);
-    this.adresse = new FormControl('', Validators.required);
-    this.telephone = new FormControl('', Validators.required);
-    this.cin_salarie = new FormControl('', Validators.required);
-    this.cin_date_created_at = new FormControl('', Validators.required);
+
+    this.api.GetPays().subscribe(resp=>{
+      this.pays = resp;
+    });
+
+    this.api.GetRegion().subscribe(resr=>{
+      this.region = resr;
+    });
+
+    this.api.GetVille().subscribe(resv=>{
+      this.ville = resv;
+    });
   }
 
-  onFormSubmit(form:NgForm) {
-    const payload = {
+  onFormSubmit() {
 
-    }
-    
     this.isLoadingResults = true;
-    this.api.PostSalarie(form)
+    this.api.PostSalarie(this.salarie)
       .subscribe(res => {
           let id = res['_id'];
           this.isLoadingResults = false;
           this.router.navigate(['/salarie/salarie-details', id]);
         }, (err) => {
-          console.log(err);
+          this.isIncomplete = true;
+          this.error = "Merci de bien vouloir verifier les informations remplis";
           this.isLoadingResults = false;
         });
   }

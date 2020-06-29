@@ -1,1 +1,26 @@
-<p>register works!</p>
+<div class="container">
+    <h2>Register Form</h2>
+
+    <div *ngIf="isAuth" class="alert alert-danger" role="alert">
+        {{error}}
+      </div>
+    <div class="form-group col-md-6">
+        <mat-label for="nom_salarie">Username</mat-label>
+        <input type="text" class="form-control" formControlName="nom_salarie" id="nom_salarie">
+        <!-- <span *ngIf="!salarieForm.get('nom_salarie').valid && salarieForm.get('nom_salarie').touched">Entrer un nom de salarie valide</span> -->
+    </div>
+
+    <div class="form-group col-md-6">
+        <mat-label for="prenom_salarie">mot de passe </mat-label>
+        <input type="password" class="form-control" formControlName="prenom_salarie" id="prenom_salarie">
+        <!-- <span *ngIf="!salarieForm.get('prenom_salarie').valid && salarieForm.get('prenom_salarie').touched">Entrer un nom de salarie valide</span> -->
+    </div>
+
+    <div class="button-row">
+        <button type="submit" ><mat-icon color="warn">register</mat-icon></button>
+    </div>
+    
+    <p> Have an account? <a [routerLink]="['/login']">log in here</a> </p>
+
+
+</div>

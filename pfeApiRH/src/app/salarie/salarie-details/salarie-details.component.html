@@ -1,4 +1,4 @@
-<div class="example-container mat-elevation-z8">
+<div class="container mt-4">
     <div class="example-loading-shade"
          *ngIf="isLoadingResults">
       <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
@@ -6,25 +6,34 @@
     <div class="button-row">
       <a mat-flat-button color="primary" [routerLink]="['/salarie']"><mat-icon>list</mat-icon></a>
     </div>
-    <mat-card class="example-card">
+    <mat-card class="example-card mt-3">
       <mat-card-header>
         <mat-card-title><h2>{{salarie.title}}  {{salarie.nom_salarie}} {{salarie.prenom_salarie}}</h2></mat-card-title>
         <mat-card-subtitle>{{salarie.nationalite}}</mat-card-subtitle>
       </mat-card-header>
       <mat-card-content>
         <dl>
+          <dt>CIN :</dt>
+          <dd>{{salarie.cin_salarie}}</dd>
           <dt>Date de naissance :</dt>
           <dd>{{salarie.date_naissance | date}}</dd>
           <dt>Adresse :</dt>
           <dd>{{salarie.adresse}}</dd>
+          <dt>email :</dt>
+          <dd> --- </dd>
           <dt>Telephone :</dt>
           <dd>{{salarie.telephone}}</dd>
           <dt>Date d'entree  :</dt>
-          <dd>{{salarie.date_entree }}</dd>
-          <dt>CIN :</dt>
-          <dd>{{salarie.cin_salarie}}</dd>
-          <dt>Created At:</dt>
-          <dd>{{salarie.created_at | date}}</dd>
+          <dd>{{salarie.date_entree | date }}</dd>
+          <dt>Promotion :</dt>
+          <dd> --- </dd>
+          <dt>Accident :</dt>
+          <dd> --- </dd>
+          <dt>permis :</dt>
+          <dd> --- </dd>
+          <!-- Classe Salarie en totalité ngIf existe -->
+          <!-- <dt>Created At:</dt>
+          <dd>{{salarie.created_at | date}}</dd> -->
         </dl>
       </mat-card-content>
       <mat-card-actions>

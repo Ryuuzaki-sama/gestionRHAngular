@@ -65,7 +65,7 @@ export class SalarieDetailsComponent implements OnInit {
             this.isLoadingResults = false;
           }
         );
-    } else
+    }else
     {
        alert("Ce Salarie n'est pas supprimer");
     }

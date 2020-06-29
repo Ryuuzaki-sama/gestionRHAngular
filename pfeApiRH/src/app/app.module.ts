@@ -29,7 +29,7 @@ import {MatExpansionModule} from '@angular/material/expansion';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatIconModule} from '@angular/material/icon';
 import {MatInputModule} from '@angular/material/input';
-import {MatNativeDateModule, MatRippleModule} from '@angular/material/core';
+import {MatNativeDateModule, MatRippleModule, ErrorStateMatcher, ShowOnDirtyErrorStateMatcher} from '@angular/material/core';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
@@ -46,6 +46,7 @@ import {MatTreeModule} from '@angular/material/tree';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatSidenavModule } from '@angular/material/sidenav';
+
 
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -68,6 +69,17 @@ import { SalarieComponent } from './salarie/salarie.component';
 import { AddSalarieComponent } from './salarie/add-salarie/add-salarie.component';
 import { EditSalarieComponent } from './salarie/edit-salarie/edit-salarie.component';
 import { SalarieDetailsComponent } from './salarie/salarie-details/salarie-details.component';
+import { SharedComponent } from './shared/shared.component';
+import { PromotionComponent } from './promotion/promotion.component';
+import { SanctionComponent } from './sanction/sanction.component';
+import { SituationFamilialComponent } from './situation-familial/situation-familial.component';
+import { EmploiAnterieurComponent } from './emploi-anterieur/emploi-anterieur.component';
+import { InstructionComponent } from './instruction/instruction.component';
+import { AbsenceLegalComponent } from './absence-legal/absence-legal.component';
+import { SuiviProComponent } from './suivi-pro/suivi-pro.component';
+import { AccidentComponent } from './accident/accident.component';
+import { PfeApiService } from './pfe-api.service';
+import { AuthService } from './auth.service';
 
 // FireBase
 // import { AngularFireModule } from '@angular/fire';
@@ -89,6 +101,15 @@ import { SalarieDetailsComponent } from './salarie/salarie-details/salarie-detai
     AddSalarieComponent,
     EditSalarieComponent,
     SalarieDetailsComponent,
+    SharedComponent,
+    PromotionComponent,
+    SanctionComponent,
+    SituationFamilialComponent,
+    EmploiAnterieurComponent,
+    InstructionComponent,
+    AbsenceLegalComponent,
+    SuiviProComponent,
+    AccidentComponent,
   ],
   imports: [
     BrowserModule,
@@ -144,7 +165,6 @@ import { SalarieDetailsComponent } from './salarie/salarie-details/salarie-detai
     AppRoutingModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
-    MatInputModule,
     MatDatepickerModule,
     MatSelectModule,
     MatTableModule,
@@ -168,7 +188,11 @@ import { SalarieDetailsComponent } from './salarie/salarie-details/salarie-detai
     // AngularFireAuthModule, // auth
     // AngularFireStorageModule // storage
   ],
-  providers: [],
+  providers: [
+    {provide: ErrorStateMatcher, useClass: ShowOnDirtyErrorStateMatcher},
+    PfeApiService,
+    AuthService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
