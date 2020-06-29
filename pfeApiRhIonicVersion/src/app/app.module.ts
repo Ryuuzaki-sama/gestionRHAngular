@@ -8,6 +8,8 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
+import { PfeApiRhService } from './services/pfe-api-rh.service';
+import { PfeAuthService } from './services/pfe-auth.service';
 
 @NgModule({
   declarations: [AppComponent],
@@ -19,6 +21,8 @@ import { AppRoutingModule } from './app-routing.module';
   ],
   providers: [
     StatusBar,
+    PfeApiRhService,
+    PfeAuthService,
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
