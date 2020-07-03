@@ -39,7 +39,7 @@ export class AppComponent implements OnInit {
     },
     {
       title: 'salarie',
-      url: '/salarie/Salarie',
+      url: '/salarie/salarie',
       icon: 'person'
     },
     {

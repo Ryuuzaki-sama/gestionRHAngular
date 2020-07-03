@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AuthService } from './auth.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,18 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'myPFEApp';
+
+  constructor(private apiAuth:AuthService){}
+  
+  isAdmin(){
+    return this.apiAuth.isAdmin();
+  }
+
+  isSalarie(){
+    return this.apiAuth.isSalarie();
+  }
+
+  isUser(){
+    return this.apiAuth.isUser();
+  }
 }
