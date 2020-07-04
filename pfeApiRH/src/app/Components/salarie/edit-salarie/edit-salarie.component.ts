@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, NgForm } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
-import { PfeApiService } from 'src/app/pfe-api.service';
+import { PfeApiService } from 'src/app/Services/pfe-api.service';
 
 @Component({
   selector: 'app-edit-salarie',

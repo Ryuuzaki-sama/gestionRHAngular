@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { Salarie } from '../classes/salarie.model';
-import { PfeApiService } from '../pfe-api.service';
+import { Salarie } from '../../classes/salarie.model';
+import { PfeApiService } from '../../Services/pfe-api.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 

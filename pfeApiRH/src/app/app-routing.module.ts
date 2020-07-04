@@ -1,23 +1,23 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { HomeComponent } from './home/home.component';
-import { AdminComponent } from './admin/admin.component';
-import { LoginComponent } from './login/login.component';
-import { RegisterComponent } from './register/register.component';
+import { HomeComponent } from './Components/home/home.component';
+import { AdminComponent } from './Components/admin/admin.component';
+import { LoginComponent } from './Components/login/login.component';
+import { RegisterComponent } from './Components/register/register.component';
 
-import { SalarieComponent } from './salarie/salarie.component';
-import { AddSalarieComponent } from './salarie/add-salarie/add-salarie.component';
-import { EditSalarieComponent } from './salarie/edit-salarie/edit-salarie.component';
-import { SalarieDetailsComponent } from './salarie/salarie-details/salarie-details.component';
-import { PromotionComponent } from './promotion/promotion.component';
-import { AbsenceLegalComponent } from './absence-legal/absence-legal.component';
-import { AccidentComponent } from './accident/accident.component';
-import { EmploiAnterieurComponent } from './emploi-anterieur/emploi-anterieur.component';
-import { InstructionComponent } from './instruction/instruction.component';
-import { SanctionComponent } from './sanction/sanction.component';
-import { SituationFamilialComponent } from './situation-familial/situation-familial.component';
-import { SuiviProComponent } from './suivi-pro/suivi-pro.component';
+import { SalarieComponent } from './Components/salarie/salarie.component';
+import { AddSalarieComponent } from './Components/salarie/add-salarie/add-salarie.component';
+import { EditSalarieComponent } from './Components/salarie/edit-salarie/edit-salarie.component';
+import { SalarieDetailsComponent } from './Components/salarie/salarie-details/salarie-details.component';
+import { PromotionComponent } from './Components/promotion/promotion.component';
+import { AbsenceLegalComponent } from './Components/absence-legal/absence-legal.component';
+import { AccidentComponent } from './Components/accident/accident.component';
+import { EmploiAnterieurComponent } from './Components/emploi-anterieur/emploi-anterieur.component';
+import { InstructionComponent } from './Components/instruction/instruction.component';
+import { SanctionComponent } from './Components/sanction/sanction.component';
+import { SituationFamilialComponent } from './Components/situation-familial/situation-familial.component';
+import { SuiviProComponent } from './Components/suivi-pro/suivi-pro.component';
 
 
 const routes: Routes = [

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroupDirective,FormGroup, FormBuilder, Validators, NgForm } from '@angular/forms';
-import { PfeApiService } from 'src/app/pfe-api.service';
+import { PfeApiService } from 'src/app/Services/pfe-api.service';
 import { Router } from '@angular/router';
 import { Pays } from 'src/app/classes/localisation/pays.model';
 import { Region } from 'src/app/classes/localisation/region.model';

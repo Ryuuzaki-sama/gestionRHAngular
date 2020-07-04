@@ -1,24 +1,24 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Salarie } from './classes/salarie.model';
-import { Condjoint } from './classes/condjoint.model';
-import { Pays } from './classes/localisation/pays.model';
-import { SituationFamilial } from './classes/situation-familial.model';
-import { Region } from './classes/localisation/region.model';
-import { Ville } from './classes/localisation/ville.model';
-import { Quartier } from './classes/localisation/quartier.model';
-import { Permis } from './classes/permis.model';
-import { Fonction } from './classes/fonction.model';
-import { SuiviPro } from './classes/suivi-pro.model';
-import { AbsenceReason } from './classes/absence-reason.model';
-import { Accident } from './classes/accident.model';
-import { AbsenceLegal } from './classes/absence-legal.model';
-import { Entreprise } from './classes/entreprise.model';
-import { Promotion } from './classes/promotion.model';
-import { Service } from './classes/service.model';
-import { Sanction } from './classes/sanction.model';
-import { Instruction } from './classes/instruction.model';
-import { EmploisAnterieur } from './classes/emplois-anterieur.model';
+import { Salarie } from '../classes/salarie.model';
+import { Condjoint } from '../classes/condjoint.model';
+import { Pays } from '../classes/localisation/pays.model';
+import { SituationFamilial } from '../classes/situation-familial.model';
+import { Region } from '../classes/localisation/region.model';
+import { Ville } from '../classes/localisation/ville.model';
+import { Quartier } from '../classes/localisation/quartier.model';
+import { Permis } from '../classes/permis.model';
+import { Fonction } from '../classes/fonction.model';
+import { SuiviPro } from '../classes/suivi-pro.model';
+import { AbsenceReason } from '../classes/absence-reason.model';
+import { Accident } from '../classes/accident.model';
+import { AbsenceLegal } from '../classes/absence-legal.model';
+import { Entreprise } from '../classes/entreprise.model';
+import { Promotion } from '../classes/promotion.model';
+import { Service } from '../classes/service.model';
+import { Sanction } from '../classes/sanction.model';
+import { Instruction } from '../classes/instruction.model';
+import { EmploisAnterieur } from '../classes/emplois-anterieur.model';
 
 const httpOptions = {
   headers: new HttpHeaders({'Content-Type': 'application/json', 'token': "base64:jpKAcM1IWrMK6k51F7F6xzeC6t2N9mWvqTsmzr/pG+c='"},

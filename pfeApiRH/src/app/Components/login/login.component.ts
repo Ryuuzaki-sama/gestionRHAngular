@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 // import { PfeApiService } from '../pfe-api.service';
 import { FormControl, Validators } from '@angular/forms';
-import { AuthService } from '../auth.service';
+import { AuthService } from '../../Services/auth.service';
 
 
 @Component({

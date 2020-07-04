@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Salarie } from 'src/app/classes/salarie.model';
 import { ActivatedRoute, Router } from '@angular/router';
-import { PfeApiService } from 'src/app/pfe-api.service';
+import { PfeApiService } from 'src/app/Services/pfe-api.service';
 
 @Component({
   selector: 'app-salarie-details',
