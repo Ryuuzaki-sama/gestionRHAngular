@@ -18,19 +18,21 @@ import { InstructionComponent } from './Components/instruction/instruction.compo
 import { SanctionComponent } from './Components/sanction/sanction.component';
 import { SituationFamilialComponent } from './Components/situation-familial/situation-familial.component';
 import { SuiviProComponent } from './Components/suivi-pro/suivi-pro.component';
+import { AuthGuard } from './guard/auth.guard';
 
 
 const routes: Routes = [
   // Page Accueil
   {
     path:'',
-    redirectTo:'/login',
-    pathMatch: 'full'
+    component: HomeComponent,
+    // canActivate : [AuthGuard]
   },
 
   {
     path: 'admin',
-    component: AdminComponent
+    component: AdminComponent,
+    canActivate : [AuthGuard]
   },
 
   {
@@ -40,69 +42,77 @@ const routes: Routes = [
 
   {
     path: 'register',
-    component: RegisterComponent
-  },
-
-  {
-    path: 'home',
-    component: HomeComponent
+    component: RegisterComponent,
+    canActivate : [AuthGuard]
   },
 
   {
     path: 'salarie',
-    component: SalarieComponent
+    component: SalarieComponent,
+    // canActivate : [AuthGuard]
   },
   {
     path:'salarie/add-salarie',
-    component: AddSalarieComponent
+    component: AddSalarieComponent,
+    // canActivate : [AuthGuard],
   },
   {
     path:'salarie/edit-salarie/:id',
-    component: EditSalarieComponent
+    component: EditSalarieComponent,
+    // canActivate : [AuthGuard],
   },
   {
     path:'salarie/salarie-details/:id',
-    component: SalarieDetailsComponent
+    component: SalarieDetailsComponent,
+    // canActivate : [AuthGuard]
   },
   
   {
     path: 'promotion',
-    component: PromotionComponent
+    component: PromotionComponent,
+    // canActivate : [AuthGuard]
   },
 
   {
     path: 'absence',
-    component: AbsenceLegalComponent
+    component: AbsenceLegalComponent,
+    // canActivate : [AuthGuard]
   },
 
   {
     path: 'accident',
-    component: AccidentComponent
+    component: AccidentComponent,
+    // canActivate : [AuthGuard]
   },
 
   {
     path: 'emploi_anterieur',
-    component: EmploiAnterieurComponent
+    component: EmploiAnterieurComponent,
+    // canActivate : [AuthGuard]
   },
 
   {
     path: 'instruction',
-    component: InstructionComponent
+    component: InstructionComponent,
+    // canActivate : [AuthGuard]
   },
 
   {
     path: 'sanction',
-    component: SanctionComponent
+    component: SanctionComponent,
+    // canActivate : [AuthGuard]
   },
 
   {
     path: 'situation_familial_param',
-    component: SituationFamilialComponent
+    component: SituationFamilialComponent,
+    // canActivate : [AuthGuard]
   },
 
   {
     path: 'suivi_pro',
-    component: SuiviProComponent
+    component: SuiviProComponent,
+    // canActivate : [AuthGuard],
   },
 
 ];

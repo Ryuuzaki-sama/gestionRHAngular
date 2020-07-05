@@ -6,13 +6,26 @@ import {
   HttpInterceptor
 } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { AuthService } from '../Services/auth.service';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
 
-  constructor() {}
+  constructor(private apiAuth: AuthService) {}
 
-  intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
+  intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+    
+    const currentUser = this.apiAuth.currentUserValue;
+    const isLoggedIn = currentUser && currentUser.token;
+    const isApiUrl = request.url.startsWith(this.apiAuth.url);
+    if(isLoggedIn && isApiUrl){
+      request = request.clone({
+        setHeaders: {
+          Authorization: `Bearer ${currentUser.token}`
+        }
+      });
+    }
+    
     return next.handle(request);
   }
 }

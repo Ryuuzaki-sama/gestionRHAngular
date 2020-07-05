@@ -1,34 +1,34 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Login } from '../classes/login.model';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { JwtHelperService } from "@auth0/angular-jwt";
-// import { Register } from './classes/register.model';
-// import { Admin } from './classes/admin.model';
+import { Users } from '../classes/auth/users.model';
 
-// const httpOptions = {
-//   headers: new HttpHeaders(
-//     {
-//       'Content-Type': 'application/json',
-//       'token': "base64:jpKAcM1IWrMK6k51F7F6xzeC6t2N9mWvqTsmzr/pG+c='"
-//     },
-//   )
-// };
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
+  private currentUserSubject : BehaviorSubject<Users>;
+  public currentUser: Observable<Users>;
 
-  url:string = "http://localhost:8000/api/user";
+  url:string = "http://localhost:8000/api/users";
   jwt:string;
   username:string;
   roles:Array<string>;
 
-  constructor(private httpauth: HttpClient) { }
+  constructor(private httpauth: HttpClient) { 
+    this.currentUserSubject = new BehaviorSubject<Users>(JSON.parse(localStorage.getItem('token')));
+    this.currentUser = this.currentUserSubject.asObservable();
+  }
 
+  public get currentUserValue(): Users {
+    return this.currentUserSubject.value;
+  }
   
   Login(user){
-    return this.httpauth.post<Login>(this.url,user,{observe:'response'});
+    return this.httpauth.post<Users>(this.url,user,{observe:'response'});
   }
 
   saveToken(jwt:string) {
@@ -47,15 +47,15 @@ export class AuthService {
   }
 
   isAdmin(){
-    return this.roles.indexOf('ADMIN')>=0;
+    return this.roles.indexOf('admin')>=0;
   }
 
   isSalarie(){
-    return this.roles.indexOf('SALARIE')>=0;
+    return this.roles.indexOf('salarie')>=0;
   }
 
   isUser(){
-    return this.roles.indexOf('USER')>=0;
+    return this.roles.indexOf('users')>=0;
   }
 
   isAuthenticated(){
@@ -69,6 +69,7 @@ export class AuthService {
 
   logout(){
     localStorage.removeItem('token');
+    this.currentUserSubject.next(null);
     this.initParams();
   }
 

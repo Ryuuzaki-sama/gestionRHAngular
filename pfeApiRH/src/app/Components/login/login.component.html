@@ -1,27 +1,28 @@
-<div class="col-md-6">
+<div class="col-md-6 offset-md-3 mt-5">
     <h2>Login Form</h2>
-    <div *ngIf="isAuth" class="alert alert-danger" role="alert">
+    <div *ngIf="isAuth" class="alert alert-danger col-md" role="alert">
         {{error}}
       </div>
-      <form #f='ngForm' (ngSubmit)="Login(f.value)">
-        <div class="form-group col-md-6">
+      <form #f='ngForm' [formGroup]="loginForm" (ngSubmit)="Login(loginForm.value)">
+        <div class="form-group col-md">
             <mat-label class="control-label">Username</mat-label>
-            <input type="text" class="form-control" name="username" [(ngModel)]="username" >
+            <input type="text" class="form-control" name="username" formControlName="username" >
             <!-- <span *ngIf="!salarieForm.get('nom_salarie').valid && salarieForm.get('nom_salarie').touched">Entrer un nom de salarie valide</span> -->
         </div>
     
-        <div class="form-group col-md-6">
+        <div class="form-group col-md">
             <mat-label class="control-label">mot de passe </mat-label>
-            <input type="password" class="form-control" name="password" [(ngModel)]="password" >
+            <input type="password" class="form-control" name="password" formControlName="password">
             <!-- <span *ngIf="!salarieForm.get('password').valid && salarieForm.get('password').touched">Entrer un nom de salarie valide</span> -->
         </div>
     
-        <div class="button-row">
-            <button type="submit" ><mat-icon color="warn">login</mat-icon></button>
-        </div>
+        <button [disabled]="loading" class="btn btn-primary">
+            <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+            Login
+        </button>
       </form>
     
-    <p> No account? <a [routerLink]="['/register']">Create one here</a></p>
+    <!-- <p> No account? <a [routerLink]="['/register']">Create one here</a></p> -->
    
 
 

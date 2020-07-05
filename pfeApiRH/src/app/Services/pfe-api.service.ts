@@ -39,17 +39,17 @@ export class PfeApiService {
   // Start Salarie
   GetSalaries(){
     const apiUrl = `${url}salarie`;
-    return this.http.get<Salarie[]>(apiUrl);
+    return this.http.get<Salarie[]>(apiUrl,httpOptions);
   }
 
   GetSalarie(id:number){
     const apiUrl = `${url}salarie/${id}`;
-    return this.http.get<Salarie>(apiUrl);
+    return this.http.get<Salarie>(apiUrl,httpOptions);
   }
 
   PostSalarie(salarie) {
     const apiUrl = `${url}salarie`;
-    return this.http.post<Salarie[]>(apiUrl, salarie);
+    return this.http.post<Salarie[]>(apiUrl, salarie,httpOptions);
   }
 
   PutSalarie(id:number, salarie){

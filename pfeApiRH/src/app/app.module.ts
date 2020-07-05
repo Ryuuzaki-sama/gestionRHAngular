@@ -77,8 +77,24 @@ import { InstructionComponent } from './Components/instruction/instruction.compo
 import { AbsenceLegalComponent } from './Components/absence-legal/absence-legal.component';
 import { SuiviProComponent } from './Components/suivi-pro/suivi-pro.component';
 import { AccidentComponent } from './Components/accident/accident.component';
+
 import { PfeApiService } from './Services/pfe-api.service';
 import { AuthService } from './Services/auth.service';
+
+import { AddPromotionComponent } from './Components/promotion/add-promotion/add-promotion.component';
+import { EditPromotionComponent } from './Components/promotion/edit-promotion/edit-promotion.component';
+import { AddAbsenceComponent } from './Components/absence-legal/add-absence/add-absence.component';
+import { EditAbsenceComponent } from './Components/absence-legal/edit-absence/edit-absence.component';
+import { EditAccidentComponent } from './Components/accident/edit-accident/edit-accident.component';
+import { AddAccidentComponent } from './Components/accident/add-accident/add-accident.component';
+import { AddEmploiAnterieurComponent } from './Components/emploi-anterieur/add-emploi-anterieur/add-emploi-anterieur.component';
+import { EditEmploiAnterieurComponent } from './Components/emploi-anterieur/edit-emploi-anterieur/edit-emploi-anterieur.component';
+import { EditInstructionComponent } from './Components/instruction/edit-instruction/edit-instruction.component';
+import { AddInstructionComponent } from './Components/instruction/add-instruction/add-instruction.component';
+import { AddSanctionComponent } from './Components/sanction/add-sanction/add-sanction.component';
+import { EditSanctionComponent } from './Components/sanction/edit-sanction/edit-sanction.component';
+import { AddSuiviComponent } from './Components/suivi-pro/add-suivi/add-suivi.component';
+import { EditSuiviComponent } from './Components/suivi-pro/edit-suivi/edit-suivi.component';
 
 // FireBase
 // import { AngularFireModule } from '@angular/fire';
@@ -109,6 +125,20 @@ import { AuthService } from './Services/auth.service';
     AbsenceLegalComponent,
     SuiviProComponent,
     AccidentComponent,
+    AddPromotionComponent,
+    EditPromotionComponent,
+    AddAbsenceComponent,
+    EditAbsenceComponent,
+    EditAccidentComponent,
+    AddAccidentComponent,
+    AddEmploiAnterieurComponent,
+    EditEmploiAnterieurComponent,
+    EditInstructionComponent,
+    AddInstructionComponent,
+    AddSanctionComponent,
+    EditSanctionComponent,
+    AddSuiviComponent,
+    EditSuiviComponent,
   ],
   imports: [
     BrowserModule,

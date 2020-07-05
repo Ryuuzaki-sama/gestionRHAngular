@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 // import { PfeApiService } from '../pfe-api.service';
-import { FormControl, Validators } from '@angular/forms';
+import { FormControl, Validators, FormGroup, FormBuilder } from '@angular/forms';
 import { AuthService } from '../../Services/auth.service';
 
 
@@ -12,25 +12,42 @@ import { AuthService } from '../../Services/auth.service';
 })
 export class LoginComponent implements OnInit {
 
-  username = new FormControl('', [Validators.required, Validators.email]);
-  password = new FormControl('', [Validators.required]);
-
-
+  loginForm: FormGroup;
+  loading = false;
+  submitted = false;
+  returnUrl: string;
+  error = '';
+ 
   isAuth : boolean = false;
 
-  error:any;
-  constructor(private api: AuthService, private router: Router) { }
+  constructor(
+    private apiAuth: AuthService,
+    private router: Router,
+    private formBuilder: FormBuilder,
+    private route: ActivatedRoute,
+  ) 
+  { 
+      if (this.apiAuth.currentUserValue) { 
+        this.router.navigate(['/']);
+    }
+  }
 
   ngOnInit(): void {
-  
+    this.loginForm = this.formBuilder.group({
+      username : ['', Validators.required],
+      password :  ['', [Validators.required]],
+    }),
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+
   }
 
   Login(form){
-    this.api.Login(form)
+    console.warn(form);
+    this.apiAuth.Login(form)
     .subscribe(res =>{
       // console.log(res);
         let jwt = res.headers.get('Authorization');
-        this.api.saveToken(jwt);
+        this.apiAuth.saveToken(jwt);
         this.router.navigateByUrl('/');
       },
       err =>{
@@ -38,27 +55,18 @@ export class LoginComponent implements OnInit {
         this.error = "Username or password incorrect";
       }
     );
-    // if((this.username === this.usernameV) && (this.password === this.passwordV))
-    // {
-    //   this.isAuth = false;
-    // }
-    // else
-    // {
-    //   this.isAuth = true;
-    //   this.error = "Username or password incorrect";
-    // }
   }
 
   isAdmin(){
-    return this.api.isAdmin();
+    return this.apiAuth.isAdmin();
   }
 
   isSalarie(){
-    return this.api.isSalarie();
+    return this.apiAuth.isSalarie();
   }
 
   isUser(){
-    return this.api.isUser();
+    return this.apiAuth.isUser();
   }
 
 }

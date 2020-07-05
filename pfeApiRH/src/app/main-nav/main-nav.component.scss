@@ -6,9 +6,6 @@
     box-shadow: 3px 0 6px rgba(0,0,0,.24);
   }
 }
-.hidden {
-  display: none;
-}
 
 
 // @media (min-width: 768px){
@@ -17,6 +14,11 @@
 //   }
   
 // }
+
+.bg-style {
+  background: linear-gradient(89deg, #FF5EDF 0%,#04C8DE 100%);
+  // color: white;
+}
 
 span {
   cursor: pointer;
@@ -31,3 +33,48 @@ span {
   flex: 1 1 auto;
   
 }
+
+.active-pink-2 input[type=text]:focus:not([readonly]) {
+  border-bottom: 1px solid #f48fb1;
+  box-shadow: 0 1px 0 0 #f48fb1;
+  }
+  
+  .active-pink input[type=text] {
+  border-bottom: 1px solid #f48fb1;
+  box-shadow: 0 1px 0 0 #f48fb1;
+  }
+  
+  .active-purple-2 input[type=text]:focus:not([readonly]) {
+  border-bottom: 1px solid #ce93d8;
+  box-shadow: 0 1px 0 0 #ce93d8;
+  }
+  
+  .active-purple input[type=text] {
+  border-bottom: 1px solid #ce93d8;
+  box-shadow: 0 1px 0 0 #ce93d8;
+  }
+  
+  .active-cyan-2 input[type=text]:focus:not([readonly]) {
+  border-bottom: 1px solid #4dd0e1;
+  box-shadow: 0 1px 0 0 #4dd0e1;
+  }
+  
+  .active-cyan input[type=text] {
+  border-bottom: 1px solid #4dd0e1;
+  box-shadow: 0 1px 0 0 #4dd0e1;
+  }
+  
+  .active-cyan .fa,
+  .active-cyan-2 .fa {
+  color: #4dd0e1;
+  }
+  
+  .active-purple .fa,
+  .active-purple-2 .fa {
+  color: #ce93d8;
+  }
+  
+  .active-pink .fa,
+  .active-pink-2 .fa {
+  color: #f48fb1;
+  }

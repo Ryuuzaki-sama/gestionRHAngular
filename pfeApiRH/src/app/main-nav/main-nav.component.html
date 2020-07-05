@@ -11,11 +11,13 @@
     <mat-nav-list>
       <a mat-list-item [routerLink]="['/home']"> <mat-icon color="warn">home</mat-icon>  Accueil</a>
       <a mat-list-item [routerLink]="['/salarie']" *ngIf="isAuth()"> Salarie</a>
-      <a mat-list-item [routerLink]="['/salarie/add-salarie']" *ngIf="isAdmin()">Gestion Salarie</a>
+      <!--  *ngIf="isAuth()" -->
+      <a mat-list-item [routerLink]="['/salarie/add-salarie']" *ngIf="isAuth()">Gestion Salarie</a>
+      <!-- *ngIf="isAdmin()" -->
       
     </mat-nav-list>
   </mat-sidenav>
-  <mat-sidenav-content>
+  <mat-sidenav-content class="bg-style">
     <mat-toolbar color="primary">
       <button
         type="button"
@@ -27,13 +29,18 @@
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
       <span [routerLink]="['/home']"> {{title}}</span>
-      <!-- <div> -->
-        <input type="search" class="form-control " name="filter" id="filter"><mat-icon class="example-icon" >search</mat-icon>
-      <!-- </div> -->
+
+      <form class="form-inline md-form form-sm col-md-6">
+        <input class="form-control form-control-sm mr-3 w-75" type="text" placeholder="Search" aria-label="Search"
+          mdbInput>
+        <mat-icon fas icon="search" aria-hidden="true"></mat-icon>
+      </form>
       <span class="example-spacer"></span>
-      <mat-icon class="example-icon" [routerLink]="['/login']" *ngIf="!isAuth()">person</mat-icon>
+      <mat-icon class="example-icon" [routerLink]="['/login']" *ngIf="!isAuth()" >person</mat-icon>
+      <!-- *ngIf="!isAuth()" -->
       <mat-icon class="example-icon" [routerLink]="['/login']" *ngIf="isAuth()">login</mat-icon>
-      <mat-icon class="example-icon">settings</mat-icon>
+      <!--  *ngIf="isAuth()" -->
+      <mat-icon class="example-icon" *ngIf="isAuth()">settings</mat-icon>
     </mat-toolbar>
 
     <section class="container-fluid">
