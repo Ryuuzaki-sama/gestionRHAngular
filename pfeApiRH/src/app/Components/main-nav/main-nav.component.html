@@ -9,10 +9,16 @@
     [opened]="(isHandset$ | async) === false">
     <mat-toolbar>  {{title}} </mat-toolbar>
     <mat-nav-list>
-      <a mat-list-item [routerLink]="['/home']"> <mat-icon color="warn">home</mat-icon>  Accueil</a>
-      <a mat-list-item [routerLink]="['/salarie']" *ngIf="isAuth()"> Salarie</a>
+      <a mat-list-item routerLink="home"> <mat-icon color="warn">home</mat-icon>  Accueil</a>
+      <a mat-list-item routerLink="salarie" *ngIf="isUser()"> Salarie</a>
       <!--  *ngIf="isAuth()" -->
-      <a mat-list-item [routerLink]="['/salarie/add-salarie']" *ngIf="isAuth()">Gestion Salarie</a>
+      <a mat-list-item routerLink="absence" *ngIf="isAdmin()">Absence</a>
+      <a mat-list-item routerLink="accident" *ngIf="isAdmin()">Accident</a>
+      <a mat-list-item routerLink="emploi_anterieur" *ngIf="isAdmin()">Emploi Anterieur</a>
+      <a mat-list-item routerLink="instruction" *ngIf=" isAdmin()">Instruction</a>
+      <a mat-list-item routerLink="promotion" *ngIf=" isAdmin()">Promotion</a>
+      <a mat-list-item routerLink="sanction" *ngIf="isAdmin()">Sanction</a>
+      <a mat-list-item routerLink="suivi_pro" *ngIf="isAdmin()">Suivi professionel</a>
       <!-- *ngIf="isAdmin()" -->
       
     </mat-nav-list>
@@ -32,11 +38,11 @@
 
       <form class="form-inline md-form form-sm col-md-6">
         <input class="form-control form-control-sm mr-3 w-75" type="text" placeholder="Search" aria-label="Search"
-          mdbInput>
+          matInput>
         <mat-icon fas icon="search" aria-hidden="true"></mat-icon>
       </form>
       <span class="example-spacer"></span>
-      <mat-icon class="example-icon" [routerLink]="['/login']" *ngIf="!isAuth()" >person</mat-icon>
+      <mat-icon class="example-icon" [routerLink]="['/login']" *ngIf="!isAuth()">person</mat-icon>
       <!-- *ngIf="!isAuth()" -->
       <mat-icon class="example-icon" [routerLink]="['/login']" *ngIf="isAuth()">login</mat-icon>
       <!--  *ngIf="isAuth()" -->

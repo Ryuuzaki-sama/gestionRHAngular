@@ -34,7 +34,7 @@ export class SalarieComponent implements OnInit {
       this.isLoadingResults = false;
     }, err => {
       console.log(err);
-      this.isLoadingResults = false;
+      this.isLoadingResults = true;
     });
 
     this.dataSource.paginator = this.paginator;

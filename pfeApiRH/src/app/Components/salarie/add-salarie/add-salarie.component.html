@@ -11,12 +11,12 @@
   <div *ngIf="isIncomplete" class="alert alert-danger" role="alert">
     {{error}}
   </div>
-  <form [formGroup]="salarieForm" (ngSubmit)="onFormSubmit()">
+  <form #s='ngForm' [formGroup]="salarieForm" (ngSubmit)="onFormSubmit(salarieForm.value)">
     <div class="form-group mt-3">
       <mat-label for="title">Titre :</mat-label>
-      <select class="form-control" [(ngModel)]="salarie.title" id="title">
+      <select class="form-control" formControlName="title" id="title">
           <option value="">-- selectionner titre --</option>
-          <option *ngFor="let t of title" [value]="title">{{t}}</option>
+          <option *ngFor="let t of title" [value]="t">{{t}}</option>
       </select>
       <mat-error *ngIf="salarieForm.invalid">{{getErrorMessage()}}</mat-error>
       <!-- <span *ngIf="!salarieForm.get('title').valid && salarieForm.get('title').touched">Entrer un pays valide</span> -->
@@ -25,21 +25,21 @@
     <div class="form-row">  
       <div class="form-group col-md-6">
           <mat-label for="nom_salarie">Nom du salarie</mat-label>
-          <input type="text" class="form-control" [(ngModel)]="salarie.nom_salarie" id="nom_salarie">
+          <input type="text" class="form-control" formControlName="nom_salarie" id="nom_salarie">
           <mat-error *ngIf="salarieForm.invalid">{{getErrorMessage()}}</mat-error>
           <!-- <span *ngIf="!salarieForm.get('nom_salarie').valid && salarieForm.get('nom_salarie').touched">Entrer un nom de salarie valide</span> -->
       </div>
 
       <div class="form-group col-md-6">
         <mat-label for="prenom_salarie">Prenom du salarie</mat-label>
-        <input type="text" class="form-control" [(ngModel)]="salarie.prenom_salarie" id="prenom_salarie">
+        <input type="text" class="form-control" formControlName="prenom_salarie" id="prenom_salarie">
         <mat-error *ngIf="salarieForm.invalid">{{getErrorMessage()}}</mat-error>
         <!-- <span *ngIf="!salarieForm.get('prenom_salarie').valid && salarieForm.get('prenom_salarie').touched">Entrer un nom de salarie valide</span> -->
       </div>
     </div>
 
     <p>
-      <mat-radio-group color="primary" [(ngModel)]="salarie.gender" aria-label="Select an option">
+      <mat-radio-group color="primary" formControlName="gender">
         <mat-label for="pays">Sexe :  </mat-label>
         <mat-radio-button value="male">Male</mat-radio-button>&nbsp;&nbsp;
         <mat-radio-button value="female">Female</mat-radio-button>
@@ -50,7 +50,7 @@
 
     <mat-form-field class="example-full-width">
       <mat-label>Birthday :</mat-label>
-      <input matInput [matDatepicker]="picker" [(ngModel)]="salarie.date_naissance">
+      <input matInput [matDatepicker]="picker" formControlName="date_naissance">
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker touchUi #picker></mat-datepicker>
       <mat-error *ngIf="salarieForm.invalid">{{getErrorMessage()}}</mat-error>
@@ -65,7 +65,7 @@
 
     <div class="form-group">
       <mat-label for="adresse">Adresse : </mat-label>
-      <textarea  type="text" [(ngModel)]="salarie.adresse" class="form-control" id="adresse"></textarea>
+      <textarea  type="text" formControlName="adresse" class="form-control" id="adresse"></textarea>
       <mat-error *ngIf="salarieForm.invalid">{{getErrorMessage()}}</mat-error>
       <!-- <span *ngIf="!salarieForm.get('adresse').valid && salarieForm.get('adresse').touched">Entrer une adresse valide</span> -->
     </div>
@@ -85,64 +85,64 @@
     <div class="form-row">
       <div class="form-group col-md-3">
           <mat-label for="pays">Pays :</mat-label>
-          <mat-select matNativeControl class="form-control" [(ngModel)]="salarie.pays_id" id="pays">
+          <mat-select matNativeControl class="form-control" formControlName="pays_id" id="pays">
               <mat-option value="">-- selectionner pays --</mat-option>
-              <mat-option *ngFor="let p of pays" [value]="pays">{{p.pays}}</mat-option>
+              <mat-option *ngFor="let p of pays" [value]="p.id">{{p.pays}}</mat-option>
           </mat-select>
           <mat-error *ngIf="salarieForm.invalid">{{getErrorMessage()}}</mat-error>
           <!-- <span *ngIf="!salarieForm.get('pays').valid && salarieForm.get('pays').touched">Entrer un pays valide</span> -->
       </div>
 
-      <div class="form-group col-md-3">
+      <!-- <div class="form-group col-md-3">
           <mat-label for="region">Region :</mat-label>
-          <mat-select class="form-control" [(ngModel)]="region" id="region">
+          <mat-select class="form-control" id="region">
               <mat-option value="">-- selectionner region --</mat-option>
-              <mat-option *ngFor="let r of region" [value]="region">{{r.region}}</mat-option>
+              <mat-option *ngFor="let r of region" [value]="r.id">{{r.region}}</mat-option>
           </mat-select>
           <mat-error *ngIf="salarieForm.invalid">{{getErrorMessage()}}</mat-error>
-          <!-- <span *ngIf="!salarieForm.get('region').valid && salarieForm.get('region').touched">Entrer une region valide</span> -->
-      </div>
+          <span *ngIf="!salarieForm.get('region').valid && salarieForm.get('region').touched">Entrer une region valide</span>
+      </div> -->
 
       <div class="form-group col-md-3">
           <mat-label for="ville">Ville :</mat-label>
-          <mat-select class="form-control" [(ngModel)]="salarie.ville_id" id="ville">
+          <mat-select class="form-control" formControlName="ville_id" id="ville">
               <mat-option value="">-- selectionner ville --</mat-option>
-              <mat-option *ngFor="let v of ville" [value]="ville">{{v.ville}}</mat-option>
+              <mat-option *ngFor="let v of ville" [value]="v.id">{{v.ville}}</mat-option>
           </mat-select>
           <mat-error *ngIf="salarieForm.invalid">{{getErrorMessage()}}</mat-error>
           <!-- <span *ngIf="!salarieForm.get('ville').valid && salarieForm.get('ville').touched">Entrer une ville valide</span> -->
       </div>
 
-      <div class="form-group col-md-3">
+      <!-- <div class="form-group col-md-3">
           <mat-label for="quartier">quartier</mat-label>
-          <mat-select class="form-control" [(ngModel)]="quartier" id="quartier">
+          <mat-select class="form-control" id="quartier">
               <mat-option value="">-- selectionner quartier --</mat-option>
-              <mat-option *ngFor="let q of quartier" [value]="quartier">{{q.quartier}}</mat-option>
+              <mat-option *ngFor="let q of quartier" [value]="q.id">{{q.quartier}}</mat-option>
           </mat-select>
           <mat-error *ngIf="salarieForm.invalid">{{getErrorMessage()}}</mat-error>
-          <!-- <span *ngIf="!salarieForm.get('quartier').valid && salarieForm.get('quartier').touched">Entrer un pays valide</span> -->
-      </div>
+          <span *ngIf="!salarieForm.get('quartier').valid && salarieForm.get('quartier').touched">Entrer un pays valide</span>
+      </div> -->
     </div>
 
     <div class="form-group">
       <mat-label for="telephone">Téléphone</mat-label>
-      <input type="tel" class="form-control" [(ngModel)]="salarie.telephone" id="telephone">
+      <input type="tel" class="form-control" formControlName="telephone" id="telephone">
       <mat-error *ngIf="salarieForm.invalid">{{getErrorMessage()}}</mat-error>
       <!-- <span *ngIf="!salarieForm.get('telephone').valid && salarieForm.get('telephone').touched">Entrer un numero de téléphone valide</span> -->
     </div>
 
-    <div class="form-group col-md-3">
+    <div class="form-group col-md">
       <mat-label for="situation_familial">Situation Familial :</mat-label>
-      <mat-select class="form-control" [(ngModel)]="salarie.situation_familial_id" id="situation_familial">
+      <mat-select class="form-control" formControlName="situation_familial_id" id="situation_familial">
         <mat-option value="">-- selectionner votre situation familial --</mat-option>
-        <mat-option *ngFor="let sf of situation_familial" [value]="situation_familial">{{sf.situation}}</mat-option>
+        <mat-option *ngFor="let sf of situation_familial" [value]="sf.id">{{sf.situation}}</mat-option>
       </mat-select>
       <mat-error *ngIf="salarieForm.invalid">{{getErrorMessage()}}</mat-error>
       <!-- <span *ngIf="!salarieForm.get('situation_familial').valid && salarieForm.get('situation_familial').touched">Entrer votre situation familial</span> -->
     </div>
 
     <div class="button-row">
-      <button mat-button type="submit" [disabled]="!salarieForm.valid"><mat-icon color="primary">save</mat-icon></button>
+      <button mat-button type="submit" ><mat-icon color="primary">save</mat-icon></button>
     </div>
   </form>
 </div>

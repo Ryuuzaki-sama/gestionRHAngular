@@ -62,37 +62,55 @@ import { AppComponent } from './app.component';
 import { AdminComponent } from './Components/admin/admin.component';
 import { LoginComponent } from './Components/login/login.component';
 import { RegisterComponent } from './Components/register/register.component';
+
 import { HomeComponent } from './Components/home/home.component';
-import { MainNavComponent } from './main-nav/main-nav.component';
+import { MainNavComponent } from './Components/main-nav/main-nav.component';
+
 import { SalarieComponent } from './Components/salarie/salarie.component';
 import { AddSalarieComponent } from './Components/salarie/add-salarie/add-salarie.component';
 import { EditSalarieComponent } from './Components/salarie/edit-salarie/edit-salarie.component';
 import { SalarieDetailsComponent } from './Components/salarie/salarie-details/salarie-details.component';
+
 import { SharedComponent } from './Components/shared/shared.component';
-import { PromotionComponent } from './Components/promotion/promotion.component';
-import { SanctionComponent } from './Components/sanction/sanction.component';
+
 import { SituationFamilialComponent } from './Components/situation-familial/situation-familial.component';
-import { EmploiAnterieurComponent } from './Components/emploi-anterieur/emploi-anterieur.component';
-import { InstructionComponent } from './Components/instruction/instruction.component';
-import { AbsenceLegalComponent } from './Components/absence-legal/absence-legal.component';
-import { SuiviProComponent } from './Components/suivi-pro/suivi-pro.component';
-import { AccidentComponent } from './Components/accident/accident.component';
+
 
 import { PfeApiService } from './Services/pfe-api.service';
 import { AuthService } from './Services/auth.service';
 
+// Promotion
+import { PromotionComponent } from './Components/promotion/promotion.component';
 import { AddPromotionComponent } from './Components/promotion/add-promotion/add-promotion.component';
 import { EditPromotionComponent } from './Components/promotion/edit-promotion/edit-promotion.component';
+
+// Absence Legal
+import { AbsenceLegalComponent } from './Components/absence-legal/absence-legal.component';
 import { AddAbsenceComponent } from './Components/absence-legal/add-absence/add-absence.component';
 import { EditAbsenceComponent } from './Components/absence-legal/edit-absence/edit-absence.component';
-import { EditAccidentComponent } from './Components/accident/edit-accident/edit-accident.component';
+
+// Accident
+import { AccidentComponent } from './Components/accident/accident.component';
 import { AddAccidentComponent } from './Components/accident/add-accident/add-accident.component';
+import { EditAccidentComponent } from './Components/accident/edit-accident/edit-accident.component';
+
+// Emploi Anterieur
+import { EmploiAnterieurComponent } from './Components/emploi-anterieur/emploi-anterieur.component';
 import { AddEmploiAnterieurComponent } from './Components/emploi-anterieur/add-emploi-anterieur/add-emploi-anterieur.component';
 import { EditEmploiAnterieurComponent } from './Components/emploi-anterieur/edit-emploi-anterieur/edit-emploi-anterieur.component';
-import { EditInstructionComponent } from './Components/instruction/edit-instruction/edit-instruction.component';
+
+// Instruction
+import { InstructionComponent } from './Components/instruction/instruction.component';
 import { AddInstructionComponent } from './Components/instruction/add-instruction/add-instruction.component';
+import { EditInstructionComponent } from './Components/instruction/edit-instruction/edit-instruction.component';
+
+// Sanction
+import { SanctionComponent } from './Components/sanction/sanction.component';
 import { AddSanctionComponent } from './Components/sanction/add-sanction/add-sanction.component';
 import { EditSanctionComponent } from './Components/sanction/edit-sanction/edit-sanction.component';
+
+// Suivi
+import { SuiviProComponent } from './Components/suivi-pro/suivi-pro.component';
 import { AddSuiviComponent } from './Components/suivi-pro/add-suivi/add-suivi.component';
 import { EditSuiviComponent } from './Components/suivi-pro/edit-suivi/edit-suivi.component';
 
