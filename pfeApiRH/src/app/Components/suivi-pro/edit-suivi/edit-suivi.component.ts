@@ -7,6 +7,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EditSuiviComponent implements OnInit {
 
+  isLoadingResults: boolean;
+  isIncomplete : boolean =false;
+  error : any;
+
   constructor() { }
 
   ngOnInit(): void {

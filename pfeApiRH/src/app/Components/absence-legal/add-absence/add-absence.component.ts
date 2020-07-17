@@ -4,6 +4,7 @@ import { AuthService } from 'src/app/Services/auth.service';
 import { AbsenceReason } from 'src/app/classes/absence-reason.model';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Salarie } from 'src/app/classes/salarie.model';
 
 @Component({
   selector: 'app-add-absence',
@@ -14,6 +15,7 @@ export class AddAbsenceComponent implements OnInit {
 
   absenceForm : FormGroup;
   absence_reason : AbsenceReason[];
+  salarie: Salarie[];
   isLoadingResults: boolean;
   isIncomplete : boolean =false;
   error : any;

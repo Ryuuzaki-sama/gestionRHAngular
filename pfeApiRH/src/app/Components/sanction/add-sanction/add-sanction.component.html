@@ -1,1 +1,39 @@
-<p>add-sanction works!</p>
+<div class="container mt-4">
+    <div class="example-loading-shade"
+          *ngIf="isLoadingResults">
+      <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
+      <h2>Formulaire Salarie</h2>
+    </div>
+    <div class="button-row">
+      <a mat-flat-button color="primary" [routerLink]="['/salarie']"><mat-icon>list</mat-icon></a>
+    </div>
+  
+    <div *ngIf="isIncomplete" class="alert alert-danger" role="alert">
+      {{error}}
+    </div>
+    <form #s='ngForm' [formGroup]="sanctionForm" (ngSubmit)="onFormSubmit(sanctionForm.value)">
+      
+      <mat-form-field class="form-group mt-3">
+        <mat-label>Date Sanction :</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="date">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker touchUi #picker></mat-datepicker>
+        <mat-error *ngIf="sanctionForm.invalid">{{getErrorMessage()}}</mat-error>
+        <!-- <span *ngIf="!sanctionForm.get('date_naissance').valid && sanctionForm.get('date_naissance').touched">Entrer une date de naissance valide</span> -->
+      </mat-form-field>
+  
+      <mat-form-field class="example-full-width">
+        <mat-label>nature</mat-label>
+        <input matInput type="text" formControlName="nature">
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <mat-label>Motifs</mat-label>
+        <input matInput type="text" formControlName="motifs">
+      </mat-form-field>
+  
+      <div class="button-row">
+        <button mat-button type="submit" ><mat-icon color="primary">save</mat-icon></button>
+      </div>
+    </form>
+  </div>

@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { PfeApiService } from 'src/app/Services/pfe-api.service';
+import { AuthService } from 'src/app/Services/auth.service';
+import { Promotion } from 'src/app/classes/promotion.model';
 
 @Component({
   selector: 'app-promotion',
@@ -7,9 +10,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PromotionComponent implements OnInit {
 
-  constructor() { }
+  displayedColumns : string[] =["Date","fonct_cat","salaire_taux"]
+  promotion : Promotion[];
+  
+  isLoadingResults: boolean;
+  isIncomplete : boolean =false;
+  error : any;
+
+  
+  constructor(private api:PfeApiService, private apiAuth:AuthService) { }
 
   ngOnInit(): void {
+    this.loadData();
+  }
+
+  loadData(){
+    this.api.GetPromotion().subscribe(res=>{
+      this.promotion = res;
+    })
   }
 
 }

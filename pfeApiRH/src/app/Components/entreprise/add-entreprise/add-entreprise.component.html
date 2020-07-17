@@ -1,0 +1,36 @@
+<div class="container mt-4">
+    <div class="example-loading-shade"
+          *ngIf="isLoadingResults">
+      <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
+      <h2>Formulaire Entreprise</h2>
+    </div>
+    <div class="button-row">
+      <a mat-flat-button color="primary" [routerLink]="['/entreprise']"><mat-icon>list</mat-icon></a>
+    </div>
+  
+    <div *ngIf="isIncomplete" class="alert alert-danger" role="alert">
+      {{error}}
+    </div>
+    <form #fe='ngForm' [formGroup]="entrepriseForm" (ngSubmit)="onFormSubmit(entrepriseForm.value)">
+        
+        <div class="form-group col-md-6">
+            <mat-label for="denomination">denomination</mat-label>
+            <input type="text" class="form-control" formControlName="denomination" id="denomination">
+            <mat-error *ngIf="entrepriseForm.invalid">{{getErrorMessage()}}</mat-error>
+            <!-- <span *ngIf="!entrepriseForm.get('nom_salarie').valid && entrepriseForm.get('nom_salarie').touched">Entrer un nom de salarie valide</span> -->
+        </div>
+
+        <div class="form-group col-md-6">
+            <mat-label for="slogon">slogon</mat-label>
+            <input type="text" class="form-control" formControlName="slogon" id="slogon">
+            <mat-error *ngIf="entrepriseForm.invalid">{{getErrorMessage()}}</mat-error>
+            <!-- <span *ngIf="!entrepriseForm.get('nom_salarie').valid && entrepriseForm.get('nom_salarie').touched">Entrer un nom de salarie valide</span> -->
+        </div>
+
+    
+
+        <div class="button-row">
+        <button mat-button type="submit" ><mat-icon color="primary">save</mat-icon></button>
+        </div>
+    </form>
+</div>

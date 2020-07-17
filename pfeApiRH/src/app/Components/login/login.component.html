@@ -6,7 +6,7 @@
       <form #f='ngForm' [formGroup]="loginForm" (ngSubmit)="Login(loginForm.value)">
         <div class="form-group col-md">
             <mat-label class="control-label">Username</mat-label>
-            <input type="text" class="form-control" name="username" formControlName="username" >
+            <input type="text" class="form-control" name="username" formControlName="username">
             <!-- <span *ngIf="!salarieForm.get('nom_salarie').valid && salarieForm.get('nom_salarie').touched">Entrer un nom de salarie valide</span> -->
         </div>
     

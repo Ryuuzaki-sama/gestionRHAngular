@@ -11,7 +11,10 @@ import { AbsenceLegal } from 'src/app/classes/absence-legal.model';
 export class AbsenceLegalComponent implements OnInit {
   displayedColumns : string[] = ['date','Periode Debut', 'periode Fin','nombre de jours absence']
   absenceLegal : AbsenceLegal[];
-  isLoadingResults = true;
+  isLoadingResults: boolean;
+  isIncomplete : boolean =false;
+  error : any;
+
 
   constructor(private api:PfeApiService, private apiAuth:AuthService) { }
 

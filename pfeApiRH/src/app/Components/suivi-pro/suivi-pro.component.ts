@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { PfeApiService } from 'src/app/Services/pfe-api.service';
+import { SuiviPro } from 'src/app/classes/suivi-pro.model';
+import { AuthService } from 'src/app/Services/auth.service';
 
 @Component({
   selector: 'app-suivi-pro',
@@ -7,9 +10,32 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SuiviProComponent implements OnInit {
 
-  constructor() { }
+  // Date 	        : Date;
+  // fonct_ou_cat    : string;
+  // salaire_taux    : Float32Array;
+  suiviPro : SuiviPro[];
+  displayedColumns : string[] = ['date suivi', 'fonct_ou_cat','salaire_taux'];
+  isLoadingResults: boolean;
+  isIncomplete : boolean =false;
+  error : any;
+
+  constructor(private api:PfeApiService,private apiAuth:AuthService) { }
 
   ngOnInit(): void {
+    this.loadData();
   }
+
+  loadData(){
+    this.api.GetSuiviPro().subscribe(res=>{
+      this.suiviPro = res;
+      this.isLoadingResults = false;
+    },
+    err=>{
+      this.isLoadingResults = true;
+      this.isIncomplete = true;
+      this.error = "some info need to be filled";
+    })
+  }
+
 
 }

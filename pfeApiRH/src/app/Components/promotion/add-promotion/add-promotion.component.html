@@ -1,1 +1,40 @@
-<p>add-promotion works!</p>
+<div class="container mt-4">
+    <div class="example-loading-shade"
+          *ngIf="isLoadingResults">
+      <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
+      <h2>Formulaire Salarie</h2>
+    </div>
+    <div class="button-row">
+      <a mat-flat-button color="primary" [routerLink]="['/salarie']"><mat-icon>list</mat-icon></a>
+    </div>
+  
+    <div *ngIf="isIncomplete" class="alert alert-danger" role="alert">
+      {{error}}
+    </div>
+    <form #s='ngForm' [formGroup]="promotionForm" (ngSubmit)="onFormSubmit(promotionForm.value)">
+      
+      <mat-form-field class="form-group mt-3">
+        <mat-label>Date :</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="date">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker touchUi #picker></mat-datepicker>
+        <mat-error *ngIf="promotionForm.invalid">{{getErrorMessage()}}</mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <mat-label>fonct ou cat</mat-label>
+        <input matInput formControlName="fonct_ou_cat">
+        <mat-error *ngIf="promotionForm.invalid">{{getErrorMessage()}}</mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <mat-label>salaire taux</mat-label>
+        <input matInput type="text" formControlName="salaire_taux">
+        <mat-error *ngIf="promotionForm.invalid">{{getErrorMessage()}}</mat-error>
+      </mat-form-field>
+
+      <div class="button-row">
+        <button mat-button type="submit" ><mat-icon color="primary">save</mat-icon></button>
+      </div>
+    </form>
+  </div>

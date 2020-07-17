@@ -1,6 +1,6 @@
 export class Accident {
     id              : number;
-    Date            : Date;
+    date            : Date;
     nature          : string;
     circonstances   : string;
     jours_Absences  : number;

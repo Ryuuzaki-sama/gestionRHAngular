@@ -1,1 +1,56 @@
-<p>add-accident works!</p>
+<div class="container mt-4">
+    <div class="example-loading-shade"
+          *ngIf="isLoadingResults">
+      <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
+      <h2>Formulaire Salarie</h2>
+    </div>
+    <div class="button-row">
+      <a mat-flat-button color="primary" [routerLink]="['/accident']"><mat-icon>list</mat-icon></a>
+    </div>
+  
+    <div *ngIf="isIncomplete" class="alert alert-danger" role="alert">
+      {{error}}
+    </div>
+    <form #s='ngForm' [formGroup]="accidentForm" (ngSubmit)="onFormSubmit(accidentForm.value)">
+      
+      < <mat-form-field class="form-group mt-3">
+        <mat-label>Date :</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="date">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker touchUi #picker></mat-datepicker>
+        <mat-error *ngIf="accidentForm.invalid">{{getErrorMessage()}}</mat-error>
+        <!-- <span *ngIf="!accidentForm.get('date_naissance').valid && accidentForm.get('date_naissance').touched">Entrer une date de naissance valide</span> -->
+      </mat-form-field>
+  
+      <div class="form-group col-md-3">
+          <mat-label for="absence_reason_id">Nature d'accident :</mat-label>
+          <mat-select matNativeControl class="form-control" formControlName="nature" id="nature">
+              <mat-option value="">-- selectionner Motif --</mat-option>
+              <mat-option *ngFor="let na of nature" [value]="na.id">{{na.nature}}</mat-option>
+          </mat-select>
+          <mat-error *ngIf="accidentForm.invalid">{{getErrorMessage()}}</mat-error>
+          <!-- <span *ngIf="!accidentForm.get('pays').valid && accidentForm.get('pays').touched">Entrer un pays valide</span> -->
+      </div>
+
+
+        <div class="form-row">  
+          <div class="form-group col-md-6">
+              <mat-label for="circonstances">circonstances</mat-label>
+              <input type="text" class="form-control" formControlName="circonstances" id="circonstances">
+              <mat-error *ngIf="accidentForm.invalid">{{getErrorMessage()}}</mat-error>
+              <!-- <span *ngIf="!accidentForm.get('nom_salarie').valid && accidentForm.get('nom_salarie').touched">Entrer un nom de salarie valide</span> -->
+          </div>
+    
+          <div class="form-group col-md-6">
+            <mat-label for="jours_Absences">jours_Absences</mat-label>
+            <input type="number" class="form-control" formControlName="jours_Absences" id="jours_Absences">
+            <mat-error *ngIf="accidentForm.invalid">{{getErrorMessage()}}</mat-error>
+            <!-- <span *ngIf="!salarieForm.get('prenom_salarie').valid && salarieForm.get('prenom_salarie').touched">Entrer un nom de salarie valide</span> -->
+          </div>
+        </div>
+  
+      <div class="button-row">
+        <button mat-button type="submit" ><mat-icon color="primary">save</mat-icon></button>
+      </div>
+    </form>
+  </div>

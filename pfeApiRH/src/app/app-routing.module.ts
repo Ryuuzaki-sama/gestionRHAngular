@@ -33,6 +33,12 @@ import { AddSanctionComponent } from './Components/sanction/add-sanction/add-san
 import { EditSanctionComponent } from './Components/sanction/edit-sanction/edit-sanction.component';
 import { AddSuiviComponent } from './Components/suivi-pro/add-suivi/add-suivi.component';
 import { EditSuiviComponent } from './Components/suivi-pro/edit-suivi/edit-suivi.component';
+import { DashboardComponent } from './Components/dashboard/dashboard.component';
+import { EntrepriseComponent } from './Components/entreprise/entreprise.component';
+import { AddEntrepriseComponent } from './Components/entreprise/add-entreprise/add-entreprise.component';
+import { EditEntrepriseComponent } from './Components/entreprise/edit-entreprise/edit-entreprise.component';
+import { EntrepriseDetailsComponent } from './Components/entreprise/entreprise-details/entreprise-details.component';
+import { EditSituationFamilialComponent } from './Components/situation-familial/edit-situation-familial/edit-situation-familial.component';
 
 
 const routes: Routes = [
@@ -41,6 +47,29 @@ const routes: Routes = [
     path:'',
     component: HomeComponent,
     // canActivate : [AuthGuard]
+  },
+  {
+    path: 'dashboard',
+    component: DashboardComponent,
+  },
+
+  {
+    path:'entreprise',
+    component: EntrepriseComponent
+  },
+
+  {
+    path:'add-entreprise',
+    component: AddEntrepriseComponent,
+  },
+  {
+    path:'edit-entreprise/:id',
+    component: EditEntrepriseComponent,
+  },
+
+  {
+    path:'entreprise-details/:id',
+    component: EntrepriseDetailsComponent,
   },
 
   {
@@ -66,17 +95,17 @@ const routes: Routes = [
     // canActivate : [AuthGuard]
   },
   {
-    path:'salarie/add-salarie',
+    path:'add-salarie',
     component: AddSalarieComponent,
     // canActivate : [AuthGuard],
   },
   {
-    path:'salarie/edit-salarie/:id',
+    path:'edit-salarie/:id',
     component: EditSalarieComponent,
     // canActivate : [AuthGuard],
   },
   {
-    path:'salarie/salarie-details/:id',
+    path:'salarie-details/:id',
     component: SalarieDetailsComponent,
     // canActivate : [AuthGuard]
   },
@@ -88,21 +117,15 @@ const routes: Routes = [
   },
 
   {
-    path:'promotion/add-promotion',
+    path:'add-promotion',
     component: AddPromotionComponent,
     // canActivate : [AuthGuard],
   },
   {
-    path:'promotion/edit-promotion/:id',
+    path:'edit-promotion/:id',
     component: EditPromotionComponent,
     // canActivate : [AuthGuard],
   },
-  // {
-  //   path:'promotion/salarie-details/:id',
-  //   component: SalarieDetailsComponent,
-  //   // canActivate : [AuthGuard]
-  // },
-  
 
   {
     path: 'absence',
@@ -110,12 +133,12 @@ const routes: Routes = [
     // canActivate : [AuthGuard]
   },
   {
-    path:'absence/add-absence',
+    path:'add-absence',
     component: AddAbsenceComponent,
     // canActivate : [AuthGuard],
   },
   {
-    path:'absence/edit-absence/:id',
+    path:'edit-absence/:id',
     component: EditAbsenceComponent,
     // canActivate : [AuthGuard],
   },
@@ -126,12 +149,12 @@ const routes: Routes = [
     // canActivate : [AuthGuard]
   },
   {
-    path:'accident/add-accident',
+    path:'add-accident',
     component: AddAccidentComponent,
     // canActivate : [AuthGuard],
   },
   {
-    path:'accident/edit-accident/:id',
+    path:'edit-accident/:id',
     component: EditAccidentComponent,
     // canActivate : [AuthGuard],
   },
@@ -142,12 +165,12 @@ const routes: Routes = [
     // canActivate : [AuthGuard]
   },
   {
-    path:'emploi_anterieur/add-emploi_anterieur',
+    path:'add-emploi_anterieur',
     component: AddEmploiAnterieurComponent,
     // canActivate : [AuthGuard],
   },
   {
-    path:'emploi_anterieur/edit-emploi_anterieur/:id',
+    path:'edit-emploi_anterieur/:id',
     component: EditEmploiAnterieurComponent,
     // canActivate : [AuthGuard],
   },
@@ -158,15 +181,16 @@ const routes: Routes = [
     // canActivate : [AuthGuard]
   },
   {
-    path:'instruction/add-instruction',
+    path:'add-instruction',
     component: AddInstructionComponent,
     // canActivate : [AuthGuard],
   },
   {
-    path:'instruction/edit-instruction/:id',
+    path:'edit-instruction/:id',
     component: EditInstructionComponent,
     // canActivate : [AuthGuard],
   },
+  
 
   {
     path: 'sanction',
@@ -174,12 +198,12 @@ const routes: Routes = [
     // canActivate : [AuthGuard]
   },
   {
-    path:'sanction/add-sanction',
+    path:'add-sanction',
     component: AddSanctionComponent,
     // canActivate : [AuthGuard],
   },
   {
-    path:'sanction/edit-sanction/:id',
+    path:'edit-sanction/:id',
     component: EditSanctionComponent,
     // canActivate : [AuthGuard],
   },
@@ -189,6 +213,10 @@ const routes: Routes = [
     component: SituationFamilialComponent,
     // canActivate : [AuthGuard]
   },
+  {
+    path: 'edit-situation_familial/:id',
+    component: EditSituationFamilialComponent,
+  },
 
   {
     path: 'suivi_pro',
@@ -196,12 +224,12 @@ const routes: Routes = [
     // canActivate : [AuthGuard],
   },
   {
-    path:'suivi_pro/add-suivi_pro',
+    path:'add-suivi_pro',
     component: AddSuiviComponent,
     // canActivate : [AuthGuard],
   },
   {
-    path:'suivi_pro/edit-suivi_pro/:id',
+    path:'edit-suivi_pro/:id',
     component: EditSuiviComponent,
     // canActivate : [AuthGuard],
   },

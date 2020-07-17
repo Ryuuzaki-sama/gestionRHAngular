@@ -27,9 +27,9 @@ export class LoginComponent implements OnInit {
     private route: ActivatedRoute,
   ) 
   { 
-      if (this.apiAuth.currentUserValue) { 
-        this.router.navigate(['/']);
-    }
+    //   if (this.apiAuth.currentUserValue) { 
+    //     this.router.navigate(['/']);
+    // }
   }
 
   ngOnInit(): void {

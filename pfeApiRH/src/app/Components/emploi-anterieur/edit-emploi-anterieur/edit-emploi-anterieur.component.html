@@ -1,1 +1,63 @@
-<p>edit-emploi-anterieur works!</p>
+<div class="container mt-4">
+    <div class="example-loading-shade"
+          *ngIf="isLoadingResults">
+      <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
+      <h2>Formulaire Salarie</h2>
+    </div>
+    <div class="button-row">
+      <a mat-flat-button color="primary" [routerLink]="['/salarie']"><mat-icon>list</mat-icon></a>
+    </div>
+  
+    <div *ngIf="isIncomplete" class="alert alert-danger" role="alert">
+      {{error}}
+    </div>
+    <form #s='ngForm' [formGroup]="emploiForm" (ngSubmit)="onFormSubmit(emploiForm.value)">
+        
+      <div class="form-group col-md-6">
+          <mat-label for="employeur">employeur</mat-label>
+          <input type="text" class="form-control" formControlName="employeur" value="employeur" id="employeur">
+          <mat-error *ngIf="emploiForm.invalid">{{getErrorMessage()}}</mat-error>
+          <!-- <span *ngIf="!emploiForm.get('nom_salarie').valid && emploiForm.get('nom_salarie').touched">Entrer un nom de salarie valide</span> -->
+      </div>
+
+      <mat-form-field class="form-group mt-3">
+        <mat-label>Date :</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="date_entree" value="date_entree">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker touchUi #picker></mat-datepicker>
+        <mat-error *ngIf="emploiForm.invalid">{{getErrorMessage()}}</mat-error>
+        <!-- <span *ngIf="!absenceForm.get('date_naissance').valid && absenceForm.get('date_naissance').touched">Entrer une date de naissance valide</span> -->
+      </mat-form-field>
+  
+      <mat-form-field class="form-group mt-3">
+        <mat-label>Date de depart:</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="date_sortie" value="date_sortie">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker touchUi #picker></mat-datepicker>
+        <mat-error *ngIf="emploiForm.invalid">{{getErrorMessage()}}</mat-error>
+        <!-- <span *ngIf="!absenceForm.get('date_naissance').valid && absenceForm.get('date_naissance').touched">Entrer une date de naissance valide</span> -->
+      </mat-form-field>
+
+      <mat-form-field class="form-group mt-3">
+        <mat-label>Date de fin :</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="periode_end" value="periode_end">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker touchUi #picker></mat-datepicker>
+        <mat-error *ngIf="emploiForm.invalid">{{getErrorMessage()}}</mat-error>
+        <!-- <span *ngIf="!absenceForm.get('date_naissance').valid && absenceForm.get('date_naissance').touched">Entrer une date de naissance valide</span> -->
+      </mat-form-field>
+
+      <div class="form-group col-md-6">
+        <mat-label for="last_fonct">jours_Absences</mat-label>
+        <input type="number" class="form-control" formControlName="last_fonct" value="last_fonct" id="jours_Absences">
+        <mat-error *ngIf="emploiForm.invalid">{{getErrorMessage()}}</mat-error>
+        <!-- <span *ngIf="!emploiForm.get('prenom_salarie').valid && emploiForm.get('prenom_salarie').touched">Entrer un nom de salarie valide</span> -->
+      </div>
+
+      
+
+      <div class="button-row">
+        <button mat-button type="submit" ><mat-icon color="primary">save</mat-icon></button>
+      </div>
+    </form>
+  </div>

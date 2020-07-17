@@ -19,13 +19,13 @@ export class AuthService {
   roles:Array<string>;
 
   constructor(private httpauth: HttpClient) { 
-    this.currentUserSubject = new BehaviorSubject<Users>(JSON.parse(localStorage.getItem('token')));
-    this.currentUser = this.currentUserSubject.asObservable();
+    // this.currentUserSubject = new BehaviorSubject<Users>(JSON.parse(localStorage.getItem('token')));
+    // this.currentUser = this.currentUserSubject.asObservable();
   }
 
-  public get currentUserValue(): Users {
-    return this.currentUserSubject.value;
-  }
+  // public get currentUserValue(): Users {
+  //   return this.currentUserSubject.value;
+  // }
   
   Login(user){
     return this.httpauth.post<Users>(this.url,user,{observe:'response'});

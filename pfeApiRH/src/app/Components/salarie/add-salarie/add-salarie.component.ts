@@ -72,17 +72,17 @@ export class AddSalarieComponent implements OnInit {
       this.pays = resp;
     });
 
-    this.api.GetRegion().subscribe(resr=>{
-      this.region = resr;
-    });
+    // this.api.GetRegion().subscribe(resr=>{
+    //   this.region = resr;
+    // });
 
     this.api.GetVille().subscribe(resv=>{
       this.ville = resv;
     });
 
-    this.api.GetQuarties().subscribe(resq=>{
-      this.quartier = resq;
-    })
+    // this.api.GetQuarties().subscribe(resq=>{
+    //   this.quartier = resq;
+    // })
   }
 
   onFormSubmit(form) {
@@ -92,7 +92,7 @@ export class AddSalarieComponent implements OnInit {
       .subscribe(res => {
           let id = res['_id'];
           this.isLoadingResults = false;
-          this.router.navigate(['/salarie/salarie-details', id]);
+          this.router.navigate(['/salarie-details', id]);
         }, (err) => {
           this.isIncomplete = true;
           console.warn(err);

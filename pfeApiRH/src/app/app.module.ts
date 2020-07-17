@@ -113,6 +113,14 @@ import { EditSanctionComponent } from './Components/sanction/edit-sanction/edit-
 import { SuiviProComponent } from './Components/suivi-pro/suivi-pro.component';
 import { AddSuiviComponent } from './Components/suivi-pro/add-suivi/add-suivi.component';
 import { EditSuiviComponent } from './Components/suivi-pro/edit-suivi/edit-suivi.component';
+import { DashboardComponent } from './Components/dashboard/dashboard.component';
+import { EntrepriseComponent } from './Components/entreprise/entreprise.component';
+import { AddEntrepriseComponent } from './Components/entreprise/add-entreprise/add-entreprise.component';
+import { EditEntrepriseComponent } from './Components/entreprise/edit-entreprise/edit-entreprise.component';
+import { EntrepriseDetailsComponent } from './Components/entreprise/entreprise-details/entreprise-details.component';
+import { EditSituationFamilialComponent } from './Components/situation-familial/edit-situation-familial/edit-situation-familial.component';
+
+
 
 // FireBase
 // import { AngularFireModule } from '@angular/fire';
@@ -157,6 +165,12 @@ import { EditSuiviComponent } from './Components/suivi-pro/edit-suivi/edit-suivi
     EditSanctionComponent,
     AddSuiviComponent,
     EditSuiviComponent,
+    DashboardComponent,
+    EntrepriseComponent,
+    AddEntrepriseComponent,
+    EditEntrepriseComponent,
+    EntrepriseDetailsComponent,
+    EditSituationFamilialComponent,
   ],
   imports: [
     BrowserModule,

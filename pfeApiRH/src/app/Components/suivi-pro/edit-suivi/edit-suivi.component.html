@@ -1,1 +1,53 @@
-<p>edit-suivi works!</p>
+<!-- <div class="container mt-4">
+    <div class="example-loading-shade"
+          *ngIf="isLoadingResults">
+      <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
+      <h2>Formulaire Salarie</h2>
+    </div>
+    <div class="button-row">
+      <a mat-flat-button color="primary" [routerLink]="['/salarie']"><mat-icon>list</mat-icon></a>
+    </div>
+  
+    <div *ngIf="isIncomplete" class="alert alert-danger" role="alert">
+      {{error}}
+    </div>
+    <form #s='ngForm' [formGroup]="absenceForm" (ngSubmit)="onFormSubmit(absenceForm.value)">
+      
+      <mat-form-field class="form-group mt-3">
+        <mat-label>Date :</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="date">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker touchUi #picker></mat-datepicker>
+        <mat-error *ngIf="absenceForm.invalid">{{getErrorMessage()}}</mat-error>
+      </mat-form-field>
+  
+      <div class="form-group col-md-3">
+        <mat-label for="absence_reason_id">Motif :</mat-label>
+        <mat-select matNativeControl class="form-control" formControlName="absence_reason_id" id="absence_reason_id">
+          <mat-option value="">-- selectionner Motif --</mat-option>
+          <mat-option *ngFor="let ar of absence_reason" [value]="ar.id">{{ar.pays}}</mat-option>
+        </mat-select>
+        <mat-error *ngIf="absenceForm.invalid">{{getErrorMessage()}}</mat-error>
+      </div>
+
+        <mat-form-field class="form-group mt-3">
+          <mat-label>Date de depart:</mat-label>
+          <input matInput [matDatepicker]="picker" formControlName="periode_start">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker touchUi #picker></mat-datepicker>
+          <mat-error *ngIf="absenceForm.invalid">{{getErrorMessage()}}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="form-group mt-3">
+          <mat-label>Date de fin :</mat-label>
+          <input matInput [matDatepicker]="picker" formControlName="periode_end">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker touchUi #picker></mat-datepicker>
+          <mat-error *ngIf="absenceForm.invalid">{{getErrorMessage()}}</mat-error>
+        </mat-form-field>
+  
+      <div class="button-row">
+        <button mat-button type="submit" ><mat-icon color="primary">save</mat-icon></button>
+      </div>
+    </form>
+  </div> -->
