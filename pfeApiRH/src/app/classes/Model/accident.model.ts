@@ -4,4 +4,5 @@ export class Accident {
     nature          : string;
     circonstances   : string;
     jours_Absences  : number;
+    salarie_id      : number;
 }

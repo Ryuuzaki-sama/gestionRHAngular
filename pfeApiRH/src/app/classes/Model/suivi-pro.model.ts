@@ -3,4 +3,5 @@ export class SuiviPro {
     Date 	        : Date;
     fonct_ou_cat    : string;
     salaire_taux    : Float32Array;
+    salarie_id      : number;
 }

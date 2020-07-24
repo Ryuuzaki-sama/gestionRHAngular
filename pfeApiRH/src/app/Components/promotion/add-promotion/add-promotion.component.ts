@@ -3,6 +3,7 @@ import { PfeApiService } from 'src/app/Services/pfe-api.service';
 import { NgForm, FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/Services/auth.service';
+import { Salarie } from 'src/app/classes/Model/salarie.model';
 
 @Component({
   selector: 'app-add-promotion',
@@ -14,6 +15,7 @@ export class AddPromotionComponent implements OnInit {
   promotionForm: FormGroup;
   isLoadingResults: boolean;
   isIncomplete : boolean =false;
+  salarie : Salarie[];
   error : any;
 
   getErrorMessage() {
@@ -28,11 +30,9 @@ export class AddPromotionComponent implements OnInit {
   ngOnInit(): void {
 
     this.promotionForm = this.formBuilder.group({
-      instruction_level : ['', Validators.required],
-      diplome_got : ['', Validators.required],
-      language_talked : ['', Validators.required],
-      language_write :['', Validators.required],
-      particular_knowledge :['', Validators.required],
+      date : ['', Validators.required],
+      fonct_ou_cat : ['', Validators.required],
+      salaire_taux : ['', Validators.required],
     })
   }
 

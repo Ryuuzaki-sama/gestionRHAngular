@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PfeApiService } from 'src/app/Services/pfe-api.service';
-import { SuiviPro } from 'src/app/classes/suivi-pro.model';
+import { SuiviPro } from 'src/app/classes/Model/suivi-pro.model';
 import { AuthService } from 'src/app/Services/auth.service';
 
 @Component({
@@ -26,7 +26,7 @@ export class SuiviProComponent implements OnInit {
   }
 
   loadData(){
-    this.api.GetSuiviPro().subscribe(res=>{
+    this.api.GetSuiviPros().subscribe(res=>{
       this.suiviPro = res;
       this.isLoadingResults = false;
     },

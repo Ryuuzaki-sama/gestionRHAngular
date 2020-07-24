@@ -17,14 +17,14 @@
           <td mat-cell *matCellDef="let row">{{row.Date | date}}</td>
         </ng-container>
 
-      <ng-container matColumnDef="fonct_ou_cat">
-        <th mat-header-cell *matHeaderCellDef>fonct_ou_cat</th>
+      <ng-container matColumnDef="fonct_cat">
+        <th mat-header-cell *matHeaderCellDef>fonct_cat</th>
         <td mat-cell *matCellDef="let row">{{row.fonct_ou_cat}}</td>
       </ng-container>
 
       <ng-container matColumnDef="salaire_taux">
-        <th mat-header-cell *matHeaderCellDef>salaire_taux :</th>
-        <td mat-cell *matCellDef="let row">talk : {{row.salaire_taux}}</td>
+        <th mat-header-cell *matHeaderCellDef>salaire_taux</th>
+        <td mat-cell *matCellDef="let row">{{row.salaire_taux}}</td>
       </ng-container>
 
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

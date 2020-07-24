@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Input } from '@angular/core';
 import { PfeApiService } from 'src/app/Services/pfe-api.service';
 import { AuthService } from 'src/app/Services/auth.service';
 import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { AbsenceReason } from 'src/app/classes/absence-reason.model';
+import { Salarie } from 'src/app/classes/Model/salarie.model';
 
 @Component({
   selector: 'app-add-emploi-anterieur',
@@ -13,10 +13,11 @@ import { AbsenceReason } from 'src/app/classes/absence-reason.model';
 export class AddEmploiAnterieurComponent implements OnInit {
 
   emploiForm : FormGroup;
+  salarie : Salarie[];
   isLoadingResults: boolean;
   isIncomplete : boolean =false;
   error : any;
-
+  @Input() public salarie_id;
   getErrorMessage() {
     return this.emploiForm.hasError('required') ? 'Required field' :
       this.emploiForm.hasError('email') ? 'Not a valid email' :
@@ -35,6 +36,10 @@ export class AddEmploiAnterieurComponent implements OnInit {
       date_entree : ['', Validators.required],
       date_sortie : ['', Validators.required],
       last_fonct :['', Validators.required],
+      // salarie_id : ['', Validators.required]
+    });
+    this.api.GetSalaries().subscribe(slt=>{
+      this.salarie = slt;
     })
   }
 
@@ -43,9 +48,9 @@ export class AddEmploiAnterieurComponent implements OnInit {
     this.api.PostEmploisAnterieur(form)
       .subscribe(res =>
         {
-          let id = res['_id'];
+          let id = res['id'];
           this.isLoadingResults = false;
-          this.router.navigate(['/emploi-anterieur']);
+          // this.router.navigate(['/emploi-anterieur']);
         }, (err) => {
           this.isIncomplete = true;
           console.warn(err);

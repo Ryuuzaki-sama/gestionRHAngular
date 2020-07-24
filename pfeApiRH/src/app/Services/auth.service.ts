@@ -13,10 +13,10 @@ export class AuthService {
   private currentUserSubject : BehaviorSubject<Users>;
   public currentUser: Observable<Users>;
 
-  url:string = "http://localhost:8000/api/users";
+  url:string = "http://localhost:8000/api/";
   jwt:string;
-  username:string;
-  roles:Array<string>;
+  name:string;
+  roles:string;
 
   constructor(private httpauth: HttpClient) { 
     // this.currentUserSubject = new BehaviorSubject<Users>(JSON.parse(localStorage.getItem('token')));
@@ -28,34 +28,37 @@ export class AuthService {
   // }
   
   Login(user){
-    return this.httpauth.post<Users>(this.url,user,{observe:'response'});
+    const apiAuth = `${this.url}/users`;
+    this.name = "username is = "+user.name +" password = "+ user.password;
+    console.warn(this.name);
+    return this.httpauth.post<Users>(apiAuth,user,{observe:'response'});
   }
 
   saveToken(jwt:string) {
     localStorage.setItem('token',jwt);
     this.jwt = jwt;
-    this.parsejwt();
+    // this.parsejwt();
 
   }
 
   parsejwt(){
     let jwthelper = new JwtHelperService();
     let objJWT = jwthelper.decodeToken(this.jwt);
-    this.username= objJWT.obj;
+    this.name= objJWT.obj;
     this.roles= objJWT.roles;
 
   }
 
   isAdmin(){
-    return this.roles.indexOf('admin')>=0;
+    return this.roles ='admin';
   }
 
   isSalarie(){
-    return this.roles.indexOf('salarie')>=0;
+    return this.roles = 'salarie';
   }
 
   isUser(){
-    return this.roles.indexOf('users')>=0;
+    return this.roles = 'users';
   }
 
   isAuthenticated(){
@@ -64,7 +67,7 @@ export class AuthService {
 
   loadToken(){
     this.jwt=localStorage.getItem('token');
-    this.parsejwt();
+    // this.parsejwt();
   }
 
   logout(){
@@ -75,7 +78,7 @@ export class AuthService {
 
   initParams(){
     this.jwt = undefined;
-    this.username = undefined;
+    this.name = undefined;
     this.roles = undefined;
   }
 

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PfeApiService } from 'src/app/Services/pfe-api.service';
 import { AuthService } from 'src/app/Services/auth.service';
-import { Instruction } from 'src/app/classes/instruction.model';
+import { Instruction } from 'src/app/classes/Model/instruction.model';
 
 @Component({
   selector: 'app-instruction',
@@ -17,7 +17,6 @@ export class InstructionComponent implements OnInit {
   isIncomplete : boolean =false;
   error : any;
 
-
   constructor(private api:PfeApiService, private apiAuth:AuthService) { }
 
   ngOnInit(): void {
@@ -25,7 +24,7 @@ export class InstructionComponent implements OnInit {
   }
 
   loadData(){
-    this.api.GetInstruction().subscribe(res=>{
+    this.api.GetInstructions().subscribe(res=>{
       this.instruction = res;
     })
   }

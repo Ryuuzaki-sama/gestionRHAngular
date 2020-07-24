@@ -7,142 +7,227 @@
   <div class="button-row">
     <a mat-flat-button color="primary" [routerLink]="['/salarie']"><mat-icon>list</mat-icon></a>
   </div>
-
-  <div *ngIf="isIncomplete" class="alert alert-danger" role="alert">
-    {{error}}
-  </div>
-  <form #s='ngForm' [formGroup]="salarieForm" (ngSubmit)="onFormSubmit(salarieForm.value)">
-    <div class="form-group mt-3">
-      <mat-label for="title">Titre :</mat-label>
-      <select class="form-control" formControlName="title" id="title">
-          <option value="">-- selectionner titre --</option>
-          <option *ngFor="let t of title" [value]="t">{{t}}</option>
-      </select>
-      <mat-error *ngIf="salarieForm.invalid">{{getErrorMessage()}}</mat-error>
-      <!-- <span *ngIf="!salarieForm.get('title').valid && salarieForm.get('title').touched">Entrer un pays valide</span> -->
-    </div>
-
-    <div class="form-row">  
-      <div class="form-group col-md-6">
-          <mat-label for="nom_salarie">Nom du salarie</mat-label>
-          <input type="text" class="form-control" formControlName="nom_salarie" id="nom_salarie">
-          <mat-error *ngIf="salarieForm.invalid">{{getErrorMessage()}}</mat-error>
-          <!-- <span *ngIf="!salarieForm.get('nom_salarie').valid && salarieForm.get('nom_salarie').touched">Entrer un nom de salarie valide</span> -->
-      </div>
-
-      <div class="form-group col-md-6">
-        <mat-label for="prenom_salarie">Prenom du salarie</mat-label>
-        <input type="text" class="form-control" formControlName="prenom_salarie" id="prenom_salarie">
-        <mat-error *ngIf="salarieForm.invalid">{{getErrorMessage()}}</mat-error>
-        <!-- <span *ngIf="!salarieForm.get('prenom_salarie').valid && salarieForm.get('prenom_salarie').touched">Entrer un nom de salarie valide</span> -->
-      </div>
-    </div>
-
-    <p>
-      <mat-radio-group color="primary" formControlName="gender">
-        <mat-label for="pays">Sexe :  </mat-label>
-        <mat-radio-button value="male">Male</mat-radio-button>&nbsp;&nbsp;
-        <mat-radio-button value="female">Female</mat-radio-button>
-        <mat-error *ngIf="salarieForm.invalid">{{getErrorMessage()}}</mat-error>
-        <!-- <span *ngIf="!salarieForm.get('gender').valid && salarieForm.get('gender').touched">Choisir votre sexe </span> -->
-      </mat-radio-group>
-    </p>
-
-    <mat-form-field class="example-full-width">
-      <mat-label>Birthday :</mat-label>
-      <input matInput [matDatepicker]="picker" formControlName="date_naissance">
-      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-      <mat-datepicker touchUi #picker></mat-datepicker>
-      <mat-error *ngIf="salarieForm.invalid">{{getErrorMessage()}}</mat-error>
-      <!-- <span *ngIf="!salarieForm.get('date_naissance').valid && salarieForm.get('date_naissance').touched">Entrer une date de naissance valide</span> -->
-    </mat-form-field>
-
-      <!-- <div class="form-group">
-        <mat-label for="telephone">Date de naissance</mat-label>
-        <input type="date" class="form-control" formControlName="date_naissance" id="date_naissance">
-        
-    </div> -->
-
-    <div class="form-group">
-      <mat-label for="adresse">Adresse : </mat-label>
-      <textarea  type="text" formControlName="adresse" class="form-control" id="adresse"></textarea>
-      <mat-error *ngIf="salarieForm.invalid">{{getErrorMessage()}}</mat-error>
-      <!-- <span *ngIf="!salarieForm.get('adresse').valid && salarieForm.get('adresse').touched">Entrer une adresse valide</span> -->
-    </div>
-
-    <!-- <mat-form-field>
-      <mat-label>Favorite animal</mat-label>
-      <mat-select [formControl]="animalControl" required>
-        <mat-option>--</mat-option>
-        <mat-option *ngFor="let animal of animals" [value]="animal">
-          {{animal.name}}
-        </mat-option>
-      </mat-select>
-      <mat-error *ngIf="animalControl.hasError('required')">Please choose an animal</mat-error>
-      <mat-hint>{{animalControl.value?.sound}}</mat-hint>
-    </mat-form-field>
-      -->
-    <div class="form-row">
-      <div class="form-group col-md-3">
-          <mat-label for="pays">Pays :</mat-label>
-          <mat-select matNativeControl class="form-control" formControlName="pays_id" id="pays">
-              <mat-option value="">-- selectionner pays --</mat-option>
-              <mat-option *ngFor="let p of pays" [value]="p.id">{{p.pays}}</mat-option>
-          </mat-select>
-          <mat-error *ngIf="salarieForm.invalid">{{getErrorMessage()}}</mat-error>
-          <!-- <span *ngIf="!salarieForm.get('pays').valid && salarieForm.get('pays').touched">Entrer un pays valide</span> -->
-      </div>
-
-      <!-- <div class="form-group col-md-3">
-          <mat-label for="region">Region :</mat-label>
-          <mat-select class="form-control" id="region">
-              <mat-option value="">-- selectionner region --</mat-option>
-              <mat-option *ngFor="let r of region" [value]="r.id">{{r.region}}</mat-option>
-          </mat-select>
-          <mat-error *ngIf="salarieForm.invalid">{{getErrorMessage()}}</mat-error>
-          <span *ngIf="!salarieForm.get('region').valid && salarieForm.get('region').touched">Entrer une region valide</span>
-      </div> -->
-
-      <div class="form-group col-md-3">
-          <mat-label for="ville">Ville :</mat-label>
-          <mat-select class="form-control" formControlName="ville_id" id="ville">
-              <mat-option value="">-- selectionner ville --</mat-option>
-              <mat-option *ngFor="let v of ville" [value]="v.id">{{v.ville}}</mat-option>
-          </mat-select>
-          <mat-error *ngIf="salarieForm.invalid">{{getErrorMessage()}}</mat-error>
-          <!-- <span *ngIf="!salarieForm.get('ville').valid && salarieForm.get('ville').touched">Entrer une ville valide</span> -->
-      </div>
-
-      <!-- <div class="form-group col-md-3">
-          <mat-label for="quartier">quartier</mat-label>
-          <mat-select class="form-control" id="quartier">
-              <mat-option value="">-- selectionner quartier --</mat-option>
-              <mat-option *ngFor="let q of quartier" [value]="q.id">{{q.quartier}}</mat-option>
-          </mat-select>
-          <mat-error *ngIf="salarieForm.invalid">{{getErrorMessage()}}</mat-error>
-          <span *ngIf="!salarieForm.get('quartier').valid && salarieForm.get('quartier').touched">Entrer un pays valide</span>
-      </div> -->
-    </div>
-
-    <div class="form-group">
-      <mat-label for="telephone">Téléphone</mat-label>
-      <input type="tel" class="form-control" formControlName="telephone" id="telephone">
-      <mat-error *ngIf="salarieForm.invalid">{{getErrorMessage()}}</mat-error>
-      <!-- <span *ngIf="!salarieForm.get('telephone').valid && salarieForm.get('telephone').touched">Entrer un numero de téléphone valide</span> -->
-    </div>
-
-    <div class="form-group col-md">
-      <mat-label for="situation_familial">Situation Familial :</mat-label>
-      <mat-select class="form-control" formControlName="situation_familial_id" id="situation_familial">
-        <mat-option value="">-- selectionner votre situation familial --</mat-option>
-        <mat-option *ngFor="let sf of situation_familial" [value]="sf.id">{{sf.situation}}</mat-option>
-      </mat-select>
-      <mat-error *ngIf="salarieForm.invalid">{{getErrorMessage()}}</mat-error>
-      <!-- <span *ngIf="!salarieForm.get('situation_familial').valid && salarieForm.get('situation_familial').touched">Entrer votre situation familial</span> -->
-    </div>
-
-    <div class="button-row">
-      <button mat-button type="submit" ><mat-icon color="primary">save</mat-icon></button>
-    </div>
-  </form>
+  <!-- <app-add-instruction></app-add-instruction>
+  <app-add-emploi-anterieur></app-add-emploi-anterieur> -->
 </div>
+
+<mat-horizontal-stepper #stepper>
+  <mat-step>
+    <form >
+      <ng-template matStepLabel [completed]="isIncomplete">Information personnel</ng-template>
+        <mat-card>
+          <div *ngIf="isIncomplete" class="alert alert-danger" role="alert">
+            {{error}}
+          </div>
+         
+        <form #s='ngForm' [formGroup]="salarieForm" (ngSubmit)="onFormSubmit(salarieForm.value)">
+          <div class="form-group mt-3">
+            <mat-label for="title">Titre :</mat-label>
+            <select class="form-control" formControlName="title" id="title">
+                <option value="">-- selectionner titre --</option>
+                <option *ngFor="let t of title" [value]="t">{{t}}</option>
+            </select>
+            <mat-error *ngIf="salarieForm.invalid">{{getErrorMessage()}}</mat-error>
+            <!-- <span *ngIf="!salarieForm.get('title').valid && salarieForm.get('title').touched">Entrer un pays valide</span> -->
+          </div>
+          <div class="form-row">
+          <div class="form-group col-md-4">
+            <mat-label for="cin_salarie">CIN salarie</mat-label>
+            <input type="text" class="form-control" placeholder="ex : D010203" formControlName="cin_salarie" id="cin_salarie">
+            <mat-error *ngIf="salarieForm.invalid">{{getErrorMessage()}}</mat-error>
+            <!-- <span *ngIf="!salarieForm.get('telephone').valid && salarieForm.get('telephone').touched">Entrer un numero de téléphone valide</span> -->
+          </div>
+      
+          <div class="form-group col-md-4">
+            <mat-label for="cin_date_created_at">Date Creation CIN</mat-label>
+            <input type="tel" class="form-control" formControlName="cin_date_created_at" id="cin_date_created_at">
+            <mat-error *ngIf="salarieForm.invalid">{{getErrorMessage()}}</mat-error>
+            <!-- <span *ngIf="!salarieForm.get('telephone').valid && salarieForm.get('telephone').touched">Entrer un numero de téléphone valide</span> -->
+          </div>
+          <div class="form-group col-md-4">
+            <mat-label for="cin_localisation_created_at">Lieu de creation CIN</mat-label>
+            <input type="tel" class="form-control" formControlName="cin_localisation_created_at" id="cin_localisation_created_at">
+            <mat-error *ngIf="salarieForm.invalid">{{getErrorMessage()}}</mat-error>
+            <!-- <span *ngIf="!salarieForm.get('telephone').valid && salarieForm.get('telephone').touched">Entrer un numero de téléphone valide</span> -->
+          </div>
+        </div>
+      
+          <div class="form-row">  
+            <div class="form-group col-md-6">
+                <mat-label for="nom_salarie">Nom du salarie</mat-label>
+                <input type="text" class="form-control" formControlName="nom_salarie" id="nom_salarie">
+                <mat-error *ngIf="salarieForm.invalid">{{getErrorMessage()}}</mat-error>
+                <!-- <span *ngIf="!salarieForm.get('nom_salarie').valid && salarieForm.get('nom_salarie').touched">Entrer un nom de salarie valide</span> -->
+            </div>
+      
+            <div class="form-group col-md-6">
+              <mat-label for="prenom_salarie">Prenom du salarie</mat-label>
+              <input type="text" class="form-control" formControlName="prenom_salarie" id="prenom_salarie">
+              <mat-error *ngIf="salarieForm.invalid">{{getErrorMessage()}}</mat-error>
+              <!-- <span *ngIf="!salarieForm.get('prenom_salarie').valid && salarieForm.get('prenom_salarie').touched">Entrer un nom de salarie valide</span> -->
+            </div>
+          </div>
+      
+          <p>
+            <mat-radio-group color="primary" formControlName="gender">
+              <mat-label for="pays">Sexe :  </mat-label>
+              <mat-radio-button value="Homme">Homme</mat-radio-button>&nbsp;&nbsp;
+              <mat-radio-button value="Femme">Femme</mat-radio-button>
+              <mat-error *ngIf="salarieForm.invalid">{{getErrorMessage()}}</mat-error>
+              <!-- <span *ngIf="!salarieForm.get('gender').valid && salarieForm.get('gender').touched">Choisir votre sexe </span> -->
+            </mat-radio-group>
+          </p>
+      
+          <div class="form-group">
+            <mat-label for="telephone">Nationalité</mat-label>
+            <input type="text" class="form-control" formControlName="nationalite" id="telephone">
+            <mat-error *ngIf="salarieForm.invalid">{{getErrorMessage()}}</mat-error>
+            <!-- <span *ngIf="!salarieForm.get('telephone').valid && salarieForm.get('telephone').touched">Entrer un numero de téléphone valide</span> -->
+          </div>
+      
+          <mat-form-field class="example-full-width">
+            <mat-label>Date de naissance :</mat-label>
+            <input matInput [matDatepicker]="picker" formControlName="date_naissance">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker touchUi #picker></mat-datepicker>
+            <mat-error *ngIf="salarieForm.invalid">{{getErrorMessage()}}</mat-error>
+            <!-- <span *ngIf="!salarieForm.get('date_naissance').valid && salarieForm.get('date_naissance').touched">Entrer une date de naissance valide</span> -->
+          </mat-form-field>
+      
+          <mat-form-field class="example-full-width">
+            <mat-label>Date d'entree :</mat-label>
+            <input matInput [matDatepicker]="picker1" formControlName="date_entree">
+            <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+            <mat-datepicker touchUi #picker1></mat-datepicker>
+            <mat-error *ngIf="salarieForm.invalid">{{getErrorMessage()}}</mat-error>
+            <!-- <span *ngIf="!salarieForm.get('date_naissance').valid && salarieForm.get('date_naissance').touched">Entrer une date de naissance valide</span> -->
+          </mat-form-field>
+      
+            <!-- <div class="form-group">
+              <mat-label for="telephone">Date de naissance</mat-label>
+              <input type="date" class="form-control" formControlName="date_naissance" id="date_naissance">
+              
+          </div> -->
+      
+          <div class="form-group">
+            <mat-label for="adresse">Adresse : </mat-label>
+            <textarea  type="text" formControlName="adresse" class="form-control" id="adresse"></textarea>
+            <mat-error *ngIf="salarieForm.invalid">{{getErrorMessage()}}</mat-error>
+            <!-- <span *ngIf="!salarieForm.get('adresse').valid && salarieForm.get('adresse').touched">Entrer une adresse valide</span> -->
+          </div>
+      
+          <div class="form-group">
+            <mat-label for="email">Email</mat-label>
+            <input type="text" class="form-control" formControlName="email" id="email">
+            <mat-error *ngIf="salarieForm.invalid">{{getErrorMessage()}}</mat-error>
+            <!-- <span *ngIf="!salarieForm.get('telephone').valid && salarieForm.get('telephone').touched">Entrer un numero de téléphone valide</span> -->
+          </div>
+      
+          <div class="form-row">
+            <div class="form-group col-md">
+                <mat-label for="pays">Pays :</mat-label>
+                <mat-select matNativeControl class="form-control" formControlName="pays_id" id="pays">
+                    <mat-option value="">-- selectionner pays --</mat-option>
+                    <mat-option *ngFor="let p of pays" [value]="p.id">{{p.pays}}</mat-option>
+                </mat-select>
+                <mat-error *ngIf="salarieForm.invalid">{{getErrorMessage()}}</mat-error>
+                <!-- <span *ngIf="!salarieForm.get('pays').valid && salarieForm.get('pays').touched">Entrer un pays valide</span> -->
+            </div>
+      
+            <!-- <div class="form-group col-md-3">
+                <mat-label for="region">Region :</mat-label>
+                <mat-select class="form-control" id="region">
+                    <mat-option value="">-- selectionner region --</mat-option>
+                    <mat-option *ngFor="let r of region" [value]="r.id">{{r.region}}</mat-option>
+                </mat-select>
+                <mat-error *ngIf="salarieForm.invalid">{{getErrorMessage()}}</mat-error>
+                <span *ngIf="!salarieForm.get('region').valid && salarieForm.get('region').touched">Entrer une region valide</span>
+            </div> -->
+      
+            <div class="form-group col-md">
+                <mat-label for="ville">Ville :</mat-label>
+                <mat-select class="form-control" formControlName="ville_id" id="ville">
+                    <mat-option value="">-- selectionner ville --</mat-option>
+                    <mat-option *ngFor="let v of ville" [value]="v.id">{{v.ville}}</mat-option>
+                </mat-select>
+                <mat-error *ngIf="salarieForm.invalid">{{getErrorMessage()}}</mat-error>
+                <!-- <span *ngIf="!salarieForm.get('ville').valid && salarieForm.get('ville').touched">Entrer une ville valide</span> -->
+            </div>
+      
+            <!-- <div class="form-group col-md-3">
+                <mat-label for="quartier">quartier</mat-label>
+                <mat-select class="form-control" id="quartier">
+                    <mat-option value="">-- selectionner quartier --</mat-option>
+                    <mat-option *ngFor="let q of quartier" [value]="q.id">{{q.quartier}}</mat-option>
+                </mat-select>
+                <mat-error *ngIf="salarieForm.invalid">{{getErrorMessage()}}</mat-error>
+                <span *ngIf="!salarieForm.get('quartier').valid && salarieForm.get('quartier').touched">Entrer un pays valide</span>
+            </div> -->
+          </div>
+      
+          <div class="form-group">
+            <mat-label for="telephone">Téléphone</mat-label>
+            <input type="tel" class="form-control" formControlName="telephone" id="telephone">
+            <mat-error *ngIf="salarieForm.invalid">{{getErrorMessage()}}</mat-error>
+            <!-- <span *ngIf="!salarieForm.get('telephone').valid && salarieForm.get('telephone').touched">Entrer un numero de téléphone valide</span> -->
+          </div>
+      
+          <div class="form-group col-md">
+            <mat-label for="situation_familial">Situation Familial :</mat-label>
+            <mat-select class="form-control" formControlName="situation_familial_id" id="situation_familial">
+              <mat-option value="">-- selectionner votre situation familial --</mat-option>
+              <mat-option *ngFor="let sf of situation_familial" [value]="sf.id">{{sf.situation}}</mat-option>
+            </mat-select>
+            <mat-error *ngIf="salarieForm.invalid">{{getErrorMessage()}}</mat-error>
+            <!-- <span *ngIf="!salarieForm.get('situation_familial').valid && salarieForm.get('situation_familial').touched">Entrer votre situation familial</span> -->
+          </div>
+          <!-- <mat-card *ngIf="isAdmin()">
+            <app-conjoint></app-conjoint>
+          </mat-card> -->
+          
+      
+          <div class="form-group">
+            <mat-label for="observations">Observations : </mat-label>
+            <textarea  type="text" formControlName="observations" class="form-control" id="observations"></textarea>
+            <mat-error *ngIf="salarieForm.invalid">{{getErrorMessage()}}</mat-error>
+            <!-- <span *ngIf="!salarieForm.get('adresse').valid && salarieForm.get('adresse').touched">Entrer une adresse valide</span> -->
+          </div>
+      
+          <div class="button-row">
+            <button mat-button matStepperNext type="submit" ><mat-icon color="primary">save</mat-icon></button>
+          </div>
+        </form>
+      </mat-card>
+      <!-- <div>
+        <button mat-button matStepperNext>Next</button>
+      </div> -->
+    </form>
+  </mat-step>
+  <mat-step>
+    <form>
+      <ng-template matStepLabel>Niveau scolaire</ng-template>
+      <app-add-instruction [salarie_id]="salarie_id"></app-add-instruction>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step >
+    <form >
+      <ng-template matStepLabel>Emploi Anterieur</ng-template>
+      <app-add-emploi-anterieur [salarie_id]="salarie_id"></app-add-emploi-anterieur>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Done</ng-template>
+    <button mat-button >Save All</button>
+    <div>
+      
+    </div>
+  </mat-step>
+</mat-horizontal-stepper>

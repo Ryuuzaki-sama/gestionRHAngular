@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PfeApiService } from 'src/app/Services/pfe-api.service';
 import { AuthService } from 'src/app/Services/auth.service';
-import { Promotion } from 'src/app/classes/promotion.model';
+import { Promotion } from 'src/app/classes/Model/promotion.model';
 
 @Component({
   selector: 'app-promotion',
@@ -25,7 +25,7 @@ export class PromotionComponent implements OnInit {
   }
 
   loadData(){
-    this.api.GetPromotion().subscribe(res=>{
+    this.api.GetPromotions().subscribe(res=>{
       this.promotion = res;
     })
   }

@@ -1,27 +1,30 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Salarie } from '../classes/salarie.model';
-import { Condjoint } from '../classes/condjoint.model';
+import { Salarie } from '../classes/model/salarie.model';
+import { Condjoint } from '../classes/model/condjoint.model';
 import { Pays } from '../classes/localisation/pays.model';
-import { SituationFamilial } from '../classes/situation-familial.model';
+import { SituationFamilial } from '../classes/model/situation-familial.model';
 import { Region } from '../classes/localisation/region.model';
 import { Ville } from '../classes/localisation/ville.model';
 import { Quartier } from '../classes/localisation/quartier.model';
-import { Permis } from '../classes/permis.model';
-import { Fonction } from '../classes/fonction.model';
-import { SuiviPro } from '../classes/suivi-pro.model';
-import { AbsenceReason } from '../classes/absence-reason.model';
-import { Accident } from '../classes/accident.model';
-import { AbsenceLegal } from '../classes/absence-legal.model';
-import { Entreprise } from '../classes/entreprise.model';
-import { Promotion } from '../classes/promotion.model';
-import { Service } from '../classes/service.model';
-import { Sanction } from '../classes/sanction.model';
-import { Instruction } from '../classes/instruction.model';
-import { EmploisAnterieur } from '../classes/emplois-anterieur.model';
+import { Permis } from '../classes/model/permis.model';
+import { Fonction } from '../classes/model/fonction.model';
+import { SuiviPro } from '../classes/model/suivi-pro.model';
+import { AbsenceReason } from '../classes/model/absence-reason.model';
+import { Accident } from '../classes/model/accident.model';
+import { AbsenceLegal } from '../classes/Model/absence-legal.model';
+import { Entreprise } from '../classes/model/entreprise.model';
+import { Promotion } from '../classes/model/promotion.model';
+import { Service } from '../classes/model/service.model';
+import { Sanction } from '../classes/model/sanction.model';
+import { Instruction } from '../classes/model/instruction.model';
+import { EmploisAnterieur } from '../classes/model/emplois-anterieur.model';
 
 const httpOptions = {
-  headers: new HttpHeaders({'Content-Type': 'application/json', 'token': "base64:jpKAcM1IWrMK6k51F7F6xzeC6t2N9mWvqTsmzr/pG+c='"},
+  headers: new HttpHeaders({
+    'Content-Type': 'application/json',
+    'token': "base64:jpKAcM1IWrMK6k51F7F6xzeC6t2N9mWvqTsmzr/pG+c='"
+  }
   //  {'token':'base64:jpKAcM1IWrMK6k51F7F6xzeC6t2N9mWvqTsmzr/pG+c='}
   )
 };
@@ -66,9 +69,13 @@ export class PfeApiService {
 
   // Start Condjoint
 
-  GetCondjoint(){
+  GetCondjoints(){
     const apiUrl = `${url}condjoint`;
     return this.http.get<Condjoint[]>(apiUrl);
+  }
+  GetConjoint(id:number){
+    const apiUrl = `${url}conjoint/${id}`;
+    return this.http.get<Condjoint>(apiUrl,httpOptions);
   }
 
   PostCondjoint(salarie) {
@@ -94,6 +101,10 @@ export class PfeApiService {
     const apiUrl = `${url}pays`;
     return this.http.get<Pays[]>(apiUrl);
   }
+  Getpays(id:number){
+    const apiUrl = `${url}pays/${id}`;
+    return this.http.get<Pays>(apiUrl,httpOptions);
+  }
 
   PostPays(pays) {
     const apiUrl = `${url}pays`;
@@ -113,9 +124,14 @@ export class PfeApiService {
   // End Pays
 
   // Start Region
-  GetRegion(){
+  GetRegions(){
     const apiUrl = `${url}region`;
     return this.http.get<Region[]>(apiUrl);
+  }
+
+  GetRegion(id:number){
+    const apiUrl = `${url}region/${id}`;
+    return this.http.get<Region>(apiUrl,httpOptions);
   }
 
   PostRegion(salarie) {
@@ -137,11 +153,14 @@ export class PfeApiService {
 
   // Start Ville
 
-  GetVille(){
+  GetVilles(){
     const apiUrl = `${url}ville`;
     return this.http.get<Ville[]>(apiUrl);
   }
-
+  GetVille(id:number){
+    const apiUrl = `${url}ville/${id}`;
+    return this.http.get<Ville>(apiUrl,httpOptions);
+  }
   PostVille(salarie) {
     const apiUrl = `${url}ville`;
     return this.http.post<Ville[]>(apiUrl, salarie);
@@ -161,14 +180,19 @@ export class PfeApiService {
 
    // Start situation familial
 
-   GetSituation(){
+   GetSituations(){
     const apiUrl = `${url}situation_familial`;
     return this.http.get<SituationFamilial[]>(apiUrl);
   }
 
-  PostSituation(pays) {
+  GetSituation(id:number){
+    const apiUrl = `${url}situation_familial/${id}`;
+    return this.http.get<SituationFamilial>(apiUrl,httpOptions);
+  }
+
+  PostSituation(situation) {
     const apiUrl = `${url}situation_familial`;
-    return this.http.post<SituationFamilial[]>(apiUrl, pays);
+    return this.http.post<SituationFamilial[]>(apiUrl, situation);
   }
 
   PutSituation(id:number, pays){
@@ -219,6 +243,11 @@ export class PfeApiService {
     return this.http.get<Permis[]>(apiUrl);
   }
 
+  GetPermis(id:number){
+    const apiUrl = `${url}permis/${id}`;
+    return this.http.get<Permis>(apiUrl,httpOptions);
+  }
+
   PostPermis(permis) {
     const apiUrl = `${url}permis`;
     return this.http.post<Permis[]>(apiUrl, permis);
@@ -238,9 +267,14 @@ export class PfeApiService {
 
    // Start Fonction
 
-   GetFonction(){
+   GetFonctions(){
     const apiUrl = `${url}fonction`;
     return this.http.get<Fonction[]>(apiUrl);
+  }
+
+  GetFonction(id:number){
+    const apiUrl = `${url}fonction/${id}`;
+    return this.http.get<Salarie>(apiUrl,httpOptions);
   }
 
   PostFonction(fonction) {
@@ -261,9 +295,14 @@ export class PfeApiService {
   // End Fonction
 
   // Start SuiviPro
-  GetSuiviPro(){
+  GetSuiviPros(){
     const apiUrl = `${url}suivipro`;
     return this.http.get<SuiviPro[]>(apiUrl);
+  }
+
+  GetSuiviPro(id:number){
+    const apiUrl = `${url}suivipro/${id}`;
+    return this.http.get<SuiviPro>(apiUrl,httpOptions);
   }
 
   PostSuiviPro(suivipro) {
@@ -285,9 +324,14 @@ export class PfeApiService {
 
   // Start AbsenceReason
 
-  GetAbsenceReasone(){
+  GetAbsenceReasones(){
     const apiUrl = `${url}reasonabsence`;
     return this.http.get<AbsenceReason[]>(apiUrl);
+  }
+
+  GetAbsenceReason(id:number){
+    const apiUrl = `${url}reasonabsence/${id}`;
+    return this.http.get<AbsenceReason>(apiUrl,httpOptions);
   }
 
   PostAbsenceReason(reasonabsence) {
@@ -309,9 +353,14 @@ export class PfeApiService {
 
    // Start Accident
 
-   GetAccident(){
+   GetAccidents(){
     const apiUrl = `${url}accident`;
     return this.http.get<Accident[]>(apiUrl);
+  }
+
+  GetAccident(id:number){
+    const apiUrl = `${url}accident/${id}`;
+    return this.http.get<Accident>(apiUrl,httpOptions);
   }
 
   PostAccident(accident) {
@@ -333,9 +382,14 @@ export class PfeApiService {
 
   // Start Permis
 
-  GetSanction(){
+  GetSanctions(){
     const apiUrl = `${url}sanction`;
     return this.http.get<Sanction[]>(apiUrl);
+  }
+
+  GetSanction(id:number){
+    const apiUrl = `${url}sanction/${id}`;
+    return this.http.get<Sanction>(apiUrl,httpOptions);
   }
 
   PostSanction(sanction) {
@@ -357,9 +411,14 @@ export class PfeApiService {
 
    // Start Service
 
-   GetService(){
+   GetServices(){
     const apiUrl = `${url}service`;
     return this.http.get<Service[]>(apiUrl);
+  }
+
+  GetService(id:number){
+    const apiUrl = `${url}service/${id}`;
+    return this.http.get<Service>(apiUrl,httpOptions);
   }
 
   PostService(service) {
@@ -380,9 +439,14 @@ export class PfeApiService {
   // End Service
 
   // Start SuiviPro
-  GetPromotion(){
+  GetPromotions(){
     const apiUrl = `${url}promotion`;
     return this.http.get<Promotion[]>(apiUrl);
+  }
+
+  GetPromotion(id:number){
+    const apiUrl = `${url}promotion/${id}`;
+    return this.http.get<Promotion>(apiUrl,httpOptions);
   }
 
   PostPromotion(promotion) {
@@ -404,9 +468,14 @@ export class PfeApiService {
 
   // Start Entreprise
 
-  GetEntreprise(){
+  GetEntreprises(){
     const apiUrl = `${url}entreprise`;
     return this.http.get<Entreprise[]>(apiUrl);
+  }
+
+  GetEntreprise(id:number){
+    const apiUrl = `${url}entreprise/${id}`;
+    return this.http.get<Entreprise>(apiUrl,httpOptions);
   }
 
   PostEntreprise(entreprise) {
@@ -428,9 +497,14 @@ export class PfeApiService {
 
    // Start AbsenceLegal
 
-   GetAbsenceLegal(){
+   GetAbsenceLegals(){
     const apiUrl = `${url}absence_legal`;
     return this.http.get<AbsenceLegal[]>(apiUrl);
+  }
+
+  GetAbsenceLegal(id:number){
+    const apiUrl = `${url}absence_legal/${id}`;
+    return this.http.get<Entreprise>(apiUrl,httpOptions);
   }
 
   PostAbsenceLegal(absence_legal) {
@@ -452,9 +526,14 @@ export class PfeApiService {
 
   // Start EmploisAnterieur
 
-  GetEmploisAnterieur(){
+  GetEmploisAnterieurs(){
     const apiUrl = `${url}emploi_ant`;
     return this.http.get<EmploisAnterieur[]>(apiUrl);
+  }
+
+  GetEmploisAnterieur(id:number){
+    const apiUrl = `${url}emploi_ant/${id}`;
+    return this.http.get<Entreprise>(apiUrl,httpOptions);
   }
 
   PostEmploisAnterieur(emploi_ant) {
@@ -476,12 +555,18 @@ export class PfeApiService {
 
    // Start AbsenceLegal
 
-   GetInstruction(){
+   GetInstructions(){
     const apiUrl = `${url}instruction`;
     return this.http.get<Instruction[]>(apiUrl);
   }
 
-  PostInstructionl(instruction) {
+  GetInstruction(id:number){
+    const apiUrl = `${url}instruction/${id}`;
+    return this.http.get<Entreprise>(apiUrl,httpOptions);
+  }
+
+
+  PostInstruction(instruction) {
     const apiUrl = `${url}instruction`;
     return this.http.post<Instruction[]>(apiUrl, instruction);
   }
@@ -497,7 +582,4 @@ export class PfeApiService {
   }
 
   // End AbsenceLegal
-
-  
-
 }

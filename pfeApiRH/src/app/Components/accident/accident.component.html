@@ -10,27 +10,27 @@
 
     <div class="mat-elevation-z8 mt-4">
       <table mat-table [dataSource]="accident" class="example-table"
-             matSort matSortActive="date" matSortDisableClear matSortDirection="asc">
+             matSort matSortActive="Date" matSortDisableClear matSortDirection="asc">
     
         <!-- Salarie title Column -->
-        <ng-container matColumnDef="date">
+        <ng-container matColumnDef="Date">
             <th mat-header-cell *matHeaderCellDef>Date</th>
             <td mat-cell *matCellDef="let row">{{row.date | date}}</td>
           </ng-container>
 
         <!-- Salarie first name Column -->
-        <ng-container matColumnDef="nature">
-          <th mat-header-cell *matHeaderCellDef>nature</th>
+        <ng-container matColumnDef="nature accident">
+          <th mat-header-cell *matHeaderCellDef>nature accident</th>
           <td mat-cell *matCellDef="let row">nature en progresse</td>
         </ng-container>
 
         <!-- Salarie last name Column -->
         <ng-container matColumnDef="circonstances">
-            <th mat-header-cell *matHeaderCellDef>periode de debut</th>
+            <th mat-header-cell *matHeaderCellDef>circonstances</th>
             <td mat-cell *matCellDef="let row">{{row.circonstances}}</td>
           </ng-container>
 
-          <ng-container matColumnDef="total_days">
+          <ng-container matColumnDef="nombre de jours absences">
             <th mat-header-cell *matHeaderCellDef>total_days</th>
             <td mat-cell *matCellDef="let row">{{row.periode_end - row.periode_start | number}} Jours</td>
           </ng-container>
@@ -38,7 +38,7 @@
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
       </table>
-      <!-- <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator> -->
+      <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
     </div>
   </div>
   

@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { PfeApiService } from 'src/app/Services/pfe-api.service';
 import { AuthService } from 'src/app/Services/auth.service';
+import { Salarie } from 'src/app/classes/Model/salarie.model';
 
 @Component({
   selector: 'app-add-entreprise',
@@ -12,6 +13,7 @@ import { AuthService } from 'src/app/Services/auth.service';
 export class AddEntrepriseComponent implements OnInit {
 
   entrepriseForm : FormGroup;
+  salarie : Salarie[];
   isLoadingResults: boolean;
   isIncomplete : boolean =false;
   error : any;
@@ -32,6 +34,10 @@ export class AddEntrepriseComponent implements OnInit {
     this.entrepriseForm = this.formBuilder.group({
       denomination : ['', Validators.required],
       slogon : ['', Validators.required],
+      salarie_id : ['', Validators.required]
+    });
+    this.api.GetSalaries().subscribe(slt=>{
+      this.salarie = slt;
     })
   }
 
@@ -39,9 +45,9 @@ export class AddEntrepriseComponent implements OnInit {
     this.isLoadingResults = true;
     this.api.PostEntreprise(form)
       .subscribe(res => {
-          let id = res['_id'];
+          let id = res['id'];
           this.isLoadingResults = false;
-          this.router.navigate(['/entreprise/entreprise-details',id]);
+          this.router.navigate(['/entreprise-details',id]);
         }, (err) => {
           this.isIncomplete = true;
           console.warn(err);

@@ -10,7 +10,7 @@ import { AuthService } from '../../Services/auth.service';
   styleUrls: ['./main-nav.component.scss']
 })
 export class MainNavComponent implements OnInit {
-
+  panelOpenState = false;
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
       map(result => result.matches),
@@ -25,11 +25,14 @@ export class MainNavComponent implements OnInit {
   }
 
   isAdmin(){
-    // return this.apiAuth.isAdmin();
+    return this.apiAuth.isAdmin();
   }
 
   isSalarie(){
     return this.apiAuth.isSalarie();
+  }
+  isSecretaire(){
+    return this.apiAuth.isUser();
   }
 
   isUser(){
@@ -38,5 +41,8 @@ export class MainNavComponent implements OnInit {
 
   isAuth(){
     return this.apiAuth.isAuthenticated();
+  }
+  logout(){
+    return this.apiAuth.logout();
   }
 }

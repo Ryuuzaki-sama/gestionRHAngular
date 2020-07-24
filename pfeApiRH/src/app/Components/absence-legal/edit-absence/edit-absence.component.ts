@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { AbsenceLegal } from 'src/app/classes/absence-legal.model';
+import { AbsenceLegal } from 'src/app/classes/Model/absence-legal.model';
 import { FormGroup } from '@angular/forms';
 import { PfeApiService } from 'src/app/Services/pfe-api.service';
 import { Router } from '@angular/router';
-import { Salarie } from 'src/app/classes/salarie.model';
+import { Salarie } from 'src/app/classes/model/salarie.model';
 
 @Component({
   selector: 'app-edit-absence',

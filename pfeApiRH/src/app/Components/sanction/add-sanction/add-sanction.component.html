@@ -5,35 +5,47 @@
       <h2>Formulaire Salarie</h2>
     </div>
     <div class="button-row">
-      <a mat-flat-button color="primary" [routerLink]="['/salarie']"><mat-icon>list</mat-icon></a>
+      <a mat-flat-button color="primary" [routerLink]="['/sanction']"><mat-icon>list</mat-icon></a>
     </div>
-  
+  <mat-card>
     <div *ngIf="isIncomplete" class="alert alert-danger" role="alert">
       {{error}}
     </div>
     <form #s='ngForm' [formGroup]="sanctionForm" (ngSubmit)="onFormSubmit(sanctionForm.value)">
       
-      <mat-form-field class="form-group mt-3">
+      <div class="form-group col-md">
+        <mat-label for="salarie_id">Salarie :</mat-label>
+        <mat-select matNativeControl class="form-control" formControlName="salarie_id" id="salarie_id">
+            <mat-option value="">-- selectionner un salarie  --</mat-option>
+            <mat-option *ngFor="let s of salarie" [value]="s.id">{{s.title}} {{s.nom_salarie}} {{s.prenom_salarie}}</mat-option>
+        </mat-select>
+        <mat-error *ngIf="sanctionForm.invalid">{{getErrorMessage()}}</mat-error>
+      </div>
+
+      <mat-form-field class="form-group mt-3 col-md">
         <mat-label>Date Sanction :</mat-label>
-        <input matInput [matDatepicker]="picker" formControlName="date">
+        <input matInput [matDatepicker]="picker" class="form-control" formControlName="date">
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker touchUi #picker></mat-datepicker>
         <mat-error *ngIf="sanctionForm.invalid">{{getErrorMessage()}}</mat-error>
         <!-- <span *ngIf="!sanctionForm.get('date_naissance').valid && sanctionForm.get('date_naissance').touched">Entrer une date de naissance valide</span> -->
       </mat-form-field>
   
-      <mat-form-field class="example-full-width">
+      <mat-form-field class="example-full-width form-group col-md col-lg-12">
         <mat-label>nature</mat-label>
-        <input matInput type="text" formControlName="nature">
+        <input matInput type="text" class="form-control" formControlName="nature">
       </mat-form-field>
+      
+    
 
-      <mat-form-field class="example-full-width">
+      <mat-form-field class="form-group col-md col-lg-12">
         <mat-label>Motifs</mat-label>
-        <input matInput type="text" formControlName="motifs">
+        <input matInput type="text" class="form-control" formControlName="motifs">
       </mat-form-field>
   
       <div class="button-row">
         <button mat-button type="submit" ><mat-icon color="primary">save</mat-icon></button>
       </div>
     </form>
+  </mat-card>
   </div>

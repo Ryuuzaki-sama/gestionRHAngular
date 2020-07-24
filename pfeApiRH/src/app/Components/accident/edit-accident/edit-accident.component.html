@@ -11,8 +11,20 @@
     <div *ngIf="isIncomplete" class="alert alert-danger" role="alert">
       {{error}}
     </div>
+    
+    <mat-card>
+
     <form #s='ngForm' [formGroup]="accidentForm" (ngSubmit)="onFormSubmit(accidentForm.value)">
       
+      <div class="form-group col-md">
+        <mat-label for="salarie_id">Salarie :</mat-label>
+        <mat-select matNativeControl class="form-control" formControlName="salarie_id" id="salarie_id">
+            <mat-option value="">-- selectionner le salarie absent --</mat-option>
+            <mat-option *ngFor="let s of salarie" [value]="s.id">{{s.title}} {{s.nom_salarie}} {{s.prenom_salarie}}</mat-option>
+        </mat-select>
+        <mat-error *ngIf="accidentForm.invalid">{{getErrorMessage()}}</mat-error>
+      </div>
+
       <mat-form-field class="form-group mt-3">
         <mat-label>Date :</mat-label>
         <input matInput [matDatepicker]="picker" formControlName="date" value="date">
@@ -52,4 +64,5 @@
         <button mat-button type="submit" ><mat-icon color="primary">save</mat-icon></button>
       </div>
     </form>
+  </mat-card>
   </div>

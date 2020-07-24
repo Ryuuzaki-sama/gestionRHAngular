@@ -6,6 +6,7 @@ export class Salarie {
     gender                       : string;
     nationalite                  : string;
     date_naissance               : Date;
+    email                        : string;
     adresse                      : string;
     telephone                    : string;
     date_entree?                 : Date;
@@ -25,5 +26,13 @@ export class Salarie {
     absence_legal_id?            : number;
     suivi_professionel_id?       : number;
     created_at?                  : any;
+    entreprise?	                 : Object;
+    pays?	                     : Object;
+    ville?	                     : Object;
+    permis?	                     : Object;
+    situation_familial?	         : Object;
+    instructions?                : Object;
+    promotions?	                 : Object;
+    suivi_pros?                  : Object;
 
 }

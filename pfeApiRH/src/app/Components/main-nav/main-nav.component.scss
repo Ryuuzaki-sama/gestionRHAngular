@@ -2,10 +2,12 @@
   height: 100%;
 
   .sidenav {
-    width: 200px;
+    width: 250px;
     box-shadow: 3px 0 6px rgba(0,0,0,.24);
   }
 }
+
+
 
 
 // @media (min-width: 768px){
@@ -17,8 +19,10 @@
 mat-toolbar {
   cursor: pointer;
 }
+
 .bg-style {
-  background: linear-gradient(89deg, #FF5EDF 0%,#04C8DE 100%);
+  // background: linear-gradient(89deg, #FF5EDF 0%,#04C8DE 100%);
+  background-color: #eff1f2;
   // color: white;
 }
 
@@ -35,7 +39,10 @@ span {
   flex: 1 1 auto;
   
 }
+section {
+  height: 100vh;
 
+}
 // .active-pink-2 input[type=text]:focus:not([readonly]) {
 //   border-bottom: 1px solid #f48fb1;
 //   box-shadow: 0 1px 0 0 #f48fb1;
@@ -80,3 +87,4 @@ span {
 //   .active-pink-2 .fa {
 //   color: #f48fb1;
 //   }
+

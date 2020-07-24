@@ -27,6 +27,15 @@
         <!-- <span *ngIf="!entrepriseForm.get('nom_salarie').valid && entrepriseForm.get('nom_salarie').touched">Entrer un nom de salarie valide</span> -->
       </div>
 
+      <div class="form-group col-md">
+        <mat-label for="salarie_id">Salarie :</mat-label>
+        <mat-select matNativeControl class="form-control" formControlName="salarie_id" id="salarie_id">
+          <mat-option value="">-- selectionner Salarie --</mat-option>
+          <mat-option *ngFor="let s of salarie" [value]="s.id">{{s.titre}} {{s.nom}} {{s.prenom}}</mat-option>
+        </mat-select>
+        <mat-error *ngIf="entrepriseForm.invalid">{{getErrorMessage()}}</mat-error>
+      </div>
+
       <div class="button-row">
       <button mat-button type="submit" ><mat-icon color="primary">save</mat-icon></button>
       </div>

@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, NgForm } from '@angular/forms';
-import { AbsenceReason } from 'src/app/classes/absence-reason.model';
+import { AbsenceReason } from 'src/app/classes/model/absence-reason.model';
 import { Router } from '@angular/router';
 import { PfeApiService } from 'src/app/Services/pfe-api.service';
 import { AuthService } from 'src/app/Services/auth.service';
+import { Salarie } from 'src/app/classes/model/salarie.model';
 
 @Component({
   selector: 'app-add-accident',
@@ -13,6 +14,7 @@ import { AuthService } from 'src/app/Services/auth.service';
 export class AddAccidentComponent implements OnInit {
 
   accidentForm : FormGroup;
+  salarie: Salarie[];
   absence_reason : AbsenceReason[];
   isLoadingResults: boolean;
   isIncomplete : boolean =false;
@@ -42,6 +44,7 @@ export class AddAccidentComponent implements OnInit {
 
   onFormSubmit(form:NgForm){
     this.isLoadingResults = true;
+    console.warn("form is here : "+form)
     this.api.PostAccident(form)
       .subscribe(res => {
           let id = res['_id'];

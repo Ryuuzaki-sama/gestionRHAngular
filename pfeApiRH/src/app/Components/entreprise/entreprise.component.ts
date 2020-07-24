@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PfeApiService } from 'src/app/Services/pfe-api.service';
 import { AuthService } from 'src/app/Services/auth.service';
-import { Entreprise } from 'src/app/classes/entreprise.model';
+import { Entreprise } from 'src/app/classes/Model/entreprise.model';
 
 @Component({
   selector: 'app-entreprise',
@@ -20,7 +20,7 @@ export class EntrepriseComponent implements OnInit {
   constructor(private api:PfeApiService, private apiAuth:AuthService) { }
 
   ngOnInit(): void {
-    this.api.GetEntreprise().subscribe(resE=>{
+    this.api.GetEntreprises().subscribe(resE=>{
       this.entreprise= resE;
     })
   }

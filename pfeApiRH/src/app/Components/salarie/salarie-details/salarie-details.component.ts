@@ -1,7 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { Salarie } from 'src/app/classes/salarie.model';
+import { Salarie } from 'src/app/classes/Model/salarie.model';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PfeApiService } from 'src/app/Services/pfe-api.service';
+import { Entreprise } from 'src/app/classes/model/entreprise.model';
+import { Pays } from 'src/app/classes/localisation/pays.model';
+import { Ville } from 'src/app/classes/localisation/ville.model';
+import { Permis } from 'src/app/classes/model/permis.model';
+import { SituationFamilial } from 'src/app/classes/model/situation-familial.model';
+import { Instruction } from 'src/app/classes/model/instruction.model';
+import { Promotion } from 'src/app/classes/model/promotion.model';
+import { SuiviPro } from 'src/app/classes/model/suivi-pro.model';
 
 @Component({
   selector: 'app-salarie-details',
@@ -25,6 +33,7 @@ export class SalarieDetailsComponent implements OnInit {
     cin_date_created_at         : new Date,
     cin_localisation_created_at : '',
     pays_id                    : null,
+    email                       : '',
     ville_id                   : null,
     permis_id                  : null,
     situation_familial_id       : null,
@@ -32,8 +41,19 @@ export class SalarieDetailsComponent implements OnInit {
     sevice_id                   : null,
     sanction_id                 : null,
     accident_id                 : null,
+    entreprise	                 : '',
+    pays	                     : '',
+    ville	                     : '',
+    permis	                     : '',
+    situation_familial	         : '',
+    instructions                : '',
+    promotions	                 : '',
+    suivi_pros                  : '',
     created_at                  : new Date, 
   };
+  // entreprise : Entreprise = {
+  //   id : this.salarie.entreprise['id']
+  // }
 
   isLoadingResults = true;
   
@@ -43,6 +63,7 @@ export class SalarieDetailsComponent implements OnInit {
     this.api.GetSalarie(id)
       .subscribe(data => {
         this.salarie = data;
+        console.warn("this is the all data we get for salarie "+ JSON.stringify(data))
         console.log(this.salarie);
         this.isLoadingResults = false;
       });
@@ -60,6 +81,7 @@ export class SalarieDetailsComponent implements OnInit {
         .subscribe(res => {
             this.isLoadingResults = false;
             this.router.navigate(['/salarie']);
+            alert("you should navigate to salarie");
           }, (err) => {
             console.log(err);
             this.isLoadingResults = false;

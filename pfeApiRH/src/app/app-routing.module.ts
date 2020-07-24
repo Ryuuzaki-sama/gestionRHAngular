@@ -1,8 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { HomeComponent } from './Components/home/home.component';
-import { AdminComponent } from './Components/admin/admin.component';
 import { LoginComponent } from './Components/login/login.component';
 import { RegisterComponent } from './Components/register/register.component';
 
@@ -43,14 +41,14 @@ import { EditSituationFamilialComponent } from './Components/situation-familial/
 
 const routes: Routes = [
   // Page Accueil
+  // {
+  //   path:'',
+  //   component: HomeComponent,
+  //   // canActivate : [AuthGuard]
+  // },
   {
-    path:'',
-    component: HomeComponent,
-    // canActivate : [AuthGuard]
-  },
-  {
-    path: 'dashboard',
-    component: DashboardComponent,
+    path: '',
+    component: LoginComponent,
   },
 
   {
@@ -73,9 +71,8 @@ const routes: Routes = [
   },
 
   {
-    path: 'admin',
-    component: AdminComponent,
-    canActivate : [AuthGuard]
+    path :'dashboard',
+    component: DashboardComponent,
   },
 
   {

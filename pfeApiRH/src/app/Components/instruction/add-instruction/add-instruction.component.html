@@ -2,60 +2,66 @@
     <div class="example-loading-shade"
           *ngIf="isLoadingResults">
       <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
-      <h2>Formulaire Salarie</h2>
     </div>
-    <div class="button-row">
-      <a mat-flat-button color="primary" [routerLink]="['/salarie']"><mat-icon>list</mat-icon></a>
-    </div>
+    <mat-card>
+    <!-- <div class="button-row">
+      <a mat-flat-button color="primary" [routerLink]="['/instruction']"><mat-icon>list</mat-icon></a>
+    </div> -->
   
     <div *ngIf="isIncomplete" class="alert alert-danger" role="alert">
       {{error}}
     </div>
+    <h2>{{"Voici id du salarie en question "+ salarie_id}}</h2>
     <form #s='ngForm' [formGroup]="instructionForm" (ngSubmit)="onFormSubmit(instructionForm.value)">
-      <!-- instruction_level   : string;
-      // diplome_got         : string;
-      // language_talked     : string;
-      // language_write      : string;
-      // particular_knowledge: string;-->
       
-  
-      <div class="form-group col-md-3">
-          <mat-label for="absence_reason_id">instruction_level :</mat-label>
-          <mat-select matNativeControl class="form-control" formControlName="instruction_level" id="absence_reason_id">
-              <mat-option value="">-- selectionner Motif --</mat-option>
-              <mat-option *ngFor="let il of instruction_level" [value]="il">{{il}}</mat-option>
-          </mat-select>
-          <mat-error *ngIf="instructionForm.invalid">{{getErrorMessage()}}</mat-error>
-          <!-- <span *ngIf="!instructionForm.get('pays').valid && instructionForm.get('pays').touched">Entrer un pays valide</span> -->
+      <!-- <div class="form-group col-md">
+        <mat-label for="salarie_id">Salarie :</mat-label>
+        <mat-select matNativeControl class="form-control" formControlName="salarie_id" id="salarie_id">
+          <mat-option value="">-- selectionner Salarie --</mat-option>
+          <mat-option *ngFor="let s of salarie" [value]="s.id">{{s.titre}} {{s.nom}} {{s.prenom}}</mat-option>
+        </mat-select>
+        <mat-error *ngIf="instructionForm.invalid">{{getErrorMessage()}}</mat-error>
+      </div> -->
+
+      <div class="form-group col-md">
+        <mat-label for="instruction_level">niveau d'étude :</mat-label>
+        <mat-select matNativeControl class="form-control" formControlName="instruction_level" id="absence_reason_id">
+          <mat-option value="">-- selectionner niveau scolaire --</mat-option>
+          <mat-option *ngFor="let il of instruction_level" [value]="il">{{il}}</mat-option>
+        </mat-select>
+        <mat-error *ngIf="instructionForm.invalid">{{getErrorMessage()}}</mat-error>
       </div>
 
-      <mat-form-field class="example-full-width">
+      <mat-form-field class="example-full-width col-md">
         <mat-label>Diplome</mat-label>
-        <input matInput type="text" placeholder="Ex. bac+2" formControlName="diplome_got">
+        <input matInput type="text" class="form-control" placeholder="Ex. bac+2" formControlName="diplome_got">
       </mat-form-field>
     
-      <label id="example-radio-group-label">language parler</label>
+      <label id="example-radio-group-label">Langue parlant</label><br>
       <mat-radio-group 
         aria-labelledby="example-radio-group-label"
         class="example-radio-group"
         formControlName="language_talked">
+        <br>
         <mat-radio-button *ngFor="let lt of languages" [value]="lt">
           {{lt}}
         </mat-radio-button>
+        <br>
       </mat-radio-group>
+      <br>
 
-      <label id="example-radio-group-label">language parler</label>
+      <label id="example-radio-group-label col-md">langue ecrit</label> <br>
       <mat-radio-group 
         aria-labelledby="example-radio-group-label"
         class="example-radio-group"
         formControlName="language_write">
         <mat-radio-button *ngFor="let lt of languages" [value]="lt">
           {{lt}}
-        </mat-radio-button>
+        </mat-radio-button><br>
       </mat-radio-group>
-      
-      <mat-form-field class="example-full-width">
-        <mat-label>particular_knowledge</mat-label>
+      <br>
+      <mat-form-field class="example-full-width col-md">
+        <mat-label>Autres connaissance</mat-label>
         <input matInput type="text" placeholder="Autres connaissances" formControlName="particular_knowledge">
       </mat-form-field>
 
@@ -63,4 +69,5 @@
         <button mat-button type="submit" ><mat-icon color="primary">save</mat-icon></button>
       </div>
     </form>
+  </mat-card>
   </div>

@@ -2,5 +2,6 @@ export class Promotion {
     id              : number;
     Date            : Date;
     fonct_ou_cat    : string;
-    salaire_taux   : Float32Array;
+    salaire_taux    : Float32Array;
+    salarie_id      : number;
 }

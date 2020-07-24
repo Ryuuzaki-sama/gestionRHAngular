@@ -3,6 +3,7 @@ import { PfeApiService } from 'src/app/Services/pfe-api.service';
 import { AuthService } from 'src/app/Services/auth.service';
 import { FormGroup, FormBuilder, Validators, NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Salarie } from 'src/app/classes/model/salarie.model';
 
 @Component({
   selector: 'app-add-sanction',
@@ -15,6 +16,7 @@ export class AddSanctionComponent implements OnInit {
   // nature  : string;
   // motifs  : string;
   sanctionForm : FormGroup;
+  salarie : Salarie[];
   isLoadingResults: boolean;
   isIncomplete : boolean =false;
   error : any;
@@ -32,7 +34,10 @@ export class AddSanctionComponent implements OnInit {
     this.sanctionForm = this.formBuilder.group({
       date : ['', Validators.required],
       nature : ['', Validators.required],
-      motif : ['', Validators.required],
+      motifs : ['', Validators.required],
+    })
+    this.api.GetSalaries().subscribe(res=>{
+      this.salarie = res;
     })
   }
 

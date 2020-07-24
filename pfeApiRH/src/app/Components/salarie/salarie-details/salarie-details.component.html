@@ -6,7 +6,7 @@
     <div class="button-row">
       <a mat-flat-button color="primary" [routerLink]="['/salarie']"><mat-icon>list</mat-icon></a>
     </div>
-    <mat-card class="example-card mt-3">
+    <mat-card>
       <mat-card-header>
         <mat-card-title><h2>{{salarie.title}}  {{salarie.nom_salarie}} {{salarie.prenom_salarie}}</h2></mat-card-title>
         <mat-card-subtitle>{{salarie.nationalite}}</mat-card-subtitle>
@@ -18,26 +18,28 @@
           <dt>Date de naissance :</dt>
           <dd>{{salarie.date_naissance | date}}</dd>
           <dt>Adresse :</dt>
-          <dd>{{salarie.adresse}}</dd>
+          <dd>{{salarie.adresse}} {{salarie.pays_id}}</dd>
           <dt>email :</dt>
-          <dd> --- </dd>
+          <dd> {{salarie.email}} </dd>
           <dt>Telephone :</dt>
           <dd>{{salarie.telephone}}</dd>
           <dt>Date d'entree  :</dt>
-          <dd>{{salarie.date_entree | date }}</dd>
+          <dd>{{salarie.date_entree | date}}</dd>
           <dt>Promotion :</dt>
-          <dd> --- </dd>
+          <dd> {{salarie.promotions}} </dd>
           <dt>Accident :</dt>
-          <dd> --- </dd>
+          <dd> 
+            <!-- {{salarie.accidents}}  -->
+          </dd>
           <dt>permis :</dt>
-          <dd> --- </dd>
+          <dd *ngFor="let sp of salarie.permis"> {{sp.permis_type }} </dd>
           <!-- Classe Salarie en totalité ngIf existe -->
           <!-- <dt>Created At:</dt>
           <dd>{{salarie.created_at | date}}</dd> -->
         </dl>
       </mat-card-content>
       <mat-card-actions>
-        <a mat-flat-button color="primary" [routerLink]="['/salarie/edit-salarie', salarie.id]"><mat-icon>edit</mat-icon></a>
+        <a mat-flat-button color="primary" [routerLink]="['/edit-salarie', salarie.id]"><mat-icon>edit</mat-icon></a>
         <a mat-flat-button color="warn" (click)="deletesalarie(salarie.id)"><mat-icon>delete</mat-icon></a>
       </mat-card-actions>
     </mat-card>

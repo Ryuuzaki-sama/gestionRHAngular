@@ -12,15 +12,24 @@
     {{error}}
   </div>
   <form #s='ngForm' [formGroup]="instructionForm" (ngSubmit)="onFormSubmit(instructionForm.value)">
-  
-    <!-- <div class="form-group col-md-3">
-        <mat-label for="absence_reason_id">instruction_level :</mat-label>
-        <mat-select matNativeControl class="form-control" formControlName="instruction_level" [value]="instruction_level" id="absence_reason_id">
-            <mat-option value="">-- selectionner Motif --</mat-option>
-            <mat-option *ngFor="let il of instruction_level" [value]="il">{{il}}</mat-option>
-        </mat-select>
-        <mat-error *ngIf="instructionForm.invalid">{{getErrorMessage()}}</mat-error>
-        <span *ngIf="!instructionForm.get('pays').valid && instructionForm.get('pays').touched">Entrer un pays valide</span>
+    
+    <div class="form-group col-md">
+      <mat-label for="salarie_id">Salarie :</mat-label>
+      <mat-select matNativeControl class="form-control" formControlName="salarie_id" id="salarie_id">
+        <mat-option value="">-- selectionner Salarie --</mat-option>
+        <mat-option *ngFor="let s of salarie" [value]="s.id">{{s.titre}} {{s.nom}} {{s.prenom}}</mat-option>
+      </mat-select>
+      <mat-error *ngIf="instructionForm.invalid">{{getErrorMessage()}}</mat-error>
+    </div>
+
+    <div class="form-group col-md-3">
+      <mat-label for="absence_reason_id">instruction_level :</mat-label>
+      <mat-select matNativeControl class="form-control" formControlName="instruction_level" [value]="instruction_level" id="absence_reason_id">
+          <mat-option value="">-- selectionner niveau scolarite --</mat-option>
+          <mat-option *ngFor="let il of instruction_level" [value]="il">{{il}}</mat-option>
+      </mat-select>
+      <mat-error *ngIf="instructionForm.invalid">{{getErrorMessage()}}</mat-error>
+      <span *ngIf="!instructionForm.get('pays').valid && instructionForm.get('pays').touched">Entrer un pays valide</span>
     </div>
 
     <mat-form-field class="example-full-width">
@@ -32,7 +41,7 @@
     <mat-radio-group 
       aria-labelledby="example-radio-group-label"
       class="example-radio-group"
-      formControlName="language_talked" [value]="language_talked">
+      formControlName="language_talked" value="language_talked">
       <mat-radio-button *ngFor="let lt of languages" [value]="lt">
         {{lt}}
       </mat-radio-button>
@@ -42,7 +51,7 @@
     <mat-radio-group 
       aria-labelledby="example-radio-group-label"
       class="example-radio-group"
-      formControlName="language_write" [value]="language_write">
+      formControlName="language_write" value="language_write">
       <mat-radio-button *ngFor="let lt of languages" [value]="lt">
         {{lt}}
       </mat-radio-button>
@@ -50,12 +59,12 @@
     
     <mat-form-field class="example-full-width">
       <mat-label>particular_knowledge</mat-label>
-      <input matInput type="text" placeholder="Autres connaissances" [value]="particular_knowledge" formControlName="particular_knowledge">
+      <input matInput type="text" placeholder="Autres connaissances" value="particular_knowledge" formControlName="particular_knowledge">
     </mat-form-field>
-   -->
 
     <div class="button-row">
       <button mat-button type="submit" ><mat-icon color="primary">save</mat-icon></button>
     </div>
+
   </form>
 </div>

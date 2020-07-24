@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { PfeApiService } from 'src/app/Services/pfe-api.service';
 import { AuthService } from 'src/app/Services/auth.service';
+import { Salarie } from 'src/app/classes/model/salarie.model';
 
 @Component({
   selector: 'app-edit-promotion',
@@ -12,6 +13,7 @@ import { AuthService } from 'src/app/Services/auth.service';
 export class EditPromotionComponent implements OnInit {
 
   promotionForm: FormGroup;
+  salarie : Salarie[];
   isLoadingResults: boolean;
   isIncomplete : boolean =false;
   error : any;
@@ -33,6 +35,9 @@ export class EditPromotionComponent implements OnInit {
       language_talked : ['', Validators.required],
       language_write :['', Validators.required],
       particular_knowledge :['', Validators.required],
+    })
+    this.api.GetSalaries().subscribe(slt=>{
+      this.salarie = slt;
     })
   }
 

@@ -3,6 +3,7 @@ import { FormGroup } from '@angular/forms';
 import { PfeApiService } from 'src/app/Services/pfe-api.service';
 import { AuthService } from 'src/app/Services/auth.service';
 import { Router } from '@angular/router';
+import { Salarie } from 'src/app/classes/Model/salarie.model';
 
 @Component({
   selector: 'app-edit-entreprise',
@@ -12,6 +13,7 @@ import { Router } from '@angular/router';
 export class EditEntrepriseComponent implements OnInit {
 
   entrepriseForm : FormGroup;
+  salarie : Salarie[];
   isLoadingResults: boolean;
   isIncomplete : boolean =false;
   error : any;

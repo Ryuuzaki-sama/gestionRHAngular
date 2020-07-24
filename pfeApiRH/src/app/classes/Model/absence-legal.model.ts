@@ -6,4 +6,5 @@ export class AbsenceLegal {
     periode_end         : Date;
     total_days          : number;
     observation         : Text;
+    salarie_id          : number;
 }

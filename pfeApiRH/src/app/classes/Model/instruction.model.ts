@@ -5,4 +5,5 @@ export class Instruction {
     language_talked     : string;
     language_write      : string;
     particular_knowledge: string;
+    salarie_id          : number;
 }

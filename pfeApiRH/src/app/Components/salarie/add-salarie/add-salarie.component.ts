@@ -6,13 +6,12 @@ import { Pays } from 'src/app/classes/localisation/pays.model';
 import { Region } from 'src/app/classes/localisation/region.model';
 import { Ville } from 'src/app/classes/localisation/ville.model';
 import { Quartier } from 'src/app/classes/localisation/quartier.model';
-import { Permis } from 'src/app/classes/permis.model';
-import { SituationFamilial } from 'src/app/classes/situation-familial.model';
-import { Fonction } from 'src/app/classes/fonction.model';
-import { Service } from 'src/app/classes/service.model';
-import { Sanction } from 'src/app/classes/sanction.model';
-import { Accident } from 'src/app/classes/accident.model';
-import { Salarie } from 'src/app/classes/salarie.model';
+import { Permis } from 'src/app/classes/Model/permis.model';
+import { SituationFamilial } from 'src/app/classes/Model/situation-familial.model';
+import { Fonction } from 'src/app/classes/Model/fonction.model';
+import { Service } from 'src/app/classes/Model/service.model';
+import { Sanction } from 'src/app/classes/Model/sanction.model';
+import { Accident } from 'src/app/classes/Model/accident.model';
 import { AuthService } from 'src/app/Services/auth.service';
 
 @Component({
@@ -35,6 +34,7 @@ export class AddSalarieComponent implements OnInit {
   region : Region[];
   ville : Ville[];
   quartier : Quartier[];
+  public salarie_id: number;
 
   getErrorMessage() {
     return this.salarieForm.hasError('required') ? 'Required field' :
@@ -56,7 +56,14 @@ export class AddSalarieComponent implements OnInit {
       gender : ['', Validators.required],
       date_naissance : ['', Validators.required],
       adresse : ['', Validators.required],
+      email : ['', Validators.required],
+      cin_date_created_at:['', Validators.required],
+      cin_localisation_created_at:['',Validators.required],
+      date_entree: ['', Validators.required],
+      nationalite : ['', Validators.required],
+      cin_salarie : ['', Validators.required],
       pays_id : [null, Validators.required],
+      observations: ['',Validators.required],
       // region : ['', Validators.required],
       ville_id : ['', Validators.required],
       // quartier : ['', Validators.required],
@@ -64,7 +71,7 @@ export class AddSalarieComponent implements OnInit {
       situation_familial_id :  ['', [Validators.required]],
     }),
 
-    this.api.GetSituation().subscribe(ressf=>{
+    this.api.GetSituations().subscribe(ressf=>{
       this.situation_familial =ressf;
     });
 
@@ -76,7 +83,7 @@ export class AddSalarieComponent implements OnInit {
     //   this.region = resr;
     // });
 
-    this.api.GetVille().subscribe(resv=>{
+    this.api.GetVilles().subscribe(resv=>{
       this.ville = resv;
     });
 
@@ -90,9 +97,10 @@ export class AddSalarieComponent implements OnInit {
     this.isLoadingResults = true;
     this.api.PostSalarie(form)
       .subscribe(res => {
-          let id = res['_id'];
+           this.salarie_id = res['id'];
+           console.log("this is from salarie "+this.salarie_id);
           this.isLoadingResults = false;
-          this.router.navigate(['/salarie-details', id]);
+          // this.router.navigate(['/salarie-details', this.id]);
         }, (err) => {
           this.isIncomplete = true;
           console.warn(err);

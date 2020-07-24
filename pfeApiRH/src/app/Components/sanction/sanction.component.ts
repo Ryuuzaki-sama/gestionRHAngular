@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Sanction } from 'src/app/classes/sanction.model';
+import { Sanction } from 'src/app/classes/Model/sanction.model';
 import { PfeApiService } from 'src/app/Services/pfe-api.service';
 
 @Component({
@@ -19,15 +19,17 @@ export class SanctionComponent implements OnInit {
   constructor(private api:PfeApiService) { }
 
   ngOnInit(): void {
+    this.loadData();
   }
 
   loadData(){
-    this.api.GetSanction()
+    this.api.GetSanctions()
     .subscribe(san=>{
         this.sanction = san;
+        console.log("this means that it works"+this.sanction);
       },
       err=>{
-        alert("can not load sanction data");
+        console.warn("can not load sanction data");
       }
     )
   }

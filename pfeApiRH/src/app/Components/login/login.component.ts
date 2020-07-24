@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-// import { PfeApiService } from '../pfe-api.service';
+import { PfeApiService } from '../../Services/pfe-api.service';
 import { FormControl, Validators, FormGroup, FormBuilder } from '@angular/forms';
 import { AuthService } from '../../Services/auth.service';
 
@@ -34,7 +34,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
-      username : ['', Validators.required],
+      name : ['', Validators.required],
       password :  ['', [Validators.required]],
     }),
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
@@ -45,10 +45,10 @@ export class LoginComponent implements OnInit {
     console.warn(form);
     this.apiAuth.Login(form)
     .subscribe(res =>{
-      // console.log(res);
-        let jwt = res.headers.get('Authorization');
-        this.apiAuth.saveToken(jwt);
-        this.router.navigateByUrl('/');
+      console.log(res);
+        // let jwt = res.headers.get('Authorization');
+        // this.apiAuth.saveToken(jwt);
+        // this.router.navigateByUrl('/');
       },
       err =>{
         this.isAuth = true;
@@ -64,9 +64,13 @@ export class LoginComponent implements OnInit {
   isSalarie(){
     return this.apiAuth.isSalarie();
   }
+  isSecretaire(){
+    return this.apiAuth.isAdmin();
+  }
 
   isUser(){
     return this.apiAuth.isUser();
   }
+  
 
 }

@@ -7,11 +7,20 @@
   <div class="button-row">
     <a mat-flat-button color="primary" [routerLink]="['/salarie']"><mat-icon>list</mat-icon></a>
   </div>
-
+<mat-card>
   <div *ngIf="isIncomplete" class="alert alert-danger" role="alert">
     {{error}}
   </div>
   <form #s='ngForm' [formGroup]="promotionForm" (ngSubmit)="onFormSubmit(promotionForm.value)">
+    
+    <div class="form-group col-md">
+      <mat-label for="salarie_id">Salarie :</mat-label>
+      <mat-select matNativeControl class="form-control" formControlName="salarie_id" id="salarie_id">
+          <mat-option value="">-- selectionner un salarie  --</mat-option>
+          <mat-option *ngFor="let s of salarie" [value]="s.id">{{s.title}} {{s.nom_salarie}} {{s.prenom_salarie}}</mat-option>
+      </mat-select>
+      <mat-error *ngIf="promotionForm.invalid">{{getErrorMessage()}}</mat-error>
+    </div>
     
     <mat-form-field class="form-group mt-3">
       <mat-label>Date :</mat-label>
@@ -38,4 +47,5 @@
       <button mat-button type="submit" ><mat-icon color="primary">save</mat-icon></button>
     </div>
   </form>
+</mat-card>
 </div>

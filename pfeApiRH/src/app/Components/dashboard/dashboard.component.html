@@ -1,26 +1,26 @@
 <div class="main-content">
-    <div class="container-fluid">
+    <div class="container-fluid mt-5 mb-3">
         <div class="row">
-            <div class="col-lg-3 col-md-6 col-sm-6">
+            <div class="col-lg-3 col-md col-sm">
                 <div class="card card-stats">
                     <div class="card-header card-header-warning card-header-icon">
                         <div class="card-icon">
-                            <i class="material-icons">content_copy</i>
+                            <i class="material-icons">persons</i>
                         </div>
                         <p class="card-category">Used Space</p>
-                        <h3 class="card-title">49/50
-                            <small>GB</small>
+                        <h3 class="card-title">
+                            <small>Salarie(s)</small>
                         </h3>
                     </div>
                     <div class="card-footer">
                         <div class="stats">
-                            <i class="material-icons text-danger">warning</i>
-                            <a href="javascript:void(0)">Get More Space...</a>
+                            <i class="material-icons text-danger">person</i>
+                            <a [routerLink]="['/salarie']">Voir les salaries</a>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-3 col-md-6 col-sm-6">
+            <div class="col-lg-3 col-md col-sm">
                 <div class="card card-stats">
                     <div class="card-header card-header-success card-header-icon">
                         <div class="card-icon">
@@ -69,57 +69,66 @@
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-md-4">
-                <div class="card card-chart">
-                    <div class="card-header card-header-success">
-                        <div class="ct-chart" id="dailySalesChart"></div>
-                    </div>
-                    <div class="card-body">
-                        <h4 class="card-title">Daily Sales</h4>
-                        <p class="card-category">
-                            <span class="text-success"><i class="fa fa-long-arrow-up"></i> 55% </span> increase in today sales.</p>
-                    </div>
-                    <div class="card-footer">
-                        <div class="stats">
-                            <i class="material-icons">access_time</i> updated 4 minutes ago
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card card-chart">
-                    <div class="card-header card-header-warning">
-                        <div class="ct-chart" id="websiteViewsChart"></div>
-                    </div>
-                    <div class="card-body">
-                        <h4 class="card-title">Email Subscriptions</h4>
-                        <p class="card-category">Last Campaign Performance</p>
-                    </div>
-                    <div class="card-footer">
-                        <div class="stats">
-                            <i class="material-icons">access_time</i> campaign sent 2 days ago
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card card-chart">
-                    <div class="card-header card-header-danger">
-                        <div class="ct-chart" id="completedTasksChart"></div>
-                    </div>
-                    <div class="card-body">
-                        <h4 class="card-title">Completed Tasks</h4>
-                        <p class="card-category">Last Campaign Performance</p>
-                    </div>
-                    <div class="card-footer">
-                        <div class="stats">
-                            <i class="material-icons">access_time</i> campaign sent 2 days ago
-                        </div>
-                    </div>
-                </div>
-            </div>
+    </div>
+    <h2 class="text-center bg-light mt-5 mb-3">Partie Salarie</h2>
+    <div class="row">
+        
+        <div class="col-md">
+            <app-add-salarie></app-add-salarie>
+        </div>
+        <div class="col-md">
+            <app-salarie></app-salarie>
         </div>
     </div>
-  </div>
-  
+    <h2 class="text-center bg-light mt-5 mb-3">Partie Absence</h2>
+    <div class="row">
+        
+        <div class="col-md">
+            <app-add-absence></app-add-absence>
+        </div>
+        <div class="col-md">
+            <app-absence-legal></app-absence-legal>
+        </div>
+    </div>
+    <h2 class="text-center bg-light mt-5 mb-3">Partie Accident</h2>
+    <div class="row">
+      
+        <div class="col-md">
+            <app-add-accident></app-add-accident>
+        </div>
+        <div class="col-md">
+            <app-accident></app-accident>
+        </div>
+    </div>
+
+    <h2 class="text-center bg-light mt-5 mb-3">Partie Entreprise</h2>
+    <div class="row">
+        
+        <div class="col-md">
+            <app-add-entreprise></app-add-entreprise>
+        </div>
+        <div class="col-md">
+            <app-entreprise></app-entreprise>
+        </div>
+    </div>
+    <h2 class="text-center bg-light mt-5 mb-3">Partie Absence</h2>
+    <div class="row">
+        
+        <div class="col-md">
+            <app-add-absence></app-add-absence>
+        </div>
+        <div class="col-md">
+            <app-absence-legal></app-absence-legal>
+        </div>
+    </div>
+    <h2 class="text-center bg-light mt-5 mb-3">Partie Accident</h2>
+    <div class="row">
+      
+        <div class="col-md">
+            <app-add-accident></app-add-accident>
+        </div>
+        <div class="col-md">
+            <app-accident></app-accident>
+        </div>
+    </div>
+</div>

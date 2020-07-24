@@ -59,7 +59,6 @@ import { AppRoutingModule } from './app-routing.module';
 
 // Components
 import { AppComponent } from './app.component';
-import { AdminComponent } from './Components/admin/admin.component';
 import { LoginComponent } from './Components/login/login.component';
 import { RegisterComponent } from './Components/register/register.component';
 
@@ -75,7 +74,7 @@ import { SharedComponent } from './Components/shared/shared.component';
 
 import { SituationFamilialComponent } from './Components/situation-familial/situation-familial.component';
 
-
+import { ChartsModule } from 'ng2-charts';
 import { PfeApiService } from './Services/pfe-api.service';
 import { AuthService } from './Services/auth.service';
 
@@ -119,7 +118,19 @@ import { AddEntrepriseComponent } from './Components/entreprise/add-entreprise/a
 import { EditEntrepriseComponent } from './Components/entreprise/edit-entreprise/edit-entreprise.component';
 import { EntrepriseDetailsComponent } from './Components/entreprise/entreprise-details/entreprise-details.component';
 import { EditSituationFamilialComponent } from './Components/situation-familial/edit-situation-familial/edit-situation-familial.component';
-
+import { MAT_DATE_LOCALE } from '@angular/material/core';
+import { ConjointComponent } from './Components/conjoint/conjoint.component';
+import { EditConjointComponent } from './Components/conjoint/edit-conjoint/edit-conjoint.component';
+import { ConfigComponent } from './components/config/config.component';
+import { ConfigPaysComponent } from './components/config/config-pays/config-pays.component';
+import { ConfigSituationComponent } from './components/config/config-situation/config-situation.component';
+import { ConfigVilleComponent } from './components/config/config-ville/config-ville.component';
+import { ConfigAbsenceReasonComponent } from './Components/config/config-absence-reason/config-absence-reason.component';
+import { ConfigFonctionComponent } from './Components/config/config-fonction/config-fonction.component';
+import { ConfigServiceComponent } from './Components/config/config-fonction/config-service/config-service.component';
+import { ConfigPermisComponent } from './components/config/config-permis/config-permis.component';
+import { ConfigRegionComponent } from './components/config/config-region/config-region.component';
+import { ConfigQuartierComponent } from './components/config/config-quartier/config-quartier.component';
 
 
 // FireBase
@@ -133,7 +144,6 @@ import { EditSituationFamilialComponent } from './Components/situation-familial/
 @NgModule({
   declarations: [
     AppComponent,
-    AdminComponent,
     LoginComponent,
     RegisterComponent,
     HomeComponent,
@@ -171,9 +181,22 @@ import { EditSituationFamilialComponent } from './Components/situation-familial/
     EditEntrepriseComponent,
     EntrepriseDetailsComponent,
     EditSituationFamilialComponent,
+    ConjointComponent,
+    EditConjointComponent,
+    ConfigComponent,
+    ConfigPaysComponent,
+    ConfigSituationComponent,
+    ConfigVilleComponent,
+    ConfigAbsenceReasonComponent,
+    ConfigFonctionComponent,
+    ConfigServiceComponent,
+    ConfigPermisComponent,
+    ConfigRegionComponent,
+    ConfigQuartierComponent,
   ],
   imports: [
     BrowserModule,
+    ChartsModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     A11yModule,
@@ -250,7 +273,14 @@ import { EditSituationFamilialComponent } from './Components/situation-familial/
     // AngularFireStorageModule // storage
   ],
   providers: [
-    {provide: ErrorStateMatcher, useClass: ShowOnDirtyErrorStateMatcher},
+    {provide:
+      MAT_DATE_LOCALE, 
+      useValue:'fr',
+      // ErrorStateMatcher,
+      // useClass: ShowOnDirtyErrorStateMatcher,
+      
+    },
+    
     PfeApiService,
     AuthService
   ],

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/Services/auth.service';
 import { PfeApiService } from 'src/app/Services/pfe-api.service';
-import { EmploisAnterieur } from 'src/app/classes/emplois-anterieur.model';
+import { EmploisAnterieur } from 'src/app/classes/Model/emplois-anterieur.model';
 
 @Component({
   selector: 'app-emploi-anterieur',
@@ -10,7 +10,7 @@ import { EmploisAnterieur } from 'src/app/classes/emplois-anterieur.model';
 })
 export class EmploiAnterieurComponent implements OnInit {
 
-  displayedColumns : string[] = ['employeur ',"date_entree", 'date_sortie','Recent Fonction']
+  displayedColumns : string[] = ['employeur',"date_entree", 'date_sortie','Recent Fonction']
   emploi_anterieur : EmploisAnterieur[];
   isLoadingResults: boolean;
   isIncomplete : boolean =false;
@@ -20,7 +20,7 @@ export class EmploiAnterieurComponent implements OnInit {
   constructor(private api:PfeApiService,private apiAuth:AuthService) { }
 
   ngOnInit(): void {
-    this.api.GetEmploisAnterieur()
+    this.api.GetEmploisAnterieurs()
     .subscribe(resEA=>
       {
         this.emploi_anterieur = resEA;

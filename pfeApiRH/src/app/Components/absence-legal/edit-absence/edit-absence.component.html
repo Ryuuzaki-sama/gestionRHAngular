@@ -1,67 +1,68 @@
 <div class="container mt-4">
-    <div class="example-loading-shade"
-          *ngIf="isLoadingResults">
-      <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
-      <h2>Formulaire Salarie</h2>
-    </div>
-    <div class="button-row">
-      <a mat-flat-button color="primary" [routerLink]="['/salarie']"><mat-icon>list</mat-icon></a>
-    </div>
-  
-    <div *ngIf="isIncomplete" class="alert alert-danger" role="alert">
-      {{error}}
-    </div>
-    <form #s='ngForm' [formGroup]="absenceForm" (ngSubmit)="onFormSubmit(absenceForm.value)">
+  <div class="example-loading-shade"
+        *ngIf="isLoadingResults">
+    <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
+    <h2>Formulaire Salarie</h2>
+  </div>
+  <div class="button-row">
+    <a mat-flat-button color="primary" [routerLink]="['/absence']"><mat-icon>list</mat-icon></a>
+  </div>
 
-        <div class="form-group col-md-3">
-            <mat-label for="absence_reason_id">Salarie :</mat-label>
-            <mat-select matNativeControl class="form-control" formControlName="salarie_id" id="salarie_id">
-                <mat-option value="">-- selectionner Motif --</mat-option>
-                <mat-option *ngFor="let s of salarie" [value]="s.id">{{s.titre}} {{s.nom}} {{s.prenom}}</mat-option>
-            </mat-select>
-            <mat-error *ngIf="absenceForm.invalid">{{getErrorMessage()}}</mat-error>
-            <!-- <span *ngIf="!absenceForm.get('pays').valid && absenceForm.get('pays').touched">Entrer un pays valide</span> -->
-        </div>
+  <div *ngIf="isIncomplete" class="alert alert-danger" role="alert">
+    {{error}}
+  </div>
+  <mat-card>
+  <form #s='ngForm' [formGroup]="absenceForm" (ngSubmit)="onFormSubmit(absenceForm.value)">
 
-      <mat-form-field class="form-group mt-3">
-        <mat-label>Date :</mat-label>
-        <input matInput [matDatepicker]="picker" formControlName="date" value="date">
-        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-datepicker touchUi #picker></mat-datepicker>
+    <div class="form-group col-md">
+      <mat-label for="salarie_id">Salarie :</mat-label>
+      <mat-select matNativeControl class="form-control" formControlName="salarie_id" id="salarie_id">
+          <mat-option value="">-- selectionner le salarie absent --</mat-option>
+          <mat-option *ngFor="let s of salarie" [value]="s.id">{{s.title}} {{s.nom_salarie}} {{s.prenom_salarie}}</mat-option>
+      </mat-select>
+      <mat-error *ngIf="absenceForm.invalid">{{getErrorMessage()}}</mat-error>
+    </div>
+
+    <mat-form-field class="form-group mt-3">
+      <mat-label>Date :</mat-label>
+      <input matInput [matDatepicker]="picker" formControlName="date" value="date">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker touchUi #picker></mat-datepicker>
+      <mat-error *ngIf="absenceForm.invalid">{{getErrorMessage()}}</mat-error>
+      <!-- <span *ngIf="!absenceForm.get('date_naissance').valid && absenceForm.get('date_naissance').touched">Entrer une date de naissance valide</span> -->
+    </mat-form-field>
+
+    <div class="form-group col-md-3">
+        <mat-label for="absence_reason_id">Motif :</mat-label>
+        <mat-select matNativeControl class="form-control" formControlName="absence_reason_id" value="absence_reason_id" id="absence_reason_id">
+          <mat-option value="">-- selectionner Motif --</mat-option>
+          <mat-option *ngFor="let ar of absence_reason" [value]="ar.id">{{ar.absence_reason}}</mat-option>
+        </mat-select>
         <mat-error *ngIf="absenceForm.invalid">{{getErrorMessage()}}</mat-error>
-        <!-- <span *ngIf="!absenceForm.get('date_naissance').valid && absenceForm.get('date_naissance').touched">Entrer une date de naissance valide</span> -->
-      </mat-form-field>
-  
-      <div class="form-group col-md-3">
-            <mat-label for="absence_reason_id">Motif :</mat-label>
-            <mat-select matNativeControl class="form-control" formControlName="absence_reason_id" value="absence_reason_id" id="absence_reason_id">
-                <mat-option value="">-- selectionner Motif --</mat-option>
-                <mat-option *ngFor="let ar of absence_reason" [value]="ar.id">{{ar.absence_reason}}</mat-option>
-            </mat-select>
-            <mat-error *ngIf="absenceForm.invalid">{{getErrorMessage()}}</mat-error>
-            <!-- <span *ngIf="!absenceForm.get('pays').valid && absenceForm.get('pays').touched">Entrer un pays valide</span> -->
-        </div>
+        <!-- <span *ngIf="!absenceForm.get('pays').valid && absenceForm.get('pays').touched">Entrer un pays valide</span> -->
+    </div>
 
-        <mat-form-field class="form-group mt-3">
-            <mat-label>Date de depart:</mat-label>
-            <input matInput [matDatepicker]="picker" formControlName="periode_start" value="periode_start">
-            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-            <mat-datepicker touchUi #picker></mat-datepicker>
-            <mat-error *ngIf="absenceForm.invalid">{{getErrorMessage()}}</mat-error>
-            <!-- <span *ngIf="!absenceForm.get('date_naissance').valid && absenceForm.get('date_naissance').touched">Entrer une date de naissance valide</span> -->
-          </mat-form-field>
+    <mat-form-field class="form-group mt-3">
+      <mat-label>Date de depart:</mat-label>
+      <input matInput [matDatepicker]="picker" formControlName="periode_start" value="periode_start">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker touchUi #picker></mat-datepicker>
+      <mat-error *ngIf="absenceForm.invalid">{{getErrorMessage()}}</mat-error>
+      <!-- <span *ngIf="!absenceForm.get('date_naissance').valid && absenceForm.get('date_naissance').touched">Entrer une date de naissance valide</span> -->
+    </mat-form-field>
 
-          <mat-form-field class="form-group mt-3">
-            <mat-label>Date de fin :</mat-label>
-            <input matInput [matDatepicker]="picker" formControlName="periode_end" value="periode_end">
-            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-            <mat-datepicker touchUi #picker></mat-datepicker>
-            <mat-error *ngIf="absenceForm.invalid">{{getErrorMessage()}}</mat-error>
-            <!-- <span *ngIf="!absenceForm.get('date_naissance').valid && absenceForm.get('date_naissance').touched">Entrer une date de naissance valide</span> -->
-          </mat-form-field>
-  
-      <div class="button-row">
-        <button mat-button type="submit" ><mat-icon color="primary">save</mat-icon></button>
-      </div>
+    <mat-form-field class="form-group mt-3">
+      <mat-label>Date de fin :</mat-label>
+      <input matInput [matDatepicker]="picker" formControlName="periode_end" value="periode_end">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker touchUi #picker></mat-datepicker>
+      <mat-error *ngIf="absenceForm.invalid">{{getErrorMessage()}}</mat-error>
+      <!-- <span *ngIf="!absenceForm.get('date_naissance').valid && absenceForm.get('date_naissance').touched">Entrer une date de naissance valide</span> -->
+    </mat-form-field>
+
+    <div class="button-row">
+      <button mat-button type="submit" ><mat-icon color="primary">save</mat-icon></button>
+    </div>
     </form>
+  </mat-card>
   </div>

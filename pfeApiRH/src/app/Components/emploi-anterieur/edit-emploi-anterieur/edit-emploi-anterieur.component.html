@@ -7,17 +7,26 @@
     <div class="button-row">
       <a mat-flat-button color="primary" [routerLink]="['/salarie']"><mat-icon>list</mat-icon></a>
     </div>
-  
+  <mat-card>
     <div *ngIf="isIncomplete" class="alert alert-danger" role="alert">
       {{error}}
     </div>
     <form #s='ngForm' [formGroup]="emploiForm" (ngSubmit)="onFormSubmit(emploiForm.value)">
         
+      <div class="form-group col-md">
+        <mat-label for="salarie_id">Salarie :</mat-label>
+        <mat-select matNativeControl class="form-control" formControlName="salarie_id" id="salarie_id">
+            <mat-option value="">-- selectionner Motif --</mat-option>
+            <mat-option *ngFor="let s of salarie" [value]="s.id">{{s.titre}} {{s.nom}} {{s.prenom}}</mat-option>
+        </mat-select>
+        <mat-error *ngIf="emploiForm.invalid">{{getErrorMessage()}}</mat-error>
+      </div>
+
+
       <div class="form-group col-md-6">
-          <mat-label for="employeur">employeur</mat-label>
-          <input type="text" class="form-control" formControlName="employeur" value="employeur" id="employeur">
-          <mat-error *ngIf="emploiForm.invalid">{{getErrorMessage()}}</mat-error>
-          <!-- <span *ngIf="!emploiForm.get('nom_salarie').valid && emploiForm.get('nom_salarie').touched">Entrer un nom de salarie valide</span> -->
+        <mat-label for="employeur">employeur</mat-label>
+        <input type="text" class="form-control" formControlName="employeur" value="employeur" id="employeur">
+        <mat-error *ngIf="emploiForm.invalid">{{getErrorMessage()}}</mat-error>
       </div>
 
       <mat-form-field class="form-group mt-3">
@@ -26,7 +35,6 @@
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker touchUi #picker></mat-datepicker>
         <mat-error *ngIf="emploiForm.invalid">{{getErrorMessage()}}</mat-error>
-        <!-- <span *ngIf="!absenceForm.get('date_naissance').valid && absenceForm.get('date_naissance').touched">Entrer une date de naissance valide</span> -->
       </mat-form-field>
   
       <mat-form-field class="form-group mt-3">
@@ -35,8 +43,7 @@
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker touchUi #picker></mat-datepicker>
         <mat-error *ngIf="emploiForm.invalid">{{getErrorMessage()}}</mat-error>
-        <!-- <span *ngIf="!absenceForm.get('date_naissance').valid && absenceForm.get('date_naissance').touched">Entrer une date de naissance valide</span> -->
-      </mat-form-field>
+     </mat-form-field>
 
       <mat-form-field class="form-group mt-3">
         <mat-label>Date de fin :</mat-label>
@@ -44,20 +51,17 @@
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker touchUi #picker></mat-datepicker>
         <mat-error *ngIf="emploiForm.invalid">{{getErrorMessage()}}</mat-error>
-        <!-- <span *ngIf="!absenceForm.get('date_naissance').valid && absenceForm.get('date_naissance').touched">Entrer une date de naissance valide</span> -->
-      </mat-form-field>
+     </mat-form-field>
 
       <div class="form-group col-md-6">
         <mat-label for="last_fonct">jours_Absences</mat-label>
         <input type="number" class="form-control" formControlName="last_fonct" value="last_fonct" id="jours_Absences">
         <mat-error *ngIf="emploiForm.invalid">{{getErrorMessage()}}</mat-error>
-        <!-- <span *ngIf="!emploiForm.get('prenom_salarie').valid && emploiForm.get('prenom_salarie').touched">Entrer un nom de salarie valide</span> -->
       </div>
-
-      
 
       <div class="button-row">
         <button mat-button type="submit" ><mat-icon color="primary">save</mat-icon></button>
       </div>
     </form>
+  </mat-card>
   </div>

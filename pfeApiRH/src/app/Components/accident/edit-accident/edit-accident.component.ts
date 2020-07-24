@@ -3,7 +3,8 @@ import { PfeApiService } from 'src/app/Services/pfe-api.service';
 import { Route } from '@angular/compiler/src/core';
 import { Router } from '@angular/router';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
-import { Accident } from 'src/app/classes/accident.model';
+import { Accident } from 'src/app/classes/model/accident.model';
+import { Salarie } from 'src/app/classes/model/salarie.model';
 
 @Component({
   selector: 'app-edit-accident',
@@ -13,7 +14,9 @@ import { Accident } from 'src/app/classes/accident.model';
 export class EditAccidentComponent implements OnInit {
 
   accidentForm : FormGroup;
+  accident : Accident;
   accident_reason : Accident[];
+  salarie : Salarie;
   nature: string[]= ["premier_nature","deuxieme_nature"];
   isLoadingResults: boolean;
   isIncomplete : boolean =false;
