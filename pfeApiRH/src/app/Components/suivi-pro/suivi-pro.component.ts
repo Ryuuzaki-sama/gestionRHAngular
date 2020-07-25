@@ -14,7 +14,7 @@ export class SuiviProComponent implements OnInit {
   // fonct_ou_cat    : string;
   // salaire_taux    : Float32Array;
   suiviPro : SuiviPro[];
-  displayedColumns : string[] = ['date suivi', 'fonct_ou_cat','salaire_taux'];
+  displayedColumns : string[] = ['date suivi', 'fonct_ou_cat','salaire_taux','actions'];
   isLoadingResults: boolean;
   isIncomplete : boolean =false;
   error : any;

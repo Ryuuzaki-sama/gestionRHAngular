@@ -35,8 +35,8 @@
       <div class="form-group col-md">
           <mat-label for="absence_reason_id">Nature d'accident :</mat-label>
           <mat-select matNativeControl class="form-control" formControlName="nature" id="nature">
-              <mat-option value="">-- selectionner Motif --</mat-option>
-              <mat-option *ngFor="let na of nature" [value]="na.id">{{na.nature}}</mat-option>
+              <mat-option value="">-- selectionner nature --</mat-option>
+              <mat-option *ngFor="let na of nature" [value]="na">{{na}}</mat-option>
           </mat-select>
           <mat-error *ngIf="accidentForm.invalid">{{getErrorMessage()}}</mat-error>
           <!-- <span *ngIf="!accidentForm.get('pays').valid && accidentForm.get('pays').touched">Entrer un pays valide</span> -->

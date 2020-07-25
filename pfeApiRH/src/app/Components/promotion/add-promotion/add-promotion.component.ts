@@ -33,12 +33,24 @@ export class AddPromotionComponent implements OnInit {
       date : ['', Validators.required],
       fonct_ou_cat : ['', Validators.required],
       salaire_taux : ['', Validators.required],
+      salarie_id : ['', Validators.required],
+    })
+    this.api.GetSalaries().subscribe(res=>{
+      this.salarie = res;
     })
   }
 
   onFormSubmit(form){
     this.isLoadingResults = true;
-    this.api.PostPromotion(form)
+    
+    const payload = {
+      date : form.date.toLocaleDateString(),
+      fonct_ou_cat : form.fonct_ou_cat,
+      salaire_taux : form.salaire_taux,
+      salarie_id : +form.salarie_id,
+    }
+    
+    this.api.PostPromotion(payload)
       .subscribe(res =>
         {
           let id = res['_id'];

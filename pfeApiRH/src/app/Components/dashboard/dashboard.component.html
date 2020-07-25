@@ -7,16 +7,10 @@
                         <div class="card-icon">
                             <i class="material-icons">persons</i>
                         </div>
-                        <p class="card-category">Used Space</p>
+                        <p class="card-category">nombre de salarie dans l'entreprise</p>
                         <h3 class="card-title">
-                            <small>Salarie(s)</small>
+                            <small>{{salarie}} Salarie(s)</small>
                         </h3>
-                    </div>
-                    <div class="card-footer">
-                        <div class="stats">
-                            <i class="material-icons text-danger">person</i>
-                            <a [routerLink]="['/salarie']">Voir les salaries</a>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -24,15 +18,10 @@
                 <div class="card card-stats">
                     <div class="card-header card-header-success card-header-icon">
                         <div class="card-icon">
-                            <i class="material-icons">store</i>
+                            <i class="material-icons">business</i>
                         </div>
-                        <p class="card-category">Revenue</p>
-                        <h3 class="card-title">$34,245</h3>
-                    </div>
-                    <div class="card-footer">
-                        <div class="stats">
-                            <i class="material-icons">date_range</i> Last 24 Hours
-                        </div>
+                        <p class="card-category">Nombre d'entreprise associé</p>
+                        <h3 class="card-title">{{entreprise}} Entreprise(s)</h3>
                     </div>
                 </div>
             </div>
@@ -40,15 +29,10 @@
                 <div class="card card-stats">
                     <div class="card-header card-header-danger card-header-icon">
                         <div class="card-icon">
-                            <i class="material-icons">info_outline</i>
+                            <i class="material-icons">search_off</i>
                         </div>
-                        <p class="card-category">Fixed Issues</p>
-                        <h3 class="card-title">75</h3>
-                    </div>
-                    <div class="card-footer">
-                        <div class="stats">
-                            <i class="material-icons">local_offer</i> Tracked from Github
-                        </div>
+                        <p class="card-category">Nombre d'absences </p>
+                        <h3 class="card-title">{{absence}} absence(s)</h3>
                     </div>
                 </div>
             </div>
@@ -56,79 +40,13 @@
                 <div class="card card-stats">
                     <div class="card-header card-header-info card-header-icon">
                         <div class="card-icon">
-                            <i class="fa fa-twitter"></i>
+                            <i class="material-icons">arrow_circle_up</i>
                         </div>
-                        <p class="card-category">Followers</p>
-                        <h3 class="card-title">+245</h3>
-                    </div>
-                    <div class="card-footer">
-                        <div class="stats">
-                            <i class="material-icons">update</i> Just Updated
-                        </div>
-                    </div>
+                        <p class="card-category">Promotion effectuer</p>
+                        <h3 class="card-title">{{promotion}} promotion(s)</h3>
+                    </div>   
                 </div>
             </div>
-        </div>
-    </div>
-    <h2 class="text-center bg-light mt-5 mb-3">Partie Salarie</h2>
-    <div class="row">
-        
-        <div class="col-md">
-            <app-add-salarie></app-add-salarie>
-        </div>
-        <div class="col-md">
-            <app-salarie></app-salarie>
-        </div>
-    </div>
-    <h2 class="text-center bg-light mt-5 mb-3">Partie Absence</h2>
-    <div class="row">
-        
-        <div class="col-md">
-            <app-add-absence></app-add-absence>
-        </div>
-        <div class="col-md">
-            <app-absence-legal></app-absence-legal>
-        </div>
-    </div>
-    <h2 class="text-center bg-light mt-5 mb-3">Partie Accident</h2>
-    <div class="row">
-      
-        <div class="col-md">
-            <app-add-accident></app-add-accident>
-        </div>
-        <div class="col-md">
-            <app-accident></app-accident>
-        </div>
-    </div>
-
-    <h2 class="text-center bg-light mt-5 mb-3">Partie Entreprise</h2>
-    <div class="row">
-        
-        <div class="col-md">
-            <app-add-entreprise></app-add-entreprise>
-        </div>
-        <div class="col-md">
-            <app-entreprise></app-entreprise>
-        </div>
-    </div>
-    <h2 class="text-center bg-light mt-5 mb-3">Partie Absence</h2>
-    <div class="row">
-        
-        <div class="col-md">
-            <app-add-absence></app-add-absence>
-        </div>
-        <div class="col-md">
-            <app-absence-legal></app-absence-legal>
-        </div>
-    </div>
-    <h2 class="text-center bg-light mt-5 mb-3">Partie Accident</h2>
-    <div class="row">
-      
-        <div class="col-md">
-            <app-add-accident></app-add-accident>
-        </div>
-        <div class="col-md">
-            <app-accident></app-accident>
         </div>
     </div>
 </div>

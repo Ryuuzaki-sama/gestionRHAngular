@@ -36,7 +36,7 @@ export class AddEmploiAnterieurComponent implements OnInit {
       date_entree : ['', Validators.required],
       date_sortie : ['', Validators.required],
       last_fonct :['', Validators.required],
-      // salarie_id : ['', Validators.required]
+      salarie_id : ['', Validators.required]
     });
     this.api.GetSalaries().subscribe(slt=>{
       this.salarie = slt;

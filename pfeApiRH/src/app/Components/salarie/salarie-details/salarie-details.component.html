@@ -10,32 +10,79 @@
       <mat-card-header>
         <mat-card-title><h2>{{salarie.title}}  {{salarie.nom_salarie}} {{salarie.prenom_salarie}}</h2></mat-card-title>
         <mat-card-subtitle>{{salarie.nationalite}}</mat-card-subtitle>
+        <!-- <mat-card-subtitle *ngFor="let fo of salarie.fonction">{{fo}}</mat-card-subtitle> -->
       </mat-card-header>
       <mat-card-content>
         <dl>
           <dt>CIN :</dt>
           <dd>{{salarie.cin_salarie}}</dd>
+          <!-- <dt>Travail chez :</dt>
+          <dd *ngFor="let ent of salarie.entreprise">
+            {{ent}}
+          </dd> -->
+          <dt>Situation Familial :</dt>
+          <dd *ngFor="let sf of salarie.situation_familial">
+            {{sf}}
+          </dd>
+          <dt>Condjoint :</dt>
+          <dd *ngFor="let cj of salarie.condjoint">
+            {{cj}}
+          </dd>
           <dt>Date de naissance :</dt>
           <dd>{{salarie.date_naissance | date}}</dd>
           <dt>Adresse :</dt>
-          <dd>{{salarie.adresse}} {{salarie.pays_id}}</dd>
+          <dd >{{salarie.adresse}} </dd>
+          <!-- <dd *ngFor="let pa of salarie.pays"> {{pa.pays}}</dd> -->
           <dt>email :</dt>
           <dd> {{salarie.email}} </dd>
           <dt>Telephone :</dt>
           <dd>{{salarie.telephone}}</dd>
           <dt>Date d'entree  :</dt>
           <dd>{{salarie.date_entree | date}}</dd>
-          <dt>Promotion :</dt>
-          <dd> {{salarie.promotions}} </dd>
-          <dt>Accident :</dt>
-          <dd> 
-            <!-- {{salarie.accidents}}  -->
+          <dt>Niveau scolaire :</dt>
+          <dd *ngFor="let ns of salarie.instructions">
+            {{ns.instruction_level}} <br>
+            {{ns.diplome_got}} <br>
+            {{ns.language_talked}} <br>
+            {{ns.language_write}} <br>
+            {{ns.particular_knowledge}} <br>
+            <hr>
           </dd>
+          <!-- <dt>Emploi anterieur :</dt>
+          <dd *ngFor="let ns of salarie.e">{{salarie.telephone}}</dd>
+          <dt>Date d'entree  :</dt>
+          <dd>{{salarie.date_entree | date}}</dd> -->
+          <dt>Absence(s) :</dt>
+          <dd *ngFor="let ab of salarie.absences">
+            Date du debut d'absence : {{ab.periode_start | date}} <br>
+            Date du debut d'absence : {{ab.observations}} <br>
+            Total des jours d'absence : {{ab.total_days}} jours <br>
+            <hr>
+          </dd>
+          <dt>Accident(s) :</dt>
+          <dd *ngFor="let ac of salarie.accidents">
+            {{ac.nature}} ({{ac.jours_Absences}} jours)
+          </dd>
+         
+          <dt>Promotion :</dt>
+          <dd *ngFor="let promo of salarie.promotions">
+            Date	: {{promo.Date | date}} <br>
+            fonction ou categorie : {{promo.fonct_ou_cat}} <br>
+            salaire_taux  : {{promo.salaire_taux}}
+          </dd>
+         
           <dt>permis :</dt>
           <dd *ngFor="let sp of salarie.permis"> {{sp.permis_type }} </dd>
           <!-- Classe Salarie en totalité ngIf existe -->
           <!-- <dt>Created At:</dt>
           <dd>{{salarie.created_at | date}}</dd> -->
+
+          <dt>Sanction :</dt>
+          <dd *ngFor="let sa of salarie.sanctions">
+            nature de sanction : {{sa.nature}} 
+            <br>
+            Motif de sanction : {{sa.motifs}}
+          </dd>
         </dl>
       </mat-card-content>
       <mat-card-actions>

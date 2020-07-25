@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PfeApiService } from 'src/app/Services/pfe-api.service';
 import { AuthService } from 'src/app/Services/auth.service';
 import { AbsenceLegal } from 'src/app/classes/Model/absence-legal.model';
+import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
   selector: 'app-absence-legal',
@@ -10,17 +11,18 @@ import { AbsenceLegal } from 'src/app/classes/Model/absence-legal.model';
 })
 export class AbsenceLegalComponent implements OnInit {
   
-  displayedColumns : string[] = ['Date','Periode Debut', 'periode Fin','nombre de jours absence']
+  displayedColumns : string[] = ['Date','Periode Debut', 'periode Fin','nombre de jours absence','actions']
   absenceLegal : AbsenceLegal[];
   isLoadingResults: boolean;
   isIncomplete : boolean =false;
   error : any;
-
+  listData: MatTableDataSource<AbsenceLegal>
 
   constructor(private api:PfeApiService, private apiAuth:AuthService) { }
 
   ngOnInit(): void {
     this.api.GetAbsenceLegals().subscribe(resAbs=>{
+      
       this.absenceLegal = resAbs;
       this.isLoadingResults = false;
     },err=>{

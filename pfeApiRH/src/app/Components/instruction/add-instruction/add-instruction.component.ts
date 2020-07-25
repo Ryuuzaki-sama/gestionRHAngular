@@ -47,7 +47,6 @@ export class AddInstructionComponent implements OnInit {
 
   onFormSubmit(form){
     this.isLoadingResults = true;
-    alert(this.salarie_id);
     this.api.PostInstruction(form)
       .subscribe(res =>
         {

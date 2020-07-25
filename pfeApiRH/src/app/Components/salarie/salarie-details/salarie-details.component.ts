@@ -42,10 +42,14 @@ export class SalarieDetailsComponent implements OnInit {
     sanction_id                 : null,
     accident_id                 : null,
     entreprise	                 : '',
+    fonction                  : '',
     pays	                     : '',
     ville	                     : '',
+    // accidents                 : '',
     permis	                     : '',
     situation_familial	         : '',
+    sanctions                   : '',
+    absences                    : '',
     instructions                : '',
     promotions	                 : '',
     suivi_pros                  : '',
@@ -63,8 +67,8 @@ export class SalarieDetailsComponent implements OnInit {
     this.api.GetSalarie(id)
       .subscribe(data => {
         this.salarie = data;
-        console.warn("this is the all data we get for salarie "+ JSON.stringify(data))
-        console.log(this.salarie);
+        // console.warn("this is the all data we get for salarie "+ JSON.stringify(data.fonction))
+        // console.log(this.salarie.entreprise);
         this.isLoadingResults = false;
       });
   }

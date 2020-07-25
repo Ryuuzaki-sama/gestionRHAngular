@@ -9,7 +9,7 @@ import { AuthService } from 'src/app/Services/auth.service';
   styleUrls: ['./accident.component.scss']
 })
 export class AccidentComponent implements OnInit {
-  displayedColumns : string[] = ['Date',"nature accident", 'circonstances','nombre de jours absences']
+  displayedColumns : string[] = ['Date',"nature accident", 'circonstances','nombre de jours absences','actions']
   accident : Accident[];
   isLoadingResults: boolean;
   isIncomplete : boolean =false;

@@ -16,7 +16,7 @@ export class LoginComponent implements OnInit {
   loading = false;
   submitted = false;
   returnUrl: string;
-  error = '';
+  error :string= '';
  
   isAuth : boolean = false;
 
@@ -34,7 +34,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
-      name : ['', Validators.required],
+      email : ['', Validators.required],
       password :  ['', [Validators.required]],
     }),
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
@@ -46,9 +46,11 @@ export class LoginComponent implements OnInit {
     this.apiAuth.Login(form)
     .subscribe(res =>{
       console.log(res);
-        // let jwt = res.headers.get('Authorization');
-        // this.apiAuth.saveToken(jwt);
-        // this.router.navigateByUrl('/');
+        let jwt = res['success']['token'];
+        let name = res['name']['name'];
+        console.warn(name);
+        this.apiAuth.saveToken(jwt);
+        this.router.navigateByUrl('/');
       },
       err =>{
         this.isAuth = true;
@@ -57,20 +59,20 @@ export class LoginComponent implements OnInit {
     );
   }
 
-  isAdmin(){
-    return this.apiAuth.isAdmin();
-  }
+  // isAdmin(){
+  //   return this.apiAuth.isAdmin();
+  // }
 
-  isSalarie(){
-    return this.apiAuth.isSalarie();
-  }
-  isSecretaire(){
-    return this.apiAuth.isAdmin();
-  }
+  // isSalarie(){
+  //   return this.apiAuth.isSalarie();
+  // }
+  // isSecretaire(){
+  //   return this.apiAuth.isAdmin();
+  // }
 
-  isUser(){
-    return this.apiAuth.isUser();
-  }
+  // isUser(){
+  //   return this.apiAuth.isUser();
+  // }
   
 
 }

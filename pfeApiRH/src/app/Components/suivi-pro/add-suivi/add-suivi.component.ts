@@ -38,9 +38,15 @@ export class AddSuiviComponent implements OnInit {
     })
   }
 
-  onFormSubmit(form:NgForm) {
+  onFormSubmit(form) {
+    const payload = {
+      date : form.date.toLocaleDateString(),
+      fonct_ou_cat : form.fonct_ou_cat,
+      salaire_taux : form.salaire_taux,
+      salarie_id : +form.salarie_id,
+    }
     this.api.PostSuiviPro(form).subscribe(res=>{
-      let id = res['_id'];
+      let id = res['id'];
       this.isLoadingResults = false;
       this.router.navigate(['/suivi_pro']);
     }, (err) => {

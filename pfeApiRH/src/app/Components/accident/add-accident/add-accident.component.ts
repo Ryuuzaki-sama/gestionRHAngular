@@ -18,7 +18,7 @@ export class AddAccidentComponent implements OnInit {
   absence_reason : AbsenceReason[];
   isLoadingResults: boolean;
   isIncomplete : boolean =false;
-  nature : string[]=["premier_nature","deuxieme_nature"];
+  nature : string[] =["premier_nature","deuxieme_nature"];
   error : any;
 
   getErrorMessage() {
@@ -39,15 +39,27 @@ export class AddAccidentComponent implements OnInit {
       nature : ['', Validators.required],
       circonstances : ['', Validators.required],
       jours_Absences :['', Validators.required],
+      salarie_id : ['', Validators.required]
+    })
+    this.api.GetSalaries().subscribe(slr=>{
+      this.salarie = slr;
     })
   }
 
-  onFormSubmit(form:NgForm){
+  onFormSubmit(form){
     this.isLoadingResults = true;
-    console.warn("form is here : "+form)
-    this.api.PostAccident(form)
+    
+    const payload = {
+      date : form.date.toLocaleDateString(),
+      nature : form.nature,
+      circonstances : form.circonstances,
+      jours_Absences : form.jours_Absences,
+      salarie_id : +form.salarie_id,
+    }
+
+    this.api.PostAccident(payload)
       .subscribe(res => {
-          let id = res['_id'];
+          let id = res['id'];
           this.isLoadingResults = false;
           this.router.navigate(['/accident']);
         }, (err) => {

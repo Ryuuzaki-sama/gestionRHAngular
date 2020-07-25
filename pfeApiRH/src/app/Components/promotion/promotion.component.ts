@@ -10,7 +10,7 @@ import { Promotion } from 'src/app/classes/Model/promotion.model';
 })
 export class PromotionComponent implements OnInit {
 
-  displayedColumns : string[] =["Date","fonct_cat","salaire_taux"]
+  displayedColumns : string[] =["Date","fonct_cat","salaire_taux","actions"]
   promotion : Promotion[];
   
   isLoadingResults: boolean;

@@ -7,9 +7,9 @@
         
         <form #f='ngForm' [formGroup]="loginForm"  (ngSubmit)="Login(loginForm.value)">
             <div class="form-group col-md">
-                <mat-label class="control-label">Username</mat-label>
-                <input type="text" class="form-control fadeIn second" name="name" formControlName="name">
-                <span *ngIf="!loginForm.get('name').valid && loginForm.get('name').touched">Entrer un username valide</span>
+                <mat-label class="control-label">Email</mat-label>
+                <input type="text" class="form-control fadeIn second" placeholder="Email" name="email" formControlName="email">
+                <span *ngIf="!loginForm.get('email').valid && loginForm.get('email').touched">Entrer un username valide</span>
             </div>
         
             <div class="form-group col-md">

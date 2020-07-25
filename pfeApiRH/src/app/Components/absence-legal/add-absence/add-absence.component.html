@@ -34,7 +34,7 @@
           <mat-label for="absence_reason_id">Raison d'absence :</mat-label>
           <mat-select matNativeControl class="form-control" formControlName="absence_reason_id" id="absence_reason_id">
               <mat-option value="">-- selectionner une raison --</mat-option>
-              <mat-option *ngFor="let ar of absence_reason" [value]="ar.id">{{ar.reason}}</mat-option>
+              <mat-option *ngFor="let ar of absence_reason" [value]="ar.id">{{ar.reason_absence}}</mat-option>
           </mat-select>
           <mat-error *ngIf="absenceForm.invalid">{{getErrorMessage()}}</mat-error>
         </div>

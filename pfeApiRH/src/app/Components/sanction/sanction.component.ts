@@ -11,7 +11,7 @@ export class SanctionComponent implements OnInit {
 
  
   sanction : Sanction[];
-  displayedColumns : string[]= ["Date sanction", "nature de sanction", "motif sanction"];
+  displayedColumns : string[]= ["Date sanction", "nature de sanction", "motif sanction",'actions'];
   isLoadingResults: boolean;
   isIncomplete : boolean =false;
   error : any;

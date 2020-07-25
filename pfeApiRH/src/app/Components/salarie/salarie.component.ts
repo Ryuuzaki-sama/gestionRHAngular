@@ -15,8 +15,6 @@ export class SalarieComponent implements OnInit {
   data: Salarie[] ;
   isLoadingResults = true;
 
-  dataSource = new MatTableDataSource<Salarie>(this.data);
-
  
   constructor(private api: PfeApiService) { }
  
@@ -25,16 +23,18 @@ export class SalarieComponent implements OnInit {
 
   ngOnInit(): void {
     this.api.GetSalaries().subscribe(res=>{
-      console.warn(res);
       this.data = res;
-      // console.log(this.data);
+      
+      // console.warn("this is the data source : "+ JSON.stringify(dataSource))
       this.isLoadingResults = false;
     }, err => {
       console.log(err);
       this.isLoadingResults = true;
     });
 
-    this.dataSource.paginator = this.paginator;
+    let dataSource = new MatTableDataSource<Salarie>(this.data);
+    console.warn(dataSource);
+    // this.dataSource.paginator = this.paginator;
   }
 
 }

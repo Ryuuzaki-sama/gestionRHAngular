@@ -35,14 +35,23 @@ export class AddSanctionComponent implements OnInit {
       date : ['', Validators.required],
       nature : ['', Validators.required],
       motifs : ['', Validators.required],
+      salarie_id : ['', Validators.required],
     })
     this.api.GetSalaries().subscribe(res=>{
       this.salarie = res;
     })
   }
 
-  onFormSubmit(form:NgForm) {
-    this.api.PostSanction(form).subscribe(res=>{
+  onFormSubmit(form) {
+    
+    const payload = {
+      date : form.date.toLocaleDateString(),
+      nature : form.nature,
+      motifs : form.motifs,
+      salarie_id : +form.salarie_id,
+    }
+
+    this.api.PostSanction(payload).subscribe(res=>{
       let id = res['_id'];
       this.isLoadingResults = false;
       this.router.navigate(['/sanction']);

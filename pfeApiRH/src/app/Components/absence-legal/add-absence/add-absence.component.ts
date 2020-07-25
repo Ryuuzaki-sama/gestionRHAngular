@@ -27,13 +27,6 @@ export class AddAbsenceComponent implements OnInit {
   }
 
   constructor(private router: Router, private api: PfeApiService,private apiAuth:AuthService, private formBuilder: FormBuilder) { }
-    //  id                   : number;
-    // date                  : Date;
-    // absence_reason_id     : number;
-    // periode_start         : Date;
-    // periode_end           : Date;
-    // total_days            : number;
-    // observation           : Text;
    
   ngOnInit(): void {
     this.absenceForm = this.formBuilder.group({
@@ -59,17 +52,20 @@ export class AddAbsenceComponent implements OnInit {
 
   onFormSubmit(form){
     this.isLoadingResults = true;
-    let data :Date = form.date;
-    console.warn(data.toLocaleDateString());
-    // console.warn("form = "+JSON.stringify(form.date));
-    // const payload = {
-    //   date : form.date.toLocaleDateString(),
-    //   absence_reason_id : +form.absence_reason_id,
-    //   periode_start : form.periode_start.toLocaleDateString(),
-    //   periode_end : form.periode_end.toLocaleDateString(),
-    //   total_days : +form.total_days,
-    //   observation: form.observation,
-    // }
+    let dateStart = new Date(form.periode_start).getTime();
+    let dateEnd = new Date(form.periode_end).getTime();
+    let joursAbsence = (dateEnd - dateStart) / (1000*60*60*24);
+
+    const payload = {
+      date : form.date.toLocaleDateString(),
+      absence_reason_id : +form.absence_reason_id,
+      periode_start : form.periode_start.toLocaleDateString(),
+      periode_end : form.periode_end.toLocaleDateString(),
+      total_days : +joursAbsence,
+      observation: form.observation,
+      salarie_id : form.salarie_id,
+    }
+
 
     // console.warn("payload = "+JSON.stringify(payload));
 
@@ -78,9 +74,9 @@ export class AddAbsenceComponent implements OnInit {
     // }
 
 
-    this.api.PostAbsenceLegal(form)
+    this.api.PostAbsenceLegal(payload)
       .subscribe(res => {
-          let id = res['_id'];
+          let id = res['id'];
           // this.api.PutSalarie(id,salarie).subscribe(res=>{
           //   alert("I think this is connected");
           // })

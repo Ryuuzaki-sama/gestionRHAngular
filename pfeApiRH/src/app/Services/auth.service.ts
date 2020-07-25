@@ -28,14 +28,14 @@ export class AuthService {
   // }
   
   Login(user){
-    const apiAuth = `${this.url}/users`;
-    this.name = "username is = "+user.name +" password = "+ user.password;
-    console.warn(this.name);
-    return this.httpauth.post<Users>(apiAuth,user,{observe:'response'});
+    const apiAuth = `${this.url}login`;
+    return this.httpauth.post<Users>(apiAuth,user);
+    // ,{observe:'response'}
   }
 
   saveToken(jwt:string) {
     localStorage.setItem('token',jwt);
+    
     this.jwt = jwt;
     // this.parsejwt();
 

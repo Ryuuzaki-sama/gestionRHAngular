@@ -31,8 +31,13 @@ export class Salarie {
     ville?	                     : Object;
     permis?	                     : Object;
     situation_familial?	         : Object;
+    condjoint?                   : Object;
     instructions?                : Object;
+    absences?                     : Object;
+    accidents?                   : Object;
+    sanctions?                   : Object;
     promotions?	                 : Object;
     suivi_pros?                  : Object;
+    fonction?                    : Object;
 
 }
