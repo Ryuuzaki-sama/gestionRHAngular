@@ -133,7 +133,7 @@
         <mat-icon class="example-icon" *ngIf="isAuth()">settings</mat-icon>
       </button>
       <mat-menu #beforeMenu="matMenu" xPosition="before">
-        <button mat-menu-item><mat-icon class="example-icon" [routerLink]="['/login']" *ngIf="isAuth()">login</mat-icon>Deconnexion</button>
+        <button mat-menu-item  [routerLink]="['']"><mat-icon class="example-icon" *ngIf="isAuth()">login</mat-icon>Deconnexion</button>
         <!-- <button mat-menu-item>Item 2</button> -->
       </mat-menu>
 
